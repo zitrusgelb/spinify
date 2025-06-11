@@ -1,9 +1,9 @@
-import "./style.css";
+import "./style.css"
 
-import "./tailwind.css";
+import "./tailwind.css"
 
-import logoUrl from "../assets/logo.png";
-import { Link } from "../components/Link.js";
+import logoUrl from "../assets/logo.png"
+import { Link } from "../components/Link.js"
 
 export default function LayoutDefault({ children }: { children: React.ReactNode }) {
   return (
@@ -17,7 +17,7 @@ export default function LayoutDefault({ children }: { children: React.ReactNode 
       </Sidebar>
       <Content>{children}</Content>
     </div>
-  );
+  )
 }
 
 function Sidebar({ children }: { children: React.ReactNode }) {
@@ -25,7 +25,7 @@ function Sidebar({ children }: { children: React.ReactNode }) {
     <div id="sidebar" className={"p-5 flex flex-col shrink-0 border-r-2 border-r-gray-200"}>
       {children}
     </div>
-  );
+  )
 }
 
 function Content({ children }: { children: React.ReactNode }) {
@@ -35,7 +35,7 @@ function Content({ children }: { children: React.ReactNode }) {
         {children}
       </div>
     </div>
-  );
+  )
 }
 
 function Logo() {
@@ -45,5 +45,5 @@ function Logo() {
         <img src={logoUrl} height={64} width={64} alt="logo" />
       </a>
     </div>
-  );
+  )
 }

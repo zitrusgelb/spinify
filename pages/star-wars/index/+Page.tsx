@@ -1,8 +1,8 @@
-import { useData } from "vike-react/useData";
-import type { Data } from "./+data.js";
+import { useData } from "vike-react/useData"
+import type { Data } from "./+data.js"
 
 export default function Page() {
-  const movies = useData<Data>();
+  const movies = useData<Data>()
   return (
     <>
       <h1>Star Wars Movies</h1>
@@ -17,5 +17,5 @@ export default function Page() {
         Source: <a href="https://brillout.github.io/star-wars">brillout.github.io/star-wars</a>.
       </p>
     </>
-  );
+  )
 }
