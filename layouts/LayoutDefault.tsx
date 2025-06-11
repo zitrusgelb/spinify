@@ -11,8 +11,6 @@ export default function LayoutDefault({ children }: { children: React.ReactNode 
       <Sidebar>
         <Logo />
         <Link href="/">Home</Link>
-        <Link href="/todo">Todo</Link>
-        <Link href="/star-wars">Data Fetching</Link>
         <Link href="/userInsights">User Insights</Link>
         <Link href="/options">Options</Link>
         <Link href="/playlists">Playlists</Link>
