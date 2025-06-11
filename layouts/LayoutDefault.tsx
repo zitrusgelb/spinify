@@ -7,7 +7,7 @@ import { Link } from "../components/Link.js"
 
 export default function LayoutDefault({ children }: { children: React.ReactNode }) {
   return (
-    <div className={"flex max-w-5xl m-auto"}>
+    <div className={"flex w-full bg-background text-white min-h-screen\n"}>
       <Sidebar>
         <Logo />
         <Link href="/">Home</Link>

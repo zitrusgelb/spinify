@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/spinify.iml" filepath="$PROJECT_DIR$/.idea/spinify.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Spinify.iml" filepath="$PROJECT_DIR$/.idea/Spinify.iml" />
     </modules>
   </component>
 </project>
