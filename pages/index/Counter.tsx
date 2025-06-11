@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useState } from "react"
 
 export function Counter() {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(0)
 
   return (
     <button
@@ -13,5 +13,5 @@ export function Counter() {
     >
       Counter {count}
     </button>
-  );
+  )
 }
