@@ -10,9 +10,12 @@ export default function LayoutDefault({ children }: { children: React.ReactNode 
     <div className={"flex max-w-5xl m-auto"}>
       <Sidebar>
         <Logo />
-        <Link href="/">Welcome</Link>
+        <Link href="/">Home</Link>
         <Link href="/todo">Todo</Link>
         <Link href="/star-wars">Data Fetching</Link>
+        <Link href="/userInsights">User Insights</Link>
+        <Link href="/options">Options</Link>
+        <Link href="/playlists">Playlists</Link>
         {""}
       </Sidebar>
       <Content>{children}</Content>
