@@ -24,7 +24,7 @@ export default function LayoutDefault({ children }: { children: React.ReactNode 
 
 function Sidebar({ children }: { children: React.ReactNode }) {
   return (
-    <div id="sidebar" className={"p-5 flex flex-col shrink-0 bg-primary"}>
+    <div id="sidebar" className={"p-5 flex flex-col shrink-0 bg-primary rounded-[20px]"}>
       {children}
     </div>
   )
