@@ -112,7 +112,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1749627186192</updated>
-      <workItem from="1749627187255" duration="11810000" />
+      <workItem from="1749627187255" duration="10661000" />
     </task>
     <task id="LOCAL-00001" summary="feat: add logo">
       <option name="closed" value="true" />
@@ -242,31 +242,7 @@
       <option name="project" value="LOCAL" />
       <updated>1749729283484</updated>
     </task>
-    <task id="LOCAL-00017" summary="refactor: remove warning from &quot;logo.png not found&quot;">
-      <option name="closed" value="true" />
-      <created>1749729537885</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1749729537885</updated>
-    </task>
-    <task id="LOCAL-00018" summary="refactor: remove warning from &quot;logo.png not found&quot;">
-      <option name="closed" value="true" />
-      <created>1749729541465</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1749729541465</updated>
-    </task>
-    <task id="LOCAL-00019" summary="feat: add background color for the sidebar">
-      <option name="closed" value="true" />
-      <created>1749730772907</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1749730772907</updated>
-    </task>
-    <option name="localTasksCounter" value="20" />
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -293,8 +269,6 @@
     <MESSAGE value="refactor: add .idea to gitignore" />
     <MESSAGE value="feat: add different colors" />
     <MESSAGE value="refactor: remove .idea from gitignore" />
-    <MESSAGE value="refactor: remove warning from &quot;logo.png not found&quot;" />
-    <MESSAGE value="feat: add background color for the sidebar" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: add background color for the sidebar" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor: remove .idea from gitignore" />
   </component>
 </project>
