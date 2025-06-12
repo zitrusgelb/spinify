@@ -1,18 +1,24 @@
 import "./style.css"
-
 import "./tailwind.css"
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
 import logoUrl from "../assets/logo.png"
-import { Link } from "../components/Link.js"
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-expect-error
+import { ReactComponent as HomeIcon } from "../assets/homeIcon.svg"
 
-export default function LayoutDefault({ children }: { children: React.ReactNode }) {
+import { Link } from "../components/Link.js"
+import React from "react"
+
+export function LayoutDefault({ children }: { children: React.ReactNode }) {
   return (
-    <div className={"flex w-full bg-background text-secondary min-h-screen\n"}>
+    <div className={"flex w-full bg-background text-secondary min-h-screen"}>
+      <Logo />
       <Sidebar>
-        <Logo />
-        <Link href="/">Home</Link>
+        <Link href="/">
+          <HomeIcon className="h-9 w-9 fill-current" />
+        </Link>
         <Link href="/userInsights">User Insights</Link>
         <Link href="/options">Options</Link>
         <Link href="/playlists">Playlists</Link>
@@ -24,7 +30,10 @@ export default function LayoutDefault({ children }: { children: React.ReactNode 
 
 function Sidebar({ children }: { children: React.ReactNode }) {
   return (
-    <div id="sidebar" className={"p-5 flex flex-col shrink-0 bg-primary rounded-[20px]"}>
+    <div
+      id="sidebar"
+      className="flex flex-col items-start gap-[21px] px-[11px] py-[21px] bg-primary rounded-[20px] w-fit h-fit"
+    >
       {children}
     </div>
   )
@@ -33,7 +42,7 @@ function Sidebar({ children }: { children: React.ReactNode }) {
 function Content({ children }: { children: React.ReactNode }) {
   return (
     <div id="page-container">
-      <div id="page-content" className={"p-5 pb-12 min-h-screen"}>
+      <div id="page-content" className={"p-5 pb-12 min-h-screen bg-accent"}>
         {children}
       </div>
     </div>
@@ -42,7 +51,7 @@ function Content({ children }: { children: React.ReactNode }) {
 
 function Logo() {
   return (
-    <div className={"p-5 mb-2"}>
+    <div className="p-5 mb-6">
       <a href="/">
         <img src={logoUrl} height={64} width={64} alt="logo" />
       </a>
