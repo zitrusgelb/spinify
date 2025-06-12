@@ -2,19 +2,20 @@ import "./style.css"
 
 import "./tailwind.css"
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-expect-error
 import logoUrl from "../assets/logo.png"
 import { Link } from "../components/Link.js"
 
 export default function LayoutDefault({ children }: { children: React.ReactNode }) {
   return (
-    <div className={"flex w-full bg-background text-white min-h-screen\n"}>
+    <div className={"flex w-full bg-background text-secondary min-h-screen\n"}>
       <Sidebar>
         <Logo />
         <Link href="/">Home</Link>
         <Link href="/userInsights">User Insights</Link>
         <Link href="/options">Options</Link>
         <Link href="/playlists">Playlists</Link>
-        {""}
       </Sidebar>
       <Content>{children}</Content>
     </div>
@@ -23,7 +24,7 @@ export default function LayoutDefault({ children }: { children: React.ReactNode 
 
 function Sidebar({ children }: { children: React.ReactNode }) {
   return (
-    <div id="sidebar" className={"p-5 flex flex-col shrink-0 border-r-2 border-r-gray-200"}>
+    <div id="sidebar" className={"p-5 flex flex-col shrink-0 bg-primary"}>
       {children}
     </div>
   )
