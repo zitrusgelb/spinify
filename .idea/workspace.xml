@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5d0a05f4-8d99-4543-8a26-fc0a1b5e36f9" name="Changes" comment="feat: add different colors">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="5d0a05f4-8d99-4543-8a26-fc0a1b5e36f9" name="Changes" comment="refactor: remove .idea from gitignore">
+      <change beforePath="$PROJECT_DIR$/pages/+Head.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/+Head.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,7 +112,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1749627186192</updated>
-      <workItem from="1749627187255" duration="10582000" />
+      <workItem from="1749627187255" duration="10661000" />
     </task>
     <task id="LOCAL-00001" summary="feat: add logo">
       <option name="closed" value="true" />
@@ -234,7 +234,15 @@
       <option name="project" value="LOCAL" />
       <updated>1749729251769</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="refactor: remove .idea from gitignore">
+      <option name="closed" value="true" />
+      <created>1749729283484</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1749729283484</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -260,6 +268,7 @@
     <MESSAGE value="feat: add the correct background color and fix the width of the background" />
     <MESSAGE value="refactor: add .idea to gitignore" />
     <MESSAGE value="feat: add different colors" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: add different colors" />
+    <MESSAGE value="refactor: remove .idea from gitignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor: remove .idea from gitignore" />
   </component>
 </project>
