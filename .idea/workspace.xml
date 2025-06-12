@@ -4,17 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5d0a05f4-8d99-4543-8a26-fc0a1b5e36f9" name="Changes" comment="style: remove semicolons">
-      <change afterPath="$PROJECT_DIR$/layouts/tailwind.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jsLinters/eslint.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/layouts/LayoutDefault.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/layouts/LayoutDefault.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+    <list default="true" id="5d0a05f4-8d99-4543-8a26-fc0a1b5e36f9" name="Changes" comment="refactor: add .idea to gitignore">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/layouts/tailwind.css" beforeDir="false" afterPath="$PROJECT_DIR$/layouts/tailwind.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,7 +113,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1749627186192</updated>
-      <workItem from="1749627187255" duration="7343000" />
+      <workItem from="1749627187255" duration="10326000" />
     </task>
     <task id="LOCAL-00001" summary="feat: add logo">
       <option name="closed" value="true" />
@@ -195,7 +187,39 @@
       <option name="project" value="LOCAL" />
       <updated>1749645635079</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="feat: add the correct background color and fix the width of the background">
+      <option name="closed" value="true" />
+      <created>1749668538574</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1749668538574</updated>
+    </task>
+    <task id="LOCAL-00011" summary="feat: add the correct background color and fix the width of the background">
+      <option name="closed" value="true" />
+      <created>1749668575260</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1749668575260</updated>
+    </task>
+    <task id="LOCAL-00012" summary="feat: add the correct background color and fix the width of the background">
+      <option name="closed" value="true" />
+      <created>1749728709635</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1749728709635</updated>
+    </task>
+    <task id="LOCAL-00013" summary="refactor: add .idea to gitignore">
+      <option name="closed" value="true" />
+      <created>1749728829276</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1749728829276</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -218,6 +242,8 @@
     <MESSAGE value="refactor: remove todo-page" />
     <MESSAGE value="refactor: remove Starwars-page" />
     <MESSAGE value="style: remove semicolons" />
-    <option name="LAST_COMMIT_MESSAGE" value="style: remove semicolons" />
+    <MESSAGE value="feat: add the correct background color and fix the width of the background" />
+    <MESSAGE value="refactor: add .idea to gitignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor: add .idea to gitignore" />
   </component>
 </project>

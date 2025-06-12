@@ -2,4 +2,7 @@
 
 @theme {
     --color-background: #1B0D1E;
+    --color-primary: #421648;
+    --color-accent: #E12E45;
+    --color-secondary: #FFB22C;
 }
