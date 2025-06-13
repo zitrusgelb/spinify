@@ -1,12 +1,10 @@
 import "./style.css"
 import "./tailwind.css"
-
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-expect-error
 import logoUrl from "../assets/logo.png"
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-expect-error
 import { ReactComponent as HomeIcon } from "../assets/homeIcon.svg"
+import { ReactComponent as UserInsightsIcon } from "../assets/userInsightsIcon.svg"
+import { ReactComponent as OptionsIcon } from "../assets/optionsIcon.svg"
+import { ReactComponent as PlaylistIcon } from "../assets/playlistIcon.svg"
 
 import { Link } from "../components/Link.js"
 import React from "react"
@@ -19,9 +17,15 @@ export function LayoutDefault({ children }: { children: React.ReactNode }) {
         <Link href="/">
           <HomeIcon className="h-9 w-9 fill-current" />
         </Link>
-        <Link href="/userInsights">User Insights</Link>
-        <Link href="/options">Options</Link>
-        <Link href="/playlists">Playlists</Link>
+        <Link href="/userInsights">
+          <UserInsightsIcon className="h-9 w-9 fill-current" />
+        </Link>
+        <Link href="/options">
+          <OptionsIcon className="h-9 w-9 fill-current" />
+        </Link>
+        <Link href="/playlists">
+          <PlaylistIcon className="h-9 w-9 fill-current" />
+        </Link>
       </Sidebar>
       <Content>{children}</Content>
     </div>
