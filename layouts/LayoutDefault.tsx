@@ -1,10 +1,7 @@
 import "./style.css"
 import "./tailwind.css"
 import logoUrl from "../assets/logo.png"
-import { ReactComponent as HomeIcon } from "../assets/homeIcon.svg"
-import { ReactComponent as UserInsightsIcon } from "../assets/userInsightsIcon.svg"
-import { ReactComponent as OptionsIcon } from "../assets/optionsIcon.svg"
-import { ReactComponent as PlaylistIcon } from "../assets/playlistIcon.svg"
+import { HomeIcon, OptionsIcon, PlaylistsIcon, UserInsightsIcon } from "./icons"
 
 import { Link } from "../components/Link.js"
 import React from "react"
@@ -15,21 +12,22 @@ export function LayoutDefault({ children }: { children: React.ReactNode }) {
       <Logo />
       <Sidebar>
         <Link href="/">
-          <HomeIcon className="h-9 w-9 fill-current" />
+          <HomeIcon />
         </Link>
         <Link href="/userInsights">
-          <UserInsightsIcon className="h-9 w-9 fill-current" />
+          <UserInsightsIcon />
         </Link>
         <Link href="/options">
-          <OptionsIcon className="h-9 w-9 fill-current" />
+          <OptionsIcon />
         </Link>
         <Link href="/playlists">
-          <PlaylistIcon className="h-9 w-9 fill-current" />
+          <PlaylistsIcon />
         </Link>
       </Sidebar>
       <Content>{children}</Content>
     </div>
   )
+  //className="h-9 w-9 fill-current"
 }
 
 function Sidebar({ children }: { children: React.ReactNode }) {
