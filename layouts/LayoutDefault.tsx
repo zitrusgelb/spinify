@@ -36,10 +36,7 @@ function SidebarWithLogo({ children }: { children: React.ReactNode }) {
 
 function Sidebar({ children }: { children: React.ReactNode }) {
   return (
-    <div
-      id="sidebar"
-      className="flex flex-col items-center gap-[21px] px-[11px] py-[21px] bg-primary rounded-[20px] w-fit h-fit"
-    >
+    <div id="sidebar" className="flex flex-col items-center gap-[21px] px-[11px] py-[21px] bg-primary rounded-[20px]">
       {children}
     </div>
   )
@@ -47,8 +44,8 @@ function Sidebar({ children }: { children: React.ReactNode }) {
 
 function Content({ children }: { children: React.ReactNode }) {
   return (
-    <div id="page-container">
-      <div id="page-content" className={"p-5 pb-12 min-h-screen bg-gradient"}>
+    <div id="page-container" className="flex-1 mt-[13px] mr-[13px] mb-[13px]">
+      <div id="page-content" className="p-5 pb-12 min-h-full bg-gradient rounded-[20px] w-full h-full">
         {children}
       </div>
     </div>
