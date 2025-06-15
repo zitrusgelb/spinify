@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5d0a05f4-8d99-4543-8a26-fc0a1b5e36f9" name="Changes" comment="refactor: remove redundant assets">
+    <list default="true" id="5d0a05f4-8d99-4543-8a26-fc0a1b5e36f9" name="Changes" comment="refactor: make color variables similarly">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Link.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Link.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/layouts/icons.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/layouts/icons.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/layouts/LayoutDefault.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/layouts/LayoutDefault.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/index/+Page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index/+Page.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -158,7 +157,7 @@
       <workItem from="1749753771990" duration="24000" />
       <workItem from="1749753805003" duration="42000" />
       <workItem from="1749753862680" duration="9495000" />
-      <workItem from="1749997650542" duration="4894000" />
+      <workItem from="1749997650542" duration="5785000" />
     </task>
     <task id="LOCAL-00001" summary="feat: add logo">
       <option name="closed" value="true" />
@@ -472,7 +471,47 @@
       <option name="project" value="LOCAL" />
       <updated>1750002367052</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="refactor: remove shadow from icons">
+      <option name="closed" value="true" />
+      <created>1750002586163</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1750002586163</updated>
+    </task>
+    <task id="LOCAL-00041" summary="refactor: add padding to icons in the secondary circle">
+      <option name="closed" value="true" />
+      <created>1750002612215</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1750002612215</updated>
+    </task>
+    <task id="LOCAL-00042" summary="build: changes in .idea files">
+      <option name="closed" value="true" />
+      <created>1750002627149</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1750002627149</updated>
+    </task>
+    <task id="LOCAL-00043" summary="refactor: remove unused database">
+      <option name="closed" value="true" />
+      <created>1750002749031</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1750002749031</updated>
+    </task>
+    <task id="LOCAL-00044" summary="refactor: make color variables similarly">
+      <option name="closed" value="true" />
+      <created>1750003385582</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1750003385582</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -490,11 +529,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="style: remove semicolons" />
-    <MESSAGE value="feat: add the correct background color and fix the width of the background" />
-    <MESSAGE value="refactor: add .idea to gitignore" />
-    <MESSAGE value="feat: add different colors" />
-    <MESSAGE value="refactor: remove .idea from gitignore" />
     <MESSAGE value="feat: add rounded corners for sidebar" />
     <MESSAGE value="fix: remove warning from TypeScript for wrong import of logos/icons" />
     <MESSAGE value="refactor: import icons as ReactComponents instead of a png" />
@@ -515,6 +549,11 @@
     <MESSAGE value="feat: add gradient background" />
     <MESSAGE value="refactor: make contend to the appropriate size" />
     <MESSAGE value="refactor: remove redundant assets" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor: remove redundant assets" />
+    <MESSAGE value="refactor: remove shadow from icons" />
+    <MESSAGE value="refactor: add padding to icons in the secondary circle" />
+    <MESSAGE value="build: changes in .idea files" />
+    <MESSAGE value="refactor: remove unused database" />
+    <MESSAGE value="refactor: make color variables similarly" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor: make color variables similarly" />
   </component>
 </project>

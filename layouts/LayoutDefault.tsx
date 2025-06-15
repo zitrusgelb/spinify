@@ -31,12 +31,12 @@ export function LayoutDefault({ children }: { children: React.ReactNode }) {
 }
 
 function SidebarWithLogo({ children }: { children: React.ReactNode }) {
-  return <div className="flex flex-col items-center gap-[28px] mt-[13px] mx-[13px] w-fit">{children}</div>
+  return <div className="flex flex-col items-center gap-7 mt-3 mx-3 w-fit">{children}</div>
 }
 
 function Sidebar({ children }: { children: React.ReactNode }) {
   return (
-    <div id="sidebar" className="flex flex-col items-center gap-[21px] px-[11px] py-[21px] bg-primary rounded-[20px]">
+    <div id="sidebar" className="flex flex-col items-center gap-5 px-3 py-5 bg-primary rounded-3xl">
       {children}
     </div>
   )
@@ -44,8 +44,8 @@ function Sidebar({ children }: { children: React.ReactNode }) {
 
 function Content({ children }: { children: React.ReactNode }) {
   return (
-    <div id="page-container" className="flex-1 mt-[13px] mr-[13px] mb-[13px]">
-      <div id="page-content" className="p-5 pb-12 min-h-full bg-gradient rounded-[20px] w-full h-full">
+    <div id="page-container" className="flex-1 mt-3 mr-3 mb-3">
+      <div id="page-content" className="p-5 pb-12 min-h-full bg-gradient rounded-3xl w-full h-full">
         {children}
       </div>
     </div>
