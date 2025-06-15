@@ -1,4 +1,3 @@
-import "./style.css"
 import "./tailwind.css"
 import logoUrl from "../assets/logo.png"
 import { HomeIcon, OptionsIcon, PlaylistsIcon, UserInsightsIcon } from "./icons"
