@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5d0a05f4-8d99-4543-8a26-fc0a1b5e36f9" name="Changes" comment="refactor: make color variables similarly">
+    <list default="true" id="5d0a05f4-8d99-4543-8a26-fc0a1b5e36f9" name="Changes" comment="refactor: make all size attributes generic">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/layouts/LayoutDefault.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/layouts/LayoutDefault.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/index/+Page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index/+Page.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -79,7 +78,7 @@
     <option name="myRunOnSave" value="true" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -157,7 +156,7 @@
       <workItem from="1749753771990" duration="24000" />
       <workItem from="1749753805003" duration="42000" />
       <workItem from="1749753862680" duration="9495000" />
-      <workItem from="1749997650542" duration="5785000" />
+      <workItem from="1749997650542" duration="6177000" />
     </task>
     <task id="LOCAL-00001" summary="feat: add logo">
       <option name="closed" value="true" />
@@ -511,7 +510,15 @@
       <option name="project" value="LOCAL" />
       <updated>1750003385582</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="refactor: make all size attributes generic">
+      <option name="closed" value="true" />
+      <created>1750003518384</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1750003518384</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -529,7 +536,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: add rounded corners for sidebar" />
     <MESSAGE value="fix: remove warning from TypeScript for wrong import of logos/icons" />
     <MESSAGE value="refactor: import icons as ReactComponents instead of a png" />
     <MESSAGE value="refactor: rename optionIcon to optionsIcon" />
@@ -554,6 +560,7 @@
     <MESSAGE value="build: changes in .idea files" />
     <MESSAGE value="refactor: remove unused database" />
     <MESSAGE value="refactor: make color variables similarly" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor: make color variables similarly" />
+    <MESSAGE value="refactor: make all size attributes generic" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor: make all size attributes generic" />
   </component>
 </project>

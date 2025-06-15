@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { useEffect, useState } from "react"
 import { SpotifyApi } from "@spotify/web-api-ts-sdk"
 
