@@ -6,3 +6,12 @@
     --color-accent: #E12E45;
     --color-secondary: #FFB22C;
 }
+.bg-gradient {
+    background-image: linear-gradient(
+            to bottom,
+            var(--color-secondary),
+            #FD9118,
+            #F16022,
+            var(--color-accent)
+    );
+}

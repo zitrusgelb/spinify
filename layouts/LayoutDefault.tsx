@@ -7,7 +7,7 @@ import React from "react"
 
 export function LayoutDefault({ children }: { children: React.ReactNode }) {
   return (
-    <div className={"flex w-full bg-background text-secondary min-h-screen"}>
+    <div className={"flex w-full bg-background text-black min-h-screen"}>
       <SidebarWithLogo>
         <Logo />
         <Sidebar>
@@ -48,7 +48,7 @@ function Sidebar({ children }: { children: React.ReactNode }) {
 function Content({ children }: { children: React.ReactNode }) {
   return (
     <div id="page-container">
-      <div id="page-content" className={"p-5 pb-12 min-h-screen bg-accent"}>
+      <div id="page-content" className={"p-5 pb-12 min-h-screen bg-gradient"}>
         {children}
       </div>
     </div>
