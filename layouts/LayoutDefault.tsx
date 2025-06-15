@@ -26,7 +26,6 @@ export function LayoutDefault({ children }: { children: React.ReactNode }) {
       <Content>{children}</Content>
     </div>
   )
-  //className="h-9 w-9 fill-current"
 }
 
 function Sidebar({ children }: { children: React.ReactNode }) {
