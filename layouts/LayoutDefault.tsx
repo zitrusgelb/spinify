@@ -8,31 +8,37 @@ import React from "react"
 export function LayoutDefault({ children }: { children: React.ReactNode }) {
   return (
     <div className={"flex w-full bg-background text-secondary min-h-screen"}>
-      <Logo />
-      <Sidebar>
-        <Link href="/">
-          <HomeIcon />
-        </Link>
-        <Link href="/userInsights">
-          <UserInsightsIcon />
-        </Link>
-        <Link href="/options">
-          <OptionsIcon />
-        </Link>
-        <Link href="/playlists">
-          <PlaylistsIcon />
-        </Link>
-      </Sidebar>
+      <SidebarWithLogo>
+        <Logo />
+        <Sidebar>
+          <Link href="/">
+            <HomeIcon />
+          </Link>
+          <Link href="/userInsights">
+            <UserInsightsIcon />
+          </Link>
+          <Link href="/options">
+            <OptionsIcon />
+          </Link>
+          <Link href="/playlists">
+            <PlaylistsIcon />
+          </Link>
+        </Sidebar>
+      </SidebarWithLogo>
       <Content>{children}</Content>
     </div>
   )
+}
+
+function SidebarWithLogo({ children }: { children: React.ReactNode }) {
+  return <div className="flex flex-col items-center gap-[28px] mt-[13px] mx-[13px] w-fit">{children}</div>
 }
 
 function Sidebar({ children }: { children: React.ReactNode }) {
   return (
     <div
       id="sidebar"
-      className="flex flex-col items-start gap-[21px] px-[11px] py-[21px] bg-primary rounded-[20px] w-fit h-fit"
+      className="flex flex-col items-center gap-[21px] px-[11px] py-[21px] bg-primary rounded-[20px] w-fit h-fit"
     >
       {children}
     </div>
@@ -51,9 +57,9 @@ function Content({ children }: { children: React.ReactNode }) {
 
 function Logo() {
   return (
-    <div className="p-5 mb-6">
+    <div>
       <a href="/">
-        <img src={logoUrl} height={64} width={64} alt="logo" />
+        <img src={logoUrl} height={82} width={90} alt="logo" />
       </a>
     </div>
   )
