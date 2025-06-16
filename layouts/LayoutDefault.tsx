@@ -5,33 +5,45 @@ import { HomeIcon, OptionsIcon, PlaylistsIcon, UserInsightsIcon } from "./icons"
 import { Link } from "../components/Link.js"
 import React from "react"
 
+const links = [
+  {
+    title: "Home",
+    href: "/",
+    Icon: HomeIcon,
+  },
+  {
+    title: "User Insights",
+    href: "/userInsights",
+    Icon: UserInsightsIcon,
+  },
+  {
+    title: "Playlists",
+    href: "/playlists",
+    Icon: PlaylistsIcon,
+  },
+  {
+    title: "Options",
+    href: "/options",
+    Icon: OptionsIcon,
+  },
+]
+
 export function LayoutDefault({ children }: { children: React.ReactNode }) {
   return (
     <div className={"flex w-full bg-background text-black min-h-screen"}>
-      <SidebarWithLogo>
+      <div className="flex flex-col items-center gap-7 mt-3 mx-3 w-fit">
         <Logo />
         <Sidebar>
-          <Link href="/">
-            <HomeIcon />
-          </Link>
-          <Link href="/userInsights">
-            <UserInsightsIcon />
-          </Link>
-          <Link href="/options">
-            <OptionsIcon />
-          </Link>
-          <Link href="/playlists">
-            <PlaylistsIcon />
-          </Link>
+          {links.map((link) => (
+            <Link key={link.href} href={link.href}>
+              <link.Icon />
+            </Link>
+          ))}
         </Sidebar>
-      </SidebarWithLogo>
+      </div>
       <Content>{children}</Content>
     </div>
   )
-}
-
-function SidebarWithLogo({ children }: { children: React.ReactNode }) {
-  return <div className="flex flex-col items-center gap-7 mt-3 mx-3 w-fit">{children}</div>
 }
 
 function Sidebar({ children }: { children: React.ReactNode }) {
