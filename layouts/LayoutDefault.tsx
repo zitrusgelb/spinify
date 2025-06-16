@@ -32,12 +32,12 @@ const links = [
 export function LayoutDefault({ children }: { children: React.ReactNode }) {
   return (
     <div className={"flex w-full bg-background text-black min-h-screen"}>
-      <div className="flex flex-col items-center gap-7 mt-3 mx-3 w-fit">
+      <div className="flex flex-col items-center gap-5 mt-2 mx-2 w-fit">
         <Logo />
         <Sidebar>
           {links.map((link) => (
             <Link key={link.href} href={link.href}>
-              <link.Icon className="w-8 h-8 text-primary " />
+              <link.Icon className="w-7 h-7 text-primary stroke-[2.25]" />
             </Link>
           ))}
         </Sidebar>
@@ -49,7 +49,7 @@ export function LayoutDefault({ children }: { children: React.ReactNode }) {
 
 function Sidebar({ children }: { children: React.ReactNode }) {
   return (
-    <div id="sidebar" className="flex flex-col items-center gap-5 px-3 py-5 bg-primary rounded-3xl">
+    <div id="sidebar" className="flex flex-col items-center gap-4 px-3 py-4 bg-primary rounded-3xl">
       {children}
     </div>
   )
