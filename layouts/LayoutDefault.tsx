@@ -31,7 +31,7 @@ const links = [
 
 export function LayoutDefault({ children }: { children: React.ReactNode }) {
   return (
-    <div className={"flex w-full bg-background text-black min-h-screen"}>
+    <div className="flex w-full bg-background text-black min-h-screen">
       <div className="flex flex-col items-center gap-5 mt-2 mx-2 w-fit">
         <Logo />
         <Sidebar>
