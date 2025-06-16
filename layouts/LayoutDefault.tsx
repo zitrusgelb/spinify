@@ -1,7 +1,7 @@
 import "./tailwind.css"
 
 import logoUrl from "assets/logo.png"
-import { HomeIcon, OptionsIcon, PlaylistsIcon, UserInsightsIcon } from "./icons"
+import { ChartLine, Disc3, ListMusic, Settings } from "lucide-react"
 
 import { Link } from "components/Link.js"
 import React from "react"
@@ -10,22 +10,22 @@ const links = [
   {
     title: "Home",
     href: "/",
-    Icon: HomeIcon,
+    Icon: Disc3,
   },
   {
     title: "User Insights",
     href: "/userInsights",
-    Icon: UserInsightsIcon,
+    Icon: ChartLine,
   },
   {
     title: "Playlists",
     href: "/playlists",
-    Icon: PlaylistsIcon,
+    Icon: ListMusic,
   },
   {
     title: "Options",
     href: "/options",
-    Icon: OptionsIcon,
+    Icon: Settings,
   },
 ]
 
@@ -37,7 +37,7 @@ export function LayoutDefault({ children }: { children: React.ReactNode }) {
         <Sidebar>
           {links.map((link) => (
             <Link key={link.href} href={link.href}>
-              <link.Icon />
+              <link.Icon className="w-8 h-8 text-primary " />
             </Link>
           ))}
         </Sidebar>
