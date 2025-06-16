@@ -4,8 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5d0a05f4-8d99-4543-8a26-fc0a1b5e36f9" name="Changes" comment="refactor: change LayoutDefault to be easier to understand">
-      <change beforePath="$PROJECT_DIR$/declaration.d.ts" beforeDir="false" />
+    <list default="true" id="5d0a05f4-8d99-4543-8a26-fc0a1b5e36f9" name="Changes" comment="refactor: remove unneeded declariton.d.ts">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/layouts/LayoutDefault.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/layouts/LayoutDefault.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vite.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/vite.config.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -166,7 +171,7 @@
       <workItem from="1749753805003" duration="42000" />
       <workItem from="1749753862680" duration="9495000" />
       <workItem from="1749997650542" duration="6874000" />
-      <workItem from="1750061529098" duration="552000" />
+      <workItem from="1750061529098" duration="1411000" />
     </task>
     <task id="LOCAL-00001" summary="feat: add logo">
       <option name="closed" value="true" />
@@ -552,7 +557,15 @@
       <option name="project" value="LOCAL" />
       <updated>1750062049681</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="refactor: remove unneeded declariton.d.ts">
+      <option name="closed" value="true" />
+      <created>1750062122391</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1750062122391</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -582,7 +595,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="refactor: rename optionIcon to optionsIcon" />
     <MESSAGE value="build: add svgr plugin to vite.config.ts" />
     <MESSAGE value="feat: add new functions with the icons as svg" />
     <MESSAGE value="docs: remove unnecessary ignore annotation" />
@@ -607,6 +619,7 @@
     <MESSAGE value="fix: add @ts-nocheck annotation to +Page.tsx to suppress errors (as I would get insane otherwise)" />
     <MESSAGE value="build: changes of .idea files" />
     <MESSAGE value="refactor: change LayoutDefault to be easier to understand" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor: change LayoutDefault to be easier to understand" />
+    <MESSAGE value="refactor: remove unneeded declariton.d.ts" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor: remove unneeded declariton.d.ts" />
   </component>
 </project>

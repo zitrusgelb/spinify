@@ -1,8 +1,9 @@
 import "./tailwind.css"
-import logoUrl from "../assets/logo.png"
+
+import logoUrl from "assets/logo.png"
 import { HomeIcon, OptionsIcon, PlaylistsIcon, UserInsightsIcon } from "./icons"
 
-import { Link } from "../components/Link.js"
+import { Link } from "components/Link.js"
 import React from "react"
 
 const links = [
