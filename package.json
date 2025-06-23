@@ -7,8 +7,10 @@
   },
   "dependencies": {
     "@spotify/web-api-ts-sdk": "^1.2.0",
+    "@types/node": "^24.0.1",
     "@types/spotify-web-playback-sdk": "^0.1.19",
     "@vitejs/plugin-react": "^4.5.0",
+    "lucide-react": "^0.515.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "vike": "^0.4.231",
@@ -17,7 +19,7 @@
   "devDependencies": {
     "@eslint/js": "^9.28.0",
     "@tailwindcss/vite": "^4.1.8",
-    "@types/react": "^19.1.6",
+    "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.5",
     "eslint": "^9.28.0",
     "eslint-config-prettier": "^10.1.5",
@@ -28,7 +30,8 @@
     "tailwindcss": "^4.1.8",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.33.1",
-    "vite": "^6.3.5"
+    "vite": "^6.3.5",
+    "vite-tsconfig-paths": "^5.1.4"
   },
   "type": "module"
 }

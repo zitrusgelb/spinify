@@ -21,11 +21,45 @@
     ],
     "jsx": "react-jsx",
     "jsxImportSource": "react",
-    "typeRoots": [
-      "node_modules/@types/spotify-web-playback-sdk"
-    ]
+    "paths": {
+      "~bootstrap": [
+        "node_modules/bootstrap"
+      ],
+      "components": [
+        "components"
+      ],
+      "components/*": [
+        "components/*"
+      ],
+      "api/*": [
+        "api/*"
+      ],
+      "utils/*": [
+        "utils/*"
+      ],
+      "hooks/*": [
+        "hooks/*"
+      ],
+      "layouts/*": [
+        "layouts/*"
+      ],
+      "assets/*": [
+        "assets/*"
+      ]
+    },
+    "baseUrl": "./"
   },
   "exclude": [
     "dist"
+  ],
+  "include": [
+    "utils",
+    "api",
+    "pages",
+    "locales",
+    "layouts",
+    "hooks",
+    "components",
+    "assets"
   ]
 }
