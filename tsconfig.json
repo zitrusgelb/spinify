@@ -53,6 +53,7 @@
     "dist"
   ],
   "include": [
+    "global.d.ts",
     "utils",
     "api",
     "pages",

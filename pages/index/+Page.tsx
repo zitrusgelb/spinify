@@ -8,9 +8,7 @@ export default function Page() {
   const [token, setToken] = useState<string | null>(null)
   const [playbackState, setPlaybackState] = useState<PlaybackState | null>(null)
 
-  const sdk = SpotifyApi.withUserAuthorization("d850768196144dfbab2ee42325a6e287", "http://127.0.0.1:3000", [
-    "streaming",
-  ])
+  const { api, login } = useSpotifyApi()
 
   useEffect(() => {
     if (!token) return
@@ -57,11 +55,27 @@ export default function Page() {
     }
   }, [token])
 
-  const login = async () => {
-    const authResponse = await sdk.authenticate()
-    if (!authResponse) return
+  const [user, setUser] = useState<User | null>(null)
 
-    setToken(authResponse.accessToken.access_token)
+  const loadUser = useCallback(async () => {
+    if (!token) return
+
+    const data = await api.currentUser.profile()
+    setUser(data)
+  }, [token])
+
+  useEffect(() => {
+    if (!token) return
+
+    loadUser()
+  }, [token])
+
+  const handleLogin = async () => {
+    const responseToken = await login()
+
+    if (!responseToken) return
+
+    setToken(responseToken)
   }
 
   return (
@@ -71,7 +85,13 @@ export default function Page() {
       <ul>
         <li>Rendered to HTML.</li>
         <li>Interactive.</li>
-        <li>{!player ? <button onClick={login}>Login</button> : <button onClick={sdk.logOut}>Log Out</button>}</li>
+        <li>
+          {!player ? (
+            <button onClick={() => handleLogin()}>Login</button>
+          ) : (
+            <button onClick={api.logOut}>Log Out</button>
+          )}
+        </li>
         <li>
           <button onClick={() => player?.togglePlay()}>{playbackState?.paused ? "Paused" : "Playing"}</button>
           &nbsp;{playbackState?.track_window.current_track?.name} by{" "}
@@ -88,6 +108,7 @@ export default function Page() {
                 ))}
               </li>
             ))}
+            {user?.display_name}
           </ol>
         </li>
       </ul>
