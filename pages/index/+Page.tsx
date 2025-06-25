@@ -1,60 +1,16 @@
 //@ts-nocheck
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { SpotifyApi } from "@spotify/web-api-ts-sdk"
+import useSpotifyPlayer from "components/player"
 
 export default function Page() {
-  const [player, setPlayer] = useState<Spotify.Player | null>(null)
   const [token, setToken] = useState<string | null>(null)
-  const [playbackState, setPlaybackState] = useState<Spotify.Player | null>(null)
 
   const sdk = SpotifyApi.withUserAuthorization("d850768196144dfbab2ee42325a6e287", "http://127.0.0.1:3000", [
     "streaming",
   ])
 
-  useEffect(() => {
-    if (!token) return
-
-    const script = document.createElement("script")
-    script.src = "https://sdk.scdn.co/spotify-player.js"
-    script.async = true
-
-    document.body.appendChild(script)
-
-    window.onSpotifyWebPlaybackSDKReady = () => {
-      const player = new window.Spotify.Player({
-        name: "Spinify",
-        getOAuthToken: (cb) => {
-          cb(token)
-        },
-        volume: 0.5,
-        enableMediaSession: true,
-      })
-
-      setPlayer(player)
-
-      player.addListener("ready", ({ device_id }) => {
-        console.warn("Ready with Device ID", device_id)
-      })
-
-      player.addListener("not_ready", ({ device_id }) => {
-        console.warn("Device ID has gone offline", device_id)
-      })
-
-      player.addListener("player_state_changed", (playback) => {
-        setPlaybackState(playback)
-        const {
-          position,
-          duration,
-          track_window: { current_track },
-        } = playback
-        console.log("Currently Playing", current_track)
-        console.log("Position in Song", position)
-        console.log("Duration of Song", duration)
-      })
-
-      player.connect()
-    }
-  }, [token])
+  const { player, playbackState } = useSpotifyPlayer(token)
 
   const login = async () => {
     const authResponse = await sdk.authenticate()
