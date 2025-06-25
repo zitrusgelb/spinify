@@ -1,11 +1,12 @@
-//@ts-nocheck
-import { useEffect, useState } from "react"
-import { SpotifyApi } from "@spotify/web-api-ts-sdk"
+import { useCallback, useEffect, useState } from "react"
+import useSpotifyApi from "components/spotifyApi"
+import { User } from "@spotify/web-api-ts-sdk"
+import PlaybackState = Spotify.PlaybackState
 
 export default function Page() {
   const [player, setPlayer] = useState<Spotify.Player | null>(null)
   const [token, setToken] = useState<string | null>(null)
-  const [playbackState, setPlaybackState] = useState<Spotify.Player | null>(null)
+  const [playbackState, setPlaybackState] = useState<PlaybackState | null>(null)
 
   const sdk = SpotifyApi.withUserAuthorization("d850768196144dfbab2ee42325a6e287", "http://127.0.0.1:3000", [
     "streaming",
