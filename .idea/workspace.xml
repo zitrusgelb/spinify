@@ -5,11 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5d0a05f4-8d99-4543-8a26-fc0a1b5e36f9" name="Changes" comment="fix: types for spotifyPlayer not working">
-      <change afterPath="$PROJECT_DIR$/components/spotifyApi.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/ApiContext.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/spotifyApi.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/layouts/LayoutDefault.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/layouts/LayoutDefault.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/index/+Page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index/+Page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,9 +19,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TypeScript JSX File" />
         <option value="JavaScript File" />
         <option value="TypeScript File" />
+        <option value="TypeScript JSX File" />
       </list>
     </option>
   </component>
@@ -112,7 +112,7 @@
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "1-authentication",
+    "git-widget-placeholder": "apiContext",
     "javascript.nodejs.core.library.configured.version": "24.2.0",
     "javascript.nodejs.core.library.typings.version": "24.0.1",
     "last_opened_file_path": "/Users/timknuttel/Informatik_Studium/4.Semester/Frontend_Systems/Spinify/assets",

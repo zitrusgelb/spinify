@@ -1,14 +1,12 @@
-import { useCallback, useEffect, useState } from "react"
-import useSpotifyApi from "components/spotifyApi"
-import { User } from "@spotify/web-api-ts-sdk"
+import { useContext, useEffect, useState } from "react"
+import ApiContext from "components/ApiContext"
 import PlaybackState = Spotify.PlaybackState
 
 export default function Page() {
   const [player, setPlayer] = useState<Spotify.Player | null>(null)
-  const [token, setToken] = useState<string | null>(null)
   const [playbackState, setPlaybackState] = useState<PlaybackState | null>(null)
 
-  const { api, login } = useSpotifyApi()
+  const { api, login, token, user } = useContext(ApiContext)
 
   useEffect(() => {
     if (!token) return
@@ -55,42 +53,15 @@ export default function Page() {
     }
   }, [token])
 
-  const [user, setUser] = useState<User | null>(null)
-
-  const loadUser = useCallback(async () => {
-    if (!token) return
-
-    const data = await api.currentUser.profile()
-    setUser(data)
-  }, [token])
-
-  useEffect(() => {
-    if (!token) return
-
-    loadUser()
-  }, [token])
-
-  const handleLogin = async () => {
-    const responseToken = await login()
-
-    if (!responseToken) return
-
-    setToken(responseToken)
-  }
-
   return (
     <>
-      <h1 className={"font-bold text-3xl pb-4"}>My Vike app</h1>
+      <h1 className="font-bold text-3xl pb-4">My Vike app</h1>
       This page is:
       <ul>
         <li>Rendered to HTML.</li>
         <li>Interactive.</li>
         <li>
-          {!player ? (
-            <button onClick={() => handleLogin()}>Login</button>
-          ) : (
-            <button onClick={api.logOut}>Log Out</button>
-          )}
+          {!player ? <button onClick={() => login()}>Login</button> : <button onClick={api.logOut}>Log Out</button>}
         </li>
         <li>
           <button onClick={() => player?.togglePlay()}>{playbackState?.paused ? "Paused" : "Playing"}</button>
