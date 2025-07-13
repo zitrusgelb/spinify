@@ -18,3 +18,15 @@
             var(--color-accent)
     );
 }
+
+@utility scrollbar-styled {
+    &::-webkit-scrollbar {
+        background-color: transparent;
+        border-radius: 8px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: var(--color-primary);
+        border-radius: 8px;
+    }
+}
