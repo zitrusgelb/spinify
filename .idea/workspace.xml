@@ -4,12 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5d0a05f4-8d99-4543-8a26-fc0a1b5e36f9" name="Changes" comment="fix: types for spotifyPlayer not working">
-      <change afterPath="$PROJECT_DIR$/components/ApiContext.tsx" afterDir="false" />
+    <list default="true" id="5d0a05f4-8d99-4543-8a26-fc0a1b5e36f9" name="Changes" comment="feat(playlists): added first version of playlist overview&#10;&#10;as of now, only saved playlists can be shown as other playlist functions (such as browse) have been deprecated">
+      <change afterPath="$PROJECT_DIR$/pages/playlist/@id/+Page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_15_06_25,_16_20_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_15_06_25__16_20__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/spotifyApi.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/layouts/LayoutDefault.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/layouts/LayoutDefault.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/index/+Page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index/+Page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/playlists/+Page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/playlists/+Page.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +76,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/zitrusgelb/spinify.git&quot;,
-    &quot;accountId&quot;: &quot;218e0efd-7a1f-426f-8c33-47f6b3f4f49f&quot;
+    &quot;accountId&quot;: &quot;a6809bb5-41d5-4cca-b99a-768337a7f46a&quot;
   },
   &quot;recentNewPullRequestHead&quot;: {
     &quot;server&quot;: {
@@ -107,32 +107,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "apiContext",
-    "javascript.nodejs.core.library.configured.version": "24.2.0",
-    "javascript.nodejs.core.library.typings.version": "24.0.1",
-    "last_opened_file_path": "/Users/timknuttel/Informatik_Studium/4.Semester/Frontend_Systems/Spinify/assets",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "npm.dev.executor": "Run",
-    "prettierjs.PrettierConfiguration.Package": "/Users/timknuttel/Informatik_Studium/4.Semester/Frontend_Systems/Spinify/node_modules/prettier",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "ts.external.directory.path": "/Users/adrianstelter/Developer/spinify/node_modules/typescript/lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;7-playlists&quot;,
+    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;22.17.0&quot;,
+    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;22.16.3&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/timknuttel/Informatik_Studium/4.Semester/Frontend_Systems/Spinify/assets&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Users\\Laurin\\WebstormProjects\\spinify\\node_modules\\prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\Laurin\\WebstormProjects\\spinify\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/assets" />
       <recent name="$PROJECT_DIR$/pages/playlists" />
       <recent name="$PROJECT_DIR$/pages/options" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Laurin\WebstormProjects\spinify\pages\playlist" />
     </key>
   </component>
   <component name="RunManager">
@@ -155,7 +158,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-b26f3e71634d-JavaScript-WS-251.26094.131" />
+        <option value="bundled-js-predefined-d6986cc7102b-09060db00ec0-JavaScript-WS-251.26927.40" />
       </set>
     </attachedChunks>
   </component>
@@ -173,14 +176,8 @@
       <workItem from="1749753862680" duration="9495000" />
       <workItem from="1749997650542" duration="6874000" />
       <workItem from="1750061529098" duration="6328000" />
-    </task>
-    <task id="LOCAL-00006" summary="refactor: remove todo-page">
-      <option name="closed" value="true" />
-      <created>1749636533798</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1749636533798</updated>
+      <workItem from="1752482788790" duration="1906000" />
+      <workItem from="1752499658488" duration="4292000" />
     </task>
     <task id="LOCAL-00007" summary="refactor: remove Starwars-page">
       <option name="closed" value="true" />
@@ -566,7 +563,15 @@
       <option name="project" value="LOCAL" />
       <updated>1750867314393</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="feat(playlists): added first version of playlist overview&#10;&#10;as of now, only saved playlists can be shown as other playlist functions (such as browse) have been deprecated">
+      <option name="closed" value="true" />
+      <created>1752435552299</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1752435552299</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -596,8 +601,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="build: update of .idea files" />
-    <MESSAGE value="docs: remove unnecessary comment" />
     <MESSAGE value="feat: add circle in secondary color with accent to link icons" />
     <MESSAGE value="refactor: change svg attributes to react standard" />
     <MESSAGE value="feat: add logo and sidebar to parent component" />
@@ -620,7 +623,9 @@
     <MESSAGE value="refactor: remove unused imports" />
     <MESSAGE value="refactor: remove unneeded tailwind.config.js" />
     <MESSAGE value="refactor: remove the join annotation in Link.tsx" />
+    <MESSAGE value="Merge pull request #20 from zitrusgelb/apiContext&#10;&#10;refactor: ContextProvider for Api" />
     <MESSAGE value="fix: types for spotifyPlayer not working" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: types for spotifyPlayer not working" />
+    <MESSAGE value="feat(playlists): added first version of playlist overview&#10;&#10;as of now, only saved playlists can be shown as other playlist functions (such as browse) have been deprecated" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(playlists): added first version of playlist overview&#10;&#10;as of now, only saved playlists can be shown as other playlist functions (such as browse) have been deprecated" />
   </component>
 </project>

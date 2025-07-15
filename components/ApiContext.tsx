@@ -1,7 +1,7 @@
 import React, { createContext, useState } from "react"
 import { SpotifyApi, User } from "@spotify/web-api-ts-sdk"
 
-const scopes = ["streaming"]
+const scopes = ["playlist-read-private", "playlist-read-collaborative", "streaming"]
 const redirectUri = "http://127.0.0.1:3000"
 const clientId = "d850768196144dfbab2ee42325a6e287"
 
