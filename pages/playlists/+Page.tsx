@@ -1,7 +1,8 @@
 import { useContext, useEffect, useState } from "react"
 import ApiContext from "components/ApiContext"
-
-type Playlist = { title: string; thumbnail: string | null; id: string }
+import MainElement from "../playlist/@id/MainElement"
+import PlaylistGrid from "./PlaylistGrid"
+import { Playlist } from "../playlist/@id/types"
 
 export default function Page() {
   const [userPlaylists, setUserPlaylists] = useState<Playlist[]>([])
@@ -16,7 +17,7 @@ export default function Page() {
   useEffect(() => {
     if (user) {
       fetchSavedPlaylists()
-        .then(fetchUserPlaylists())
+        .then(fetchUserPlaylists)
         .finally(() => setLoading(false))
     }
   }, [user])
@@ -53,10 +54,6 @@ export default function Page() {
     return await api.currentUser.playlists.playlists(50, 0)
   }
 
-  const handleOpen = (id: string) => {
-    window.location.href = `/playlist/${id}`
-  }
-
   return (
     <div className="flex flex-col">
       <MainElement title="Saved Playlists" />
@@ -77,43 +74,4 @@ export default function Page() {
       )}
     </div>
   )
-
-  function MainElement({ title }: { title: string }) {
-    return (
-      <div className=" flex flex-row p-5 pb-0 gap-5">
-        <div className=" font-bold text-3xl text-secondary bg-primary rounded-3xl w-fit h-fit p-5"> {title}</div>
-      </div>
-    )
-  }
-
-  function PlaylistGrid({ playlists }: { playlists: Playlist[] }) {
-    return (
-      <div className="flex gap-5 max-w-full overflow-x-scroll scrollbar-styled">
-        {playlists.map((playlist) => (
-          <button
-            key={playlist.id}
-            onClick={() => handleOpen(playlist.id)}
-            className="p-0 bg-transparent border-none text-left cursor-pointer"
-          >
-            <PlaylistElement key={playlist.title} thumbnail={playlist.thumbnail} title={playlist.title} />
-          </button>
-        ))}
-      </div>
-    )
-  }
-
-  function PlaylistElement({ thumbnail, title }: { thumbnail: string | null; title: string }) {
-    return (
-      <div className="flex content-center flex-col gap-5 p-5">
-        <div className="text-xl font-bold text-center w-64 pl-4 pr-4 overflow-hidden overflow-ellipsis whitespace-nowrap">
-          {title}
-        </div>
-        <img
-          src={thumbnail ?? ""}
-          alt={title}
-          className="max-w-64 max-h-64 min-h-32 min-w-32 rounded-lg object-cover"
-        />
-      </div>
-    )
-  }
 }
