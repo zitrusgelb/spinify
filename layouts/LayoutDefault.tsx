@@ -70,7 +70,7 @@ function Content({ children }: { children: React.ReactNode }) {
 
 function Logo() {
   return (
-    <div>
+    <div className="hover:scale-105 hover:shadow-lg">
       <a href="/">
         <img src={logoUrl} height={82} width={90} alt="logo" />
       </a>
