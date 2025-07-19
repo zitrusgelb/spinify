@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react"
 import ApiContext from "components/ApiContext"
 import PlaybackState = Spotify.PlaybackState
+import  useSpotifyPlayer  from "components/player"
 
 
 export default function Page() {
