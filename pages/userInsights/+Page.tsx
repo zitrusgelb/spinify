@@ -87,12 +87,4 @@ function Buttons({ selected, onSelect }: ButtonsProps) {
       ))}
     </div>
   )
-
-  /*
-  "
-          bg-accent
-           rounded-3xl w-fit h-fit
-           text-background p-3 align-middle
-           active:bg-secondary active:border-accent active:border-2 hover: "
-   */
 }
