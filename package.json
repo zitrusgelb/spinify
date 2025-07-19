@@ -10,6 +10,7 @@
     "@types/node": "^24.0.1",
     "@types/spotify-web-playback-sdk": "^0.1.19",
     "@vitejs/plugin-react": "^4.5.0",
+    "classnames": "^2.5.1",
     "lucide-react": "^0.515.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
