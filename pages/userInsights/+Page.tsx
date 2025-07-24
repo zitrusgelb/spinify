@@ -18,6 +18,8 @@ export default function Page() {
     "Followed Artists": "Last 30 Days",
   });
 
+  console.log(selectedRanges);
+
   const handleRangeChange = (title: string, range: TimeRange) => {
     setSelectedRanges((prev: any) => ({
       ...prev,
