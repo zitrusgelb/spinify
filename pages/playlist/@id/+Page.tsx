@@ -31,6 +31,7 @@ export default function Page() {
         artists: track.track.artists.map((artist) => ({
           id: artist.id,
           name: artist.name,
+          thumbnail: null,
         })),
         album: track.track.album.name,
         thumbnail: track.track.album.images[0].url,

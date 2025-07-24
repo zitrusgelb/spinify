@@ -6,6 +6,6 @@ export type Track = {
   thumbnail: string
   durationMs: number
 }
-export type Artist = { id: string; name: string }
+export type Artist = { id: string; name: string; thumbnail: string | null }
 
 export type Playlist = { title: string; thumbnail: string | null; id: string }
