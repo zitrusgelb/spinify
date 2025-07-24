@@ -4,12 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5d0a05f4-8d99-4543-8a26-fc0a1b5e36f9" name="Changes" comment="feat(playlists): added first version of playlist overview&#10;&#10;as of now, only saved playlists can be shown as other playlist functions (such as browse) have been deprecated">
-      <change afterPath="$PROJECT_DIR$/pages/playlist/@id/+Page.tsx" afterDir="false" />
+    <list default="true" id="5d0a05f4-8d99-4543-8a26-fc0a1b5e36f9" name="Changes" comment="feat: added some buttons">
+      <change afterPath="$PROJECT_DIR$/components/FullScreenPlayer.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_15_06_25,_16_20_[Changes]/shelved.patch" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_15_06_25__16_20__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/playlists/+Page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/playlists/+Page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/index/+Page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index/+Page.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,10 +27,13 @@
       </list>
     </option>
   </component>
+  <component name="FormatOnSaveOptions">
+    <option name="myRunOnSave" value="true" />
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="basic-layout" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -76,7 +81,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/zitrusgelb/spinify.git&quot;,
-    &quot;accountId&quot;: &quot;a6809bb5-41d5-4cca-b99a-768337a7f46a&quot;
+    &quot;accountId&quot;: &quot;f33645c8-953e-4c63-9231-565db6bee46b&quot;
   },
   &quot;recentNewPullRequestHead&quot;: {
     &quot;server&quot;: {
@@ -112,19 +117,20 @@
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;7-playlists&quot;,
-    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;22.17.0&quot;,
-    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;22.16.3&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;player&quot;,
+    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;22.16.0&quot;,
+    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;22.15.32&quot;,
     &quot;last_opened_file_path&quot;: &quot;/Users/timknuttel/Informatik_Studium/4.Semester/Frontend_Systems/Spinify/assets&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_interpreter_path&quot;: &quot;C:/Users/jakob/AppData/Roaming/JetBrains/WebStorm2025.1/node/versions/22.16.0/node&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;npm.dev.executor&quot;: &quot;Run&quot;,
-    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Users\\Laurin\\WebstormProjects\\spinify\\node_modules\\prettier&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Users\\jakob\\WebstormProjects\\spinify\\node_modules\\prettier&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\Laurin\\WebstormProjects\\spinify\\node_modules\\typescript\\lib&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\jakob\\WebstormProjects\\spinify\\node_modules\\typescript\\lib&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -133,9 +139,6 @@
       <recent name="$PROJECT_DIR$/assets" />
       <recent name="$PROJECT_DIR$/pages/playlists" />
       <recent name="$PROJECT_DIR$/pages/options" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Laurin\WebstormProjects\spinify\pages\playlist" />
     </key>
   </component>
   <component name="RunManager">
@@ -152,13 +155,15 @@
     <recent_temporary>
       <list>
         <item itemvalue="npm.dev" />
+        <item itemvalue="npm.dev" />
+        <item itemvalue="npm.dev" />
       </list>
     </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-09060db00ec0-JavaScript-WS-251.26927.40" />
+        <option value="bundled-js-predefined-d6986cc7102b-6a121458b545-JavaScript-WS-251.25410.117" />
       </set>
     </attachedChunks>
   </component>
@@ -176,16 +181,10 @@
       <workItem from="1749753862680" duration="9495000" />
       <workItem from="1749997650542" duration="6874000" />
       <workItem from="1750061529098" duration="6328000" />
-      <workItem from="1752482788790" duration="1906000" />
-      <workItem from="1752499658488" duration="4292000" />
-    </task>
-    <task id="LOCAL-00007" summary="refactor: remove Starwars-page">
-      <option name="closed" value="true" />
-      <created>1749645602859</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1749645602859</updated>
+      <workItem from="1750678008064" duration="3521000" />
+      <workItem from="1751373626570" duration="2193000" />
+      <workItem from="1752507282777" duration="660000" />
+      <workItem from="1753364995227" duration="1021000" />
     </task>
     <task id="LOCAL-00008" summary="refactor: remove Starwars-page">
       <option name="closed" value="true" />
@@ -555,23 +554,31 @@
       <option name="project" value="LOCAL" />
       <updated>1750064191590</updated>
     </task>
-    <task id="LOCAL-00054" summary="fix: types for spotifyPlayer not working">
+    <task id="LOCAL-00054" summary="feat: added playerpage">
       <option name="closed" value="true" />
-      <created>1750867314393</created>
+      <created>1750080904382</created>
       <option name="number" value="00054" />
       <option name="presentableId" value="LOCAL-00054" />
       <option name="project" value="LOCAL" />
-      <updated>1750867314393</updated>
+      <updated>1750080904382</updated>
     </task>
-    <task id="LOCAL-00055" summary="feat(playlists): added first version of playlist overview&#10;&#10;as of now, only saved playlists can be shown as other playlist functions (such as browse) have been deprecated">
+    <task id="LOCAL-00055" summary="feat: added some buttons">
       <option name="closed" value="true" />
-      <created>1752435552299</created>
+      <created>1750081696977</created>
       <option name="number" value="00055" />
       <option name="presentableId" value="LOCAL-00055" />
       <option name="project" value="LOCAL" />
-      <updated>1752435552299</updated>
+      <updated>1750081696977</updated>
     </task>
-    <option name="localTasksCounter" value="56" />
+    <task id="LOCAL-00056" summary="feat: added some buttons">
+      <option name="closed" value="true" />
+      <created>1750082405769</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1750082405769</updated>
+    </task>
+    <option name="localTasksCounter" value="57" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -601,6 +608,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <MESSAGE value="docs: remove unnecessary comment" />
     <MESSAGE value="feat: add circle in secondary color with accent to link icons" />
     <MESSAGE value="refactor: change svg attributes to react standard" />
     <MESSAGE value="feat: add logo and sidebar to parent component" />
@@ -623,9 +631,8 @@
     <MESSAGE value="refactor: remove unused imports" />
     <MESSAGE value="refactor: remove unneeded tailwind.config.js" />
     <MESSAGE value="refactor: remove the join annotation in Link.tsx" />
-    <MESSAGE value="Merge pull request #20 from zitrusgelb/apiContext&#10;&#10;refactor: ContextProvider for Api" />
-    <MESSAGE value="fix: types for spotifyPlayer not working" />
-    <MESSAGE value="feat(playlists): added first version of playlist overview&#10;&#10;as of now, only saved playlists can be shown as other playlist functions (such as browse) have been deprecated" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(playlists): added first version of playlist overview&#10;&#10;as of now, only saved playlists can be shown as other playlist functions (such as browse) have been deprecated" />
+    <MESSAGE value="feat: added playerpage" />
+    <MESSAGE value="feat: added some buttons" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: added some buttons" />
   </component>
 </project>

@@ -1,3 +1,7 @@
+// @ts-nocheck
+import { useEffect, useState } from "react"
+import { SpotifyApi } from "@spotify/web-api-ts-sdk"
+import FullScreenPlayer from "../../components/FullScreenPlayer" // adjust if needed
 import { useContext, useEffect, useState } from "react"
 import ApiContext from "components/ApiContext"
 import MainElement from "components/MainElement"
@@ -10,6 +14,7 @@ import TrackGrid from "components/TrackGrid"
 
 export default function Page() {
   const { api, user } = useContext(ApiContext)
+  const [isModalOpen, setIsModalOpen] = useState(false) // modal toggle
 
   // const { player, playbackState } = useSpotifyPlayer(token)
   const [topSongs, setTopSongs] = useState<Track[]>([])
@@ -35,7 +40,7 @@ export default function Page() {
     setNewReleases(resNewReleases.albums.items)
   }
 
-  const fetchTopArtists = async () => {
+    const fetchTopArtists = async () => {
     const resTopArtists = await api.currentUser.topItems("artists", "medium_term", 20, 0)
     setTopArtists(shuffle(resTopArtists.items))
   }
