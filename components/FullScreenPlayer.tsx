@@ -8,16 +8,26 @@ interface FullScreenPlayerProps {
 const FullScreenPlayer: React.FC<FullScreenPlayerProps> = ({ isOpen, onClose }) => {
   if (!isOpen) return null
 
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center backdrop-blur-md bg-black/20">
-      <div className="rounded-xl shadow-xl w-[90vw] h-[85vh] bg-gradient p-10 relative flex flex-col max-w-screen-xl">
-        {/* Close Button */}
-        <button onClick={onClose} className="absolute top-4 right-6 text-white text-2xl hover:text-gray-300">
-          ✕
-        </button>
+  const handleOverlayClick = () => {
+    onClose()
+  }
 
-        {/* Song Info + Up Next */}
+  const stopPropagation = (e: React.MouseEvent) => {
+    e.stopPropagation()
+  }
+
+  return (
+    <div
+      onClick={handleOverlayClick}
+      className="fixed inset-0 z-50 flex items-center justify-center backdrop-blur-md bg-black/20"
+    >
+      <div
+        onClick={stopPropagation}
+        className="rounded-xl shadow-xl w-[90vw] h-[85vh] bg-gradient p-10 relative flex flex-col max-w-screen-xl"
+      >
+        {/* Modal Content */}
         <div className="text-white flex flex-col justify-between flex-1">
+          {/* Song Info */}
           <div>
             <h2 className="text-4xl font-bold text-[var(--color-secondary)]">Title – ARTIST</h2>
             <p className="text-lg text-gray-100 mt-1">Album – Year</p>
