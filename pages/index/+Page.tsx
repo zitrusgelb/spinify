@@ -37,7 +37,18 @@ export default function Page() {
             {user?.display_name}
           </ol>
         </li>
+        <li>
+          {/* Open Fullscreen Modal Button */}
+          <button
+            onClick={() => setIsModalOpen(true)}
+            className="mt-4 bg-[var(--color-primary)] text-white px-4 py-2 rounded"
+          >
+            Open Fullscreen Player
+          </button>
+        </li>
       </ul>
+      {/* Fullscreen Modal */}
+      <FullScreenPlayer isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </>
   )
 }
