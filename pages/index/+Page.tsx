@@ -19,12 +19,15 @@ export default function Page() {
     const script = document.createElement("script")
     script.src = "https://sdk.scdn.co/spotify-player.js"
     script.async = true
+
     document.body.appendChild(script)
 
     window.onSpotifyWebPlaybackSDKReady = () => {
       const player = new window.Spotify.Player({
         name: "Spinify",
-        getOAuthToken: (cb) => cb(token),
+        getOAuthToken: (cb) => {
+          cb(token)
+        },
         volume: 0.5,
         enableMediaSession: true,
       })
@@ -58,12 +61,13 @@ export default function Page() {
   const login = async () => {
     const authResponse = await sdk.authenticate()
     if (!authResponse) return
+
     setToken(authResponse.accessToken.access_token)
   }
 
   return (
     <>
-      <h1 className="font-bold text-3xl pb-4">My Vike app</h1>
+      <h1 className={"font-bold text-3xl pb-4"}>My Vike app</h1>
       This page is:
       <ul>
         <li>Rendered to HTML.</li>
