@@ -1,0 +1,28 @@
+import { Artist } from "../playlist/@id/types"
+
+export default function ArtistGrid({ artists }: { artists: Artist[] }) {
+  return (
+    <div className="flex max-w-full overflow-x-scroll scrollbar-styled">
+      {artists.map((artist) => (
+        <a href={`/playlist/${artist.id}`} key={artist.id}>
+          <ArtistElement thumbnail={artist.thumbnail} title={artist.name} />
+        </a>
+      ))}
+    </div>
+  )
+}
+
+function ArtistElement({ thumbnail, title }: { thumbnail: string | null; title: string }) {
+  return (
+    <div className="flex content-center flex-col gap-5 p-5">
+      <div className="text-xl font-bold text-center w-64 pl-4 pr-4 overflow-hidden overflow-ellipsis whitespace-nowrap">
+        {title}
+      </div>
+      <img
+        src={thumbnail ?? ""}
+        alt={title}
+        className="max-w-64 max-h-64 min-h-32 min-w-32 rounded-full object-cover"
+      />
+    </div>
+  )
+}
