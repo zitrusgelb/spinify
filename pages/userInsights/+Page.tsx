@@ -1,11 +1,22 @@
 import { useState, useContext, useEffect } from "react"
 import ApiContext from "components/ApiContext"
-import { Track, Artist } from "../playlist/@id/types"
 import cn from "classnames"
 
 type TimeRange = "Last 30 Days" | "Last 6 Months" | "Last Year"
 type TopItem = "artists" | "tracks"
 type TimeRangeApi = "short_term" | "medium_term" | "long_term"
+type Track = {
+  id: string
+  name: string
+  image: string
+  album: string
+  artists: string[]
+}
+type Artist = {
+  id: string
+  name: string
+  image: string
+}
 
 interface MainElementProps {
   title: string
@@ -43,33 +54,63 @@ export default function Page() {
 
   useEffect(() => {
     login().then(() => console.log("Login successful"))
-  }, [])
+  }, [login])
 
   useEffect(() => {
-    if (user) {
-      getTopTracks()
-    }
-  }, [[user, selectedRanges]])
+    if (user) getTopTracks()
+  }, [user, selectedRanges["Top Tracks"]])
+
+  useEffect(() => {
+    if(user) getTopArtists()
+  }, [user, selectedRanges["Top Artists"]]);
+
+  useEffect(() => {
+    if(user) getFollowedArtists()
+  }, [user, selectedRanges["Followed Artists"]]);
 
   const getTopTracks = async () => {
     const apiRange = rangeMap[selectedRanges["Top Tracks"]]
     const response = await fetchTopItems({ type: "tracks", timeRange: apiRange })
     const mappedTracks: Track[] = response.items.map((item: any) => ({
       id: item.id,
-      title: item.name,
+      name: item.name,
       artists: item.artists.map((a: any) => ({
         id: a.id,
         name: a.name,
       })),
       album: item.album.name,
-      thumbnail: item.album.images[0].url,
-      durationMs: item.duration_ms,
+      image: item.album.images[0].url,
     }))
     setTopTracks(mappedTracks)
   }
 
+  const getTopArtists = async () => {
+    const apiRange = rangeMap[selectedRanges["Top Artists"]]
+    const response = await fetchTopItems({ type: "artists", timeRange: apiRange })
+    const mappedArtists: Artist[] = response.items.map((item: any) => ({
+      id: item.id,
+      name: item.name,
+      image: item.images[0].url,
+    }))
+    setTopArtists(mappedArtists)
+  }
+
   async function fetchTopItems({ type, timeRange }: FetchTopItemsProps) {
     return await api.currentUser.topItems(type, timeRange, 50, 0)
+  }
+
+  const getFollowedArtists = async () => {
+    const response = await fetchFollowedArtists()
+    const mappedFollowedArtists: Artist[] = response.artists.items.map((item: any) => ({
+      id: item.id,
+      name: item.name,
+      image: item.images[0].url,
+    }))
+    setFollowedArtists(mappedFollowedArtists)
+  }
+
+  async function fetchFollowedArtists() {
+    return await api.currentUser.followedArtists( 0,50)
   }
 
   const handleRangeChange = (title: string, range: TimeRange) => {
@@ -106,12 +147,7 @@ function MainElement({
   topArtists,
   followedArtists,
 }: MainElementProps) {
-  const items = topTracks
-    title === "Top Tracks"
-      ? topTracks
-      : title === "Top Artists"
-        ? topArtists
-        : followedArtists
+  const items =  title === "Top Tracks" ? topTracks : title === "Top Artists" ? topArtists : followedArtists
 
   return (
     <div className="flex flex-col">
@@ -121,12 +157,14 @@ function MainElement({
       </div>
       {items.length > 0 && (
         <div className="flex flex-row gap-4 overflow-x-auto whitespace-nowrap p-5">
-          {items.map((item) => (
-            <div key={item.id} className="flex flex-col items-center">
-              <img key={item.id} src={item.thumbnail} alt={item.title} className="w-45 h-45" />
-              <p className="mt-2 text-center text-sm truncate w-45"> {item.title}</p>
+          {items.map((item) => {
+            return (
+            <div key={item.id} className="inline-flex flex-col items-center">
+              <img key={item.id} src={item.image} alt={item.name} className="w-45 h-45" />
+              <p className="mt-2 text-center text-sm truncate w-45"> {item.name}</p>
             </div>
-          ))}
+            )
+          })}
         </div>
       )}
     </div>
