@@ -1,7 +1,11 @@
-import React,{useState} from "react";
+import {useState, useContext, useEffect} from "react";
+import ApiContext from "components/ApiContext"
+import { Track, Artist} from "../playlist/@id/types"
 import cn from "classnames";
 
 type TimeRange = "Last 30 Days" | "Last 6 Months" | "Last Year";
+type TopItem = "artists" | "tracks";
+type TimeRangeApi = "short_term" | "medium_term" | "long_term";
 
 interface MainElementProps {
   title: string;
@@ -17,8 +21,40 @@ export default function Page() {
     "Top Artists": "Last 30 Days",
     "Followed Artists": "Last 30 Days",
   });
+  const rangeMap: Record<TimeRange, TimeRangeApi> = {
+    "Last 30 Days": "short_term",
+    "Last 6 Months": "medium_term",
+    "Last Year": "long_term",
+  };
+  const { api, login, user } = useContext(ApiContext);
+  const [topTracks, setTopTracks] = useState<Track[]>([]);
+  const [topArtists, setTopArtists] = useState<Artist[]>([]);
+  const [followedArtists, setFollowedArtists] = useState<Artist[]>([]);
 
-  console.log(selectedRanges);
+  useEffect(() => {
+    login().then(() => console.log("Login successful"))
+  }, [])
+
+  useEffect(() => {
+    if(user){
+
+    }
+  }, [])
+
+  function getTopTracks = async () => {
+    const apiRange = rangeMap[selectedRanges["Top Tracks"]];
+    const response = await fetchTopItems({type : "tracks", timeRange : apiRange});
+    const tracks = response.items.map(Track => ({id: Track.id, title: Track.name, thumbnail: Track.images[0].url}));
+  }
+
+  interface getTopItemsProps{
+    type: TopItem,
+    timeRange: TimeRangeApi,
+  }
+  async function fetchTopItems({type,
+                             timeRange}: getTopItemsProps) {
+    return await api.currentUser.topItems(type, timeRange, 50, 0)
+  }
 
   const handleRangeChange = (title: string, range: TimeRange) => {
     setSelectedRanges((prev: any) => ({
