@@ -26,6 +26,7 @@ interface MainElementProps {
   topTracks: Track[]
   topArtists: Artist[]
   followedArtists: Artist[]
+  loading: boolean
 }
 interface FetchTopItemsProps {
   type: TopItem
@@ -51,6 +52,7 @@ export default function Page() {
   const [topTracks, setTopTracks] = useState<Track[]>([])
   const [topArtists, setTopArtists] = useState<Artist[]>([])
   const [followedArtists, setFollowedArtists] = useState<Artist[]>([])
+  const [loading, setLoading] = useState({ tracks: true, artists: true, followed: true })
 
   useEffect(() => {
     login().then(() => console.log("Login successful"))
@@ -61,14 +63,15 @@ export default function Page() {
   }, [user, selectedRanges["Top Tracks"]])
 
   useEffect(() => {
-    if(user) getTopArtists()
-  }, [user, selectedRanges["Top Artists"]]);
+    if (user) getTopArtists()
+  }, [user, selectedRanges["Top Artists"]])
 
   useEffect(() => {
-    if(user) getFollowedArtists()
-  }, [user, selectedRanges["Followed Artists"]]);
+    if (user) getFollowedArtists()
+  }, [user, selectedRanges["Followed Artists"]])
 
   const getTopTracks = async () => {
+    setLoading((l) => ({ ...l, tracks: true }))
     const apiRange = rangeMap[selectedRanges["Top Tracks"]]
     const response = await fetchTopItems({ type: "tracks", timeRange: apiRange })
     const mappedTracks: Track[] = response.items.map((item: any) => ({
@@ -82,9 +85,11 @@ export default function Page() {
       image: item.album.images[0].url,
     }))
     setTopTracks(mappedTracks)
+    setLoading((l) => ({ ...l, tracks: false }))
   }
 
   const getTopArtists = async () => {
+    setLoading((l) => ({ ...l, artists: true }))
     const apiRange = rangeMap[selectedRanges["Top Artists"]]
     const response = await fetchTopItems({ type: "artists", timeRange: apiRange })
     const mappedArtists: Artist[] = response.items.map((item: any) => ({
@@ -93,6 +98,7 @@ export default function Page() {
       image: item.images[0].url,
     }))
     setTopArtists(mappedArtists)
+    setLoading((l) => ({ ...l, artists: false }))
   }
 
   async function fetchTopItems({ type, timeRange }: FetchTopItemsProps) {
@@ -100,6 +106,7 @@ export default function Page() {
   }
 
   const getFollowedArtists = async () => {
+    setLoading((l) => ({ ...l, followed: true }))
     const response = await fetchFollowedArtists()
     const mappedFollowedArtists: Artist[] = response.artists.items.map((item: any) => ({
       id: item.id,
@@ -107,10 +114,11 @@ export default function Page() {
       image: item.images[0].url,
     }))
     setFollowedArtists(mappedFollowedArtists)
+    setLoading((l) => ({ ...l, followed: false }))
   }
 
   async function fetchFollowedArtists() {
-    return await api.currentUser.followedArtists( 0,50)
+    return await api.currentUser.followedArtists(0, 50)
   }
 
   const handleRangeChange = (title: string, range: TimeRange) => {
@@ -132,6 +140,9 @@ export default function Page() {
           topTracks={topTracks}
           topArtists={topArtists}
           followedArtists={followedArtists}
+          loading={
+            section === "Top Tracks" ? loading.tracks : section === "Top Artists" ? loading.artists : loading.followed
+          }
         />
       ))}
     </div>
@@ -146,8 +157,9 @@ function MainElement({
   topTracks,
   topArtists,
   followedArtists,
+  loading,
 }: MainElementProps) {
-  const items =  title === "Top Tracks" ? topTracks : title === "Top Artists" ? topArtists : followedArtists
+  const items = title === "Top Tracks" ? topTracks : title === "Top Artists" ? topArtists : followedArtists
 
   return (
     <div className="flex flex-col">
@@ -155,17 +167,23 @@ function MainElement({
         <div className=" font-bold text-3xl text-secondary bg-primary rounded-3xl w-fit h-fit p-5">{title}</div>
         <div>{buttons && <Buttons selected={selectedRange} onSelect={onRangeChange} />}</div>
       </div>
-      {items.length > 0 && (
-        <div className="flex flex-row gap-4 overflow-x-auto whitespace-nowrap p-5">
-          {items.map((item) => {
-            return (
-            <div key={item.id} className="inline-flex flex-col items-center">
-              <img key={item.id} src={item.image} alt={item.name} className="w-45 h-45" />
-              <p className="mt-2 text-center text-sm truncate w-45"> {item.name}</p>
-            </div>
-            )
-          })}
+      {loading ? (
+        <div className="flex justify-center items-center h-64">
+          <span className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></span>
         </div>
+      ) : (
+        items.length > 0 && (
+          <div className="flex flex-row gap-4 overflow-x-auto whitespace-nowrap p-5">
+            {items.map((item) => {
+              return (
+                <div key={item.id} className="inline-flex flex-col items-center">
+                  <img key={item.id} src={item.image} alt={item.name} className="w-45 h-45" />
+                  <p className="mt-2 text-center text-sm truncate w-45"> {item.name}</p>
+                </div>
+              )
+            })}
+          </div>
+        )
       )}
     </div>
   )
