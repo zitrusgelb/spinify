@@ -14,10 +14,12 @@ export function Buttons({ selected, onSelect }: ButtonsProps) {
         <button
           key={label}
           onClick={() => onSelect(label)}
-          className="rounded-3xl w-fit h-fit text-background p-3 transition duration-200 transform border-2
-            ${label === selected ? bg-secondary border-accent : bg-accent border-transparent}
+          className={`
+            rounded-3xl p-3 transition duration-200 transform border-2
+            ${label === selected ? "bg-secondary border-accent" : "bg-accent border-transparent"}
             hover:scale-105 hover:shadow-lg
-            active:scale-95 active:shadow-md active:bg-accent/80"
+            active:scale-95 active:shadow-md active:bg-accent/80
+          `}
         >
           {label}
         </button>
