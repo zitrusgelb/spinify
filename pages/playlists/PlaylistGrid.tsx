@@ -2,7 +2,7 @@ import { Playlist } from "pages/playlist/@id/types"
 
 export default function PlaylistGrid({ playlists }: { playlists: Playlist[] }) {
   return (
-    <div className="flex gap-5 max-w-full overflow-x-scroll scrollbar-styled">
+    <div className="flex max-w-full overflow-x-scroll scrollbar-styled">
       {playlists.map((playlist) => (
         <a href={`/playlist/${playlist.id}`} key={playlist.id}>
           <PlaylistElement key={playlist.title} thumbnail={playlist.thumbnail} title={playlist.title} />

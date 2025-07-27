@@ -5,6 +5,7 @@ import { Artist } from "../playlist/@id/types"
 import ArtistGrid from "./ArtistGrid"
 import { Item, ItemType } from "./types"
 import ItemGrid from "./ItemGrid"
+import shuffle from "components/ItemMixer"
 
 export default function Page() {
   const { api, login, token, user } = useContext(ApiContext)
@@ -29,12 +30,12 @@ export default function Page() {
   }, [user])
 
   const fetchTopSongs = async () => {
-    const resItems = await api.currentUser.topItems("tracks", "medium_term", 20, Math.floor(Math.random() * 20))
+    const resItems = await api.player.getRecentlyPlayedTracks()
     const itemsResult = await Promise.all(
       resItems.items.map(async (item) => ({
-        id: item.id,
-        name: item.name,
-        thumbnail: item.album.images[0].url,
+        id: item.track.id,
+        name: item.track.name,
+        thumbnail: item.track.album.images[0].url,
         type: ItemType.Track,
       })),
     )
@@ -63,7 +64,7 @@ export default function Page() {
         thumbnail: artist.images[0].url,
       })),
     )
-    setTopArtists(topArtistResult)
+    setTopArtists(shuffle(topArtistResult))
   }
 
   return (
@@ -96,7 +97,7 @@ export default function Page() {
           </ol>
         </li>
       </ul>*/}
-      <MainElement title="Your Favorites" />
+      <MainElement title="Recently Played" />
       {loading ? (
         <div className="flex justify-center items-center h-64">
           <span className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></span>
@@ -105,7 +106,7 @@ export default function Page() {
         <ItemGrid items={topSongs} />
       )}
 
-      <MainElement title="Your Top Artists" />
+      <MainElement title="Your Artists" />
       {loading ? (
         <div className="flex justify-center items-center h-64">
           <span className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></span>

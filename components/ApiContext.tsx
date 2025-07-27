@@ -7,6 +7,7 @@ const scopes = [
   "user-library-read",
   "user-follow-read",
   "user-top-read",
+  "user-read-recently-played",
   "streaming",
 ]
 const redirectUri = "http://127.0.0.1:3000"
