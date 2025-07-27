@@ -1,21 +1,28 @@
 import { useContext, useEffect, useState } from "react"
 import ApiContext from "components/ApiContext"
 import cn from "classnames"
+import { Artist } from "@spotify/web-api-ts-sdk"
+import Track = Spotify.Track
 
 type TimeRange = "Last 30 Days" | "Last 6 Months" | "Last Year"
 type TopItem = "artists" | "tracks"
 type TimeRangeApi = "short_term" | "medium_term" | "long_term"
+/*
 type Track = {
   id: string
   name: string
   image: string
   album: string
 }
+
+
 type Artist = {
   id: string
   name: string
   image: string
 }
+
+ */
 
 interface MainElementProps {
   title: string
@@ -58,30 +65,27 @@ export default function Page() {
   }, [login])
 
   useEffect(() => {
-    if (user) {
-      setLoading((l) => ({ ...l, tracks: true }))
-      getTopTracks().finally(() => setLoading((l) => ({ ...l, tracks: false })))
-    }
+    if (!user) return
+    setLoading((l) => ({ ...l, tracks: true }))
+    getTopTracks().finally(() => setLoading((l) => ({ ...l, tracks: false })))
   }, [user, selectedRanges["Top Tracks"]])
 
   useEffect(() => {
-    if (user) {
-      setLoading((l) => ({ ...l, artists: true }))
-      getTopArtists().finally(() => setLoading((l) => ({ ...l, artists: false })))
-    }
+    if (!user) return
+    setLoading((l) => ({ ...l, artists: true }))
+    getTopArtists().finally(() => setLoading((l) => ({ ...l, artists: false })))
   }, [user, selectedRanges["Top Artists"]])
 
   useEffect(() => {
-    if (user) {
-      setLoading((l) => ({ ...l, followed: true }))
-      getFollowedArtists().finally(() => setLoading((l) => ({ ...l, followed: false })))
-    }
+    if (!user) return
+    setLoading((l) => ({ ...l, followed: true }))
+    getFollowedArtists().finally(() => setLoading((l) => ({ ...l, followed: false })))
   }, [user, selectedRanges["Followed Artists"]])
 
   const getTopTracks = async () => {
     const apiRange = rangeMap[selectedRanges["Top Tracks"]]
     const response = await fetchTopItems({ type: "tracks", timeRange: apiRange })
-    const mappedTracks: Track[] = response.items.map((item: any) => ({
+    const mappedTracks: Track[] = response.items.map((item) => ({
       id: item.id,
       name: item.name,
       album: item.album.name,
