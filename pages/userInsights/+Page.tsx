@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react"
 import ApiContext from "components/ApiContext"
 import { Artist } from "@spotify/web-api-ts-sdk"
 import { Buttons } from "./Buttons"
+import { LoaderCircleIcon } from "lucide-react"
 import Track = Spotify.Track
 
 export type TimeRange = "Last 30 Days" | "Last 6 Months" | "Last Year"
@@ -151,7 +152,7 @@ function MainElement({
       </div>
       {loading ? (
         <div className="flex justify-center items-center h-64">
-          <span className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></span>
+          <LoaderCircleIcon className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary" />
         </div>
       ) : (
         items.length > 0 && (
