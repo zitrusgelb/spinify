@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react"
 import ApiContext from "components/ApiContext"
 import { Artist } from "@spotify/web-api-ts-sdk"
 import { Buttons } from "./Buttons"
-import { LoaderCircleIcon } from "lucide-react"
+import LoadingIcon from "./LoadingIcon"
 import Track = Spotify.Track
 
 export type TimeRange = "Last 30 Days" | "Last 6 Months" | "Last Year"
@@ -66,10 +66,11 @@ export default function Page() {
   const getTopTracks = async () => {
     const apiRange = rangeMap[selectedRanges["Top Tracks"]]
     const response = await fetchTopItems({ type: "tracks", timeRange: apiRange })
-    const mappedTracks: Track[] = response.items.map((item) => ({
+
+    const mappedTracks: Track[] = response.items.map((item: any) => ({
       id: item.id,
       name: item.name,
-      album: item,
+      album: item.album,
       image: item.album.images[0].url,
     }))
     setTopTracks(mappedTracks)
@@ -151,9 +152,7 @@ function MainElement({
         <div>{buttons && <Buttons selected={selectedRange} onSelect={onRangeChange} />}</div>
       </div>
       {loading ? (
-        <div className="flex justify-center items-center h-64">
-          <LoaderCircleIcon className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary" />
-        </div>
+        <LoadingIcon />
       ) : (
         items.length > 0 && (
           <div className="flex flex-row gap-4 overflow-x-auto whitespace-nowrap p-5 items-center">
