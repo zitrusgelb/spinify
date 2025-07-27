@@ -1,11 +1,11 @@
-import { Artist } from "../playlist/@id/types"
+import { Artist } from "@spotify/web-api-ts-sdk"
 
 export default function ArtistGrid({ artists }: { artists: Artist[] }) {
   return (
     <div className="flex max-w-full overflow-x-scroll scrollbar-styled">
       {artists.map((artist) => (
-        <a href={`/playlist/${artist.id}`} key={artist.id}>
-          <ArtistElement thumbnail={artist.thumbnail} title={artist.name} />
+        <a href={`/artist/${artist.id}`} key={artist.id}>
+          <ArtistElement thumbnail={artist.images[0].url} title={artist.name} />
         </a>
       ))}
     </div>

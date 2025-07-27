@@ -11,6 +11,5 @@ export default function shuffle(toBeShuffled: any): any {
     // And swap it with the current element.
     ;[toBeShuffled[currentIndex], toBeShuffled[randomIndex]] = [toBeShuffled[randomIndex], toBeShuffled[currentIndex]]
   }
-  console.log("Shuffled: " + toBeShuffled)
   return toBeShuffled
 }

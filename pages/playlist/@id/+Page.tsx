@@ -1,9 +1,10 @@
 import { useContext, useEffect, useState } from "react"
 import ApiContext from "components/ApiContext"
 import { usePageContext } from "vike-react/usePageContext"
-import MainElement from "./MainElement"
+import MainElement from "components/MainElement"
 import { Track } from "./types"
 import TrackList from "./TrackList"
+import Spinner from "components/LoadingSpinner"
 
 export default function Page() {
   const { api, login } = useContext(ApiContext)
@@ -51,13 +52,7 @@ export default function Page() {
         />
         <MainElement title={loading ? "Loading..." : playlistName} />
       </div>
-      {loading ? (
-        <div className="flex justify-center items-center h-64">
-          <span className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></span>
-        </div>
-      ) : (
-        <TrackList tracks={tracks} creator={playlistCreator} />
-      )}
+      {loading ? <Spinner /> : <TrackList tracks={tracks} creator={playlistCreator} />}
     </div>
   )
 }

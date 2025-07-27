@@ -1,18 +1,19 @@
 import { useContext, useEffect, useState } from "react"
 import ApiContext from "components/ApiContext"
-import MainElement from "../playlist/@id/MainElement"
-import { Artist } from "../playlist/@id/types"
-import ArtistGrid from "./ArtistGrid"
-import { Item, ItemType } from "./types"
-import ItemGrid from "./ItemGrid"
+import MainElement from "components/MainElement"
+import ArtistGrid from "components/ArtistGrid"
 import shuffle from "components/ItemMixer"
+import Spinner from "components/LoadingSpinner"
+import AlbumGrid from "components/AlbumGrid"
+import { Album, Artist, SimplifiedAlbum, Track } from "@spotify/web-api-ts-sdk"
+import TrackGrid from "components/TrackGrid"
 
 export default function Page() {
   const { api, login, token, user } = useContext(ApiContext)
 
   // const { player, playbackState } = useSpotifyPlayer(token)
-  const [topSongs, setTopSongs] = useState<Item[]>([])
-  const [newReleases, setNewReleases] = useState<Item[]>([])
+  const [topSongs, setTopSongs] = useState<Track[]>([])
+  const [newReleases, setNewReleases] = useState<SimplifiedAlbum[]>([])
   const [topArtists, setTopArtists] = useState<Artist[]>([])
   const [loading, setLoading] = useState(true)
 
@@ -31,40 +32,17 @@ export default function Page() {
 
   const fetchTopSongs = async () => {
     const resItems = await api.player.getRecentlyPlayedTracks()
-    const itemsResult = await Promise.all(
-      resItems.items.map(async (item) => ({
-        id: item.track.id,
-        name: item.track.name,
-        thumbnail: item.track.album.images[0].url,
-        type: ItemType.Track,
-      })),
-    )
-    setTopSongs(itemsResult)
+    setTopSongs(resItems.items.map((track) => track.track))
   }
 
   const fetchNewReleases = async () => {
     const resNewReleases = await api.browse.getNewReleases("DE", 20, Math.floor(Math.random() * 20))
-    const newReleasesResult = await Promise.all(
-      resNewReleases.albums.items.map(async (release) => ({
-        id: release.id,
-        name: release.name,
-        thumbnail: release.images[0].url,
-        type: ItemType.Album,
-      })),
-    )
-    setNewReleases(newReleasesResult)
+    setNewReleases(resNewReleases.albums.items)
   }
 
   const fetchTopArtists = async () => {
     const resTopArtists = await api.currentUser.topItems("artists", "medium_term", 20, 0)
-    const topArtistResult = await Promise.all(
-      resTopArtists.items.map(async (artist) => ({
-        id: artist.id,
-        name: artist.name,
-        thumbnail: artist.images[0].url,
-      })),
-    )
-    setTopArtists(shuffle(topArtistResult))
+    setTopArtists(shuffle(resTopArtists.items))
   }
 
   return (
@@ -98,30 +76,11 @@ export default function Page() {
         </li>
       </ul>*/}
       <MainElement title="Recently Played" />
-      {loading ? (
-        <div className="flex justify-center items-center h-64">
-          <span className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></span>
-        </div>
-      ) : (
-        <ItemGrid items={topSongs} />
-      )}
-
+      {loading ? <Spinner /> : <TrackGrid tracks={topSongs} />}
       <MainElement title="Your Artists" />
-      {loading ? (
-        <div className="flex justify-center items-center h-64">
-          <span className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></span>
-        </div>
-      ) : (
-        <ArtistGrid artists={topArtists} />
-      )}
+      {loading ? <Spinner /> : <ArtistGrid artists={topArtists} />}
       <MainElement title="New Releases" />
-      {loading ? (
-        <div className="flex justify-center items-center h-64">
-          <span className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></span>
-        </div>
-      ) : (
-        <ItemGrid items={newReleases} />
-      )}
+      {loading ? <Spinner /> : <AlbumGrid albums={newReleases} />}
     </>
   )
 }
