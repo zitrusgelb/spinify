@@ -1,28 +1,12 @@
 import { useContext, useEffect, useState } from "react"
 import ApiContext from "components/ApiContext"
-import cn from "classnames"
 import { Artist } from "@spotify/web-api-ts-sdk"
+import { Buttons } from "./Buttons"
 import Track = Spotify.Track
 
-type TimeRange = "Last 30 Days" | "Last 6 Months" | "Last Year"
+export type TimeRange = "Last 30 Days" | "Last 6 Months" | "Last Year"
 type TopItem = "artists" | "tracks"
 type TimeRangeApi = "short_term" | "medium_term" | "long_term"
-/*
-type Track = {
-  id: string
-  name: string
-  image: string
-  album: string
-}
-
-
-type Artist = {
-  id: string
-  name: string
-  image: string
-}
-
- */
 
 interface MainElementProps {
   title: string
@@ -37,10 +21,6 @@ interface MainElementProps {
 interface FetchTopItemsProps {
   type: TopItem
   timeRange: TimeRangeApi
-}
-interface ButtonsProps {
-  selected: TimeRange
-  onSelect: (range: TimeRange) => void
 }
 
 export default function Page() {
@@ -88,7 +68,7 @@ export default function Page() {
     const mappedTracks: Track[] = response.items.map((item) => ({
       id: item.id,
       name: item.name,
-      album: item.album.name,
+      album: item,
       image: item.album.images[0].url,
     }))
     setTopTracks(mappedTracks)
@@ -194,30 +174,4 @@ function MainElement({
       )}
     </div>
   )
-
-  function Buttons({ selected, onSelect }: ButtonsProps) {
-    const buttons: TimeRange[] = ["Last 30 Days", "Last 6 Months", "Last Year"]
-
-    return (
-      <div className="flex flex-row gap-5 w-fit h-fit p-4">
-        {buttons.map((label) => (
-          <button
-            key={label}
-            onClick={() => onSelect(label)}
-            className={cn(
-              "rounded-3xl w-fit h-fit text-background p-3 transition duration-200 transform border-2",
-              {
-                "bg-secondary border-accent": label === selected,
-                "bg-accent border-transparent": label !== selected,
-              },
-              "hover:scale-105 hover:shadow-lg",
-              "active:scale-95 active:shadow-md active:bg-accent/80",
-            )}
-          >
-            {label}
-          </button>
-        ))}
-      </div>
-    )
-  }
 }
