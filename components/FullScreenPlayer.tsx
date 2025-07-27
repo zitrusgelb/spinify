@@ -1,18 +1,19 @@
-import React, { useEffect, useState } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import { Heart, MoreHorizontal, Play, Plus, Repeat, Shuffle, SkipBack, SkipForward, Volume2, X } from "lucide-react"
+import ApiContext from "./ApiContext"
 
 interface FullScreenPlayerProps {
   isOpen: boolean
   onClose: () => void
-  accessToken: string
 }
 
-const FullScreenPlayer: React.FC<FullScreenPlayerProps> = ({ isOpen, onClose, accessToken }) => {
+const FullScreenPlayer: React.FC<FullScreenPlayerProps> = ({ isOpen, onClose }) => {
+  const { token: accessToken } = useContext(ApiContext)
   const [currentTrack, setCurrentTrack] = useState<any>(null)
   const [queue, setQueue] = useState<any[]>([])
 
   useEffect(() => {
-    if (!isOpen) return
+    if (!isOpen || !accessToken) return
 
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose()
@@ -45,7 +46,7 @@ const FullScreenPlayer: React.FC<FullScreenPlayerProps> = ({ isOpen, onClose, ac
     }
   }, [isOpen, onClose, accessToken])
 
-  if (!isOpen) return null
+  if (!isOpen || !accessToken) return null
 
   const handleOverlayClick = () => onClose()
   const stopPropagation = (e: React.MouseEvent) => e.stopPropagation()
