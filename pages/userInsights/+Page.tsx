@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect } from "react"
+import { useContext, useEffect, useState } from "react"
 import ApiContext from "components/ApiContext"
 import cn from "classnames"
 
@@ -59,19 +59,27 @@ export default function Page() {
   }, [login])
 
   useEffect(() => {
-    if (user) getTopTracks()
+    if (user) {
+      setLoading((l) => ({ ...l, tracks: true }))
+      getTopTracks().finally(() => setLoading((l) => ({ ...l, tracks: false })))
+    }
   }, [user, selectedRanges["Top Tracks"]])
 
   useEffect(() => {
-    if (user) getTopArtists()
+    if (user) {
+      setLoading((l) => ({ ...l, artists: true }))
+      getTopArtists().finally(() => setLoading((l) => ({ ...l, artists: false })))
+    }
   }, [user, selectedRanges["Top Artists"]])
 
   useEffect(() => {
-    if (user) getFollowedArtists()
+    if (user) {
+      setLoading((l) => ({ ...l, followed: true }))
+      getFollowedArtists().finally(() => setLoading((l) => ({ ...l, followed: false })))
+    }
   }, [user, selectedRanges["Followed Artists"]])
 
   const getTopTracks = async () => {
-    setLoading((l) => ({ ...l, tracks: true }))
     const apiRange = rangeMap[selectedRanges["Top Tracks"]]
     const response = await fetchTopItems({ type: "tracks", timeRange: apiRange })
     const mappedTracks: Track[] = response.items.map((item: any) => ({
@@ -85,11 +93,9 @@ export default function Page() {
       image: item.album.images[0].url,
     }))
     setTopTracks(mappedTracks)
-    setLoading((l) => ({ ...l, tracks: false }))
   }
 
   const getTopArtists = async () => {
-    setLoading((l) => ({ ...l, artists: true }))
     const apiRange = rangeMap[selectedRanges["Top Artists"]]
     const response = await fetchTopItems({ type: "artists", timeRange: apiRange })
     const mappedArtists: Artist[] = response.items.map((item: any) => ({
@@ -98,7 +104,6 @@ export default function Page() {
       image: item.images[0].url,
     }))
     setTopArtists(mappedArtists)
-    setLoading((l) => ({ ...l, artists: false }))
   }
 
   async function fetchTopItems({ type, timeRange }: FetchTopItemsProps) {
@@ -106,7 +111,6 @@ export default function Page() {
   }
 
   const getFollowedArtists = async () => {
-    setLoading((l) => ({ ...l, followed: true }))
     const response = await fetchFollowedArtists()
     const mappedFollowedArtists: Artist[] = response.artists.items.map((item: any) => ({
       id: item.id,
@@ -114,7 +118,6 @@ export default function Page() {
       image: item.images[0].url,
     }))
     setFollowedArtists(mappedFollowedArtists)
-    setLoading((l) => ({ ...l, followed: false }))
   }
 
   async function fetchFollowedArtists() {
@@ -173,11 +176,16 @@ function MainElement({
         </div>
       ) : (
         items.length > 0 && (
-          <div className="flex flex-row gap-4 overflow-x-auto whitespace-nowrap p-5">
+          <div className="flex flex-row gap-4 overflow-x-auto whitespace-nowrap p-5 items-center">
             {items.map((item) => {
               return (
                 <div key={item.id} className="inline-flex flex-col items-center">
-                  <img key={item.id} src={item.image} alt={item.name} className="w-45 h-45" />
+                  <img
+                    key={item.id}
+                    src={item.image}
+                    alt={item.name}
+                    className="max-w-45 max-h-45 rounded-3xl object-cover"
+                  />
                   <p className="mt-2 text-center text-sm truncate w-45"> {item.name}</p>
                 </div>
               )
