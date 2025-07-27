@@ -4,18 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5d0a05f4-8d99-4543-8a26-fc0a1b5e36f9" name="Changes" comment="refactor: custom hook for Spotify Web Player">
-      <change afterPath="$PROJECT_DIR$/components/ApiContext.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/SearchBar.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/search/+Page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/search/@query/+Page.tsx" afterDir="false" />
+    <list default="true" id="5d0a05f4-8d99-4543-8a26-fc0a1b5e36f9" name="Changes" comment="feat(playlists): added first version of playlist overview&#10;&#10;as of now, only saved playlists can be shown as other playlist functions (such as browse) have been deprecated">
+      <change afterPath="$PROJECT_DIR$/pages/playlist/@id/+Page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_15_06_25,_16_20_[Changes]/shelved.patch" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_15_06_25__16_20__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/logo.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/layouts/LayoutDefault.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/layouts/LayoutDefault.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/index/+Page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index/+Page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/playlists/+Page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/playlists/+Page.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,8 +75,8 @@
   </component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;git@github.com:zitrusgelb/spinify.git&quot;,
-    &quot;accountId&quot;: &quot;40d564f3-a5f5-4e5a-8cc3-fccf52891f13&quot;
+    &quot;url&quot;: &quot;https://github.com/zitrusgelb/spinify.git&quot;,
+    &quot;accountId&quot;: &quot;a6809bb5-41d5-4cca-b99a-768337a7f46a&quot;
   },
   &quot;recentNewPullRequestHead&quot;: {
     &quot;server&quot;: {
@@ -118,28 +112,30 @@
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;10-search-bar-search-view&quot;,
-    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;22.14.0&quot;,
-    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;22.14.1&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/adrianstelter/Developer/spinify/pages/search/@query&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;7-playlists&quot;,
+    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;22.17.0&quot;,
+    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;22.16.3&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/timknuttel/Informatik_Studium/4.Semester/Frontend_Systems/Spinify/assets&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;npm.dev.executor&quot;: &quot;Run&quot;,
-    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;/Users/timknuttel/Informatik_Studium/4.Semester/Frontend_Systems/Spinify/node_modules/prettier&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Users\\Laurin\\WebstormProjects\\spinify\\node_modules\\prettier&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/Users/adrianstelter/Developer/spinify/node_modules/typescript/lib&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\Laurin\\WebstormProjects\\spinify\\node_modules\\typescript\\lib&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/pages/search/@query" />
       <recent name="$PROJECT_DIR$/assets" />
       <recent name="$PROJECT_DIR$/pages/playlists" />
       <recent name="$PROJECT_DIR$/pages/options" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Laurin\WebstormProjects\spinify\pages\playlist" />
     </key>
   </component>
   <component name="RunManager">
@@ -155,7 +151,6 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.dev" />
         <item itemvalue="npm.dev" />
       </list>
     </recent_temporary>
@@ -181,16 +176,8 @@
       <workItem from="1749753862680" duration="9495000" />
       <workItem from="1749997650542" duration="6874000" />
       <workItem from="1750061529098" duration="6328000" />
-      <workItem from="1750890764263" duration="13000" />
-      <workItem from="1752243676592" duration="2080000" />
-    </task>
-    <task id="LOCAL-00006" summary="refactor: remove todo-page">
-      <option name="closed" value="true" />
-      <created>1749636533798</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1749636533798</updated>
+      <workItem from="1752482788790" duration="1906000" />
+      <workItem from="1752499658488" duration="4292000" />
     </task>
     <task id="LOCAL-00007" summary="refactor: remove Starwars-page">
       <option name="closed" value="true" />
@@ -568,15 +555,23 @@
       <option name="project" value="LOCAL" />
       <updated>1750064191590</updated>
     </task>
-    <task id="LOCAL-00054" summary="refactor: custom hook for Spotify Web Player">
+    <task id="LOCAL-00054" summary="fix: types for spotifyPlayer not working">
       <option name="closed" value="true" />
-      <created>1750868179862</created>
+      <created>1750867314393</created>
       <option name="number" value="00054" />
       <option name="presentableId" value="LOCAL-00054" />
       <option name="project" value="LOCAL" />
-      <updated>1750868179862</updated>
+      <updated>1750867314393</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="feat(playlists): added first version of playlist overview&#10;&#10;as of now, only saved playlists can be shown as other playlist functions (such as browse) have been deprecated">
+      <option name="closed" value="true" />
+      <created>1752435552299</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1752435552299</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -593,7 +588,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="1-authentication" />
+                        <option value="basic-layout" />
                       </list>
                     </value>
                   </entry>
@@ -606,8 +601,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="build: update of .idea files" />
-    <MESSAGE value="docs: remove unnecessary comment" />
     <MESSAGE value="feat: add circle in secondary color with accent to link icons" />
     <MESSAGE value="refactor: change svg attributes to react standard" />
     <MESSAGE value="feat: add logo and sidebar to parent component" />
@@ -630,7 +623,9 @@
     <MESSAGE value="refactor: remove unused imports" />
     <MESSAGE value="refactor: remove unneeded tailwind.config.js" />
     <MESSAGE value="refactor: remove the join annotation in Link.tsx" />
-    <MESSAGE value="refactor: custom hook for Spotify Web Player" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor: custom hook for Spotify Web Player" />
+    <MESSAGE value="Merge pull request #20 from zitrusgelb/apiContext&#10;&#10;refactor: ContextProvider for Api" />
+    <MESSAGE value="fix: types for spotifyPlayer not working" />
+    <MESSAGE value="feat(playlists): added first version of playlist overview&#10;&#10;as of now, only saved playlists can be shown as other playlist functions (such as browse) have been deprecated" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(playlists): added first version of playlist overview&#10;&#10;as of now, only saved playlists can be shown as other playlist functions (such as browse) have been deprecated" />
   </component>
 </project>

@@ -6,6 +6,7 @@ import { ChartLine, Disc3, ListMusic, Settings } from "lucide-react"
 import { Link } from "components/Link.js"
 import React from "react"
 import SearchBar from "components/SearchBar"
+import { ApiContextProvider } from "components/ApiContext"
 
 const links = [
   {
@@ -33,7 +34,7 @@ const links = [
 export function LayoutDefault({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex w-full bg-background text-black min-h-screen" lang="de">
-      <div className="flex flex-col items-center gap-5 mt-3 mx-2 w-fit">
+      <div className="flex flex-col items-center gap-5 mt-2 mx-2 w-20">
         <Logo />
         <Sidebar>
           {links.map((link) => (
@@ -43,7 +44,6 @@ export function LayoutDefault({ children }: { children: React.ReactNode }) {
           ))}
         </Sidebar>
       </div>
-
       <Content>{children}</Content>
     </div>
   )
@@ -59,11 +59,13 @@ function Sidebar({ children }: { children: React.ReactNode }) {
 
 function Content({ children }: { children: React.ReactNode }) {
   return (
-    <div id="page-container" className="flex-1 mt-3 mr-3 mb-3">
-      <SearchBar />
-      <div id="page-content" className="p-5 pb-12 min-h-full bg-gradient rounded-3xl w-full h-full">
-        {children}
-      </div>
+    <div id="page-container" className="flex-1 mt-3 mr-3 mb-3 overflow-auto">
+      <ApiContextProvider>
+        <SearchBar />
+        <div id="page-content" className="p-5 pb-12 min-h-full bg-gradient rounded-3xl w-full h-full">
+          {children}
+        </div>
+      </ApiContextProvider>
     </div>
   )
 }
