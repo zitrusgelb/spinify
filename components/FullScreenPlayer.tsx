@@ -71,7 +71,7 @@ const FullScreenPlayer: React.FC<FullScreenPlayerProps> = ({ isOpen, onClose }) 
                 viewBox="0 0 237 427"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                className="absolute top-0 right-0 w-[30%] h-auto opacity-100 pointer-events-none"
+                className="absolute top-7 right-7 w-[25%] h-auto opacity-100 pointer-events-none"
               >
                 <path
                   fillRule="evenodd"
