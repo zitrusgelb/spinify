@@ -1,14 +1,15 @@
 import { SimplifiedPlaylist } from "@spotify/web-api-ts-sdk"
+import { Grid } from "components/Grid"
 
 export default function PlaylistGrid({ playlists }: { playlists: SimplifiedPlaylist[] }) {
   return (
-    <div className="flex max-w-full overflow-x-scroll scrollbar-styled">
+    <Grid>
       {playlists.map((playlist) => (
         <a href={`/playlist/${playlist.id}`} key={playlist.id}>
           <PlaylistElement key={playlist.name} thumbnail={playlist.images[0].url} title={playlist.name} />
         </a>
       ))}
-    </div>
+    </Grid>
   )
 }
 

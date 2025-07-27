@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react"
+import React, { createContext, useEffect, useState } from "react"
 import { SpotifyApi, User } from "@spotify/web-api-ts-sdk"
 
 const scopes = [
@@ -45,6 +45,10 @@ export function ApiContextProvider({ children }: { children: React.ReactNode }) 
     const data = await api.currentUser.profile()
     setUser(data)
   }
+
+  useEffect(() => {
+    login().then(() => console.log("Login successful"))
+  }, [])
 
   return <ApiContext value={{ api, login, token, user }}>{children}</ApiContext>
 }

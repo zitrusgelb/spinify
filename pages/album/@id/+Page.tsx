@@ -7,7 +7,7 @@ import { Track } from "@spotify/web-api-ts-sdk"
 import TrackList from "components/TrackList"
 
 export default function Page() {
-  const { api, login } = useContext(ApiContext)
+  const { api } = useContext(ApiContext)
   const [loading, setLoading] = useState(true)
   const [albumName, setAlbumName] = useState("")
   const [thumbnail, setThumbnail] = useState("")
@@ -15,7 +15,7 @@ export default function Page() {
   const id = usePageContext().routeParams.id
 
   useEffect(() => {
-    login().then(() => fetchTracks().finally(() => setLoading(false)))
+    fetchTracks().finally(() => setLoading(false))
   }, [])
 
   const fetchTracks = async () => {

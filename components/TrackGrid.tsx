@@ -1,14 +1,15 @@
 import { Track } from "@spotify/web-api-ts-sdk"
+import { Grid } from "components/Grid"
 
 export default function TrackGrid({ tracks }: { tracks: Track[] }) {
   return (
-    <div className="flex max-w-full overflow-x-scroll scrollbar-styled">
+    <Grid>
       {tracks.map((track) => (
         <a href={`/album/${track.album.id}`} key={track.id}>
           <TrackElement thumbnail={track.album.images[0].url} title={track.name} />
         </a>
       ))}
-    </div>
+    </Grid>
   )
 }
 

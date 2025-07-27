@@ -8,29 +8,26 @@ import { SimplifiedPlaylist } from "@spotify/web-api-ts-sdk"
 export default function Page() {
   const [userPlaylists, setUserPlaylists] = useState<SimplifiedPlaylist[]>([])
   const [savedPlaylists, setSavedPlaylists] = useState<SimplifiedPlaylist[]>([])
-  const { api, login, user } = useContext(ApiContext)
+  const { api, user } = useContext(ApiContext)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    login().then(() => console.log("Login successful"))
-  }, [])
-
-  useEffect(() => {
-    if (user) {
-      fetchSavedPlaylists()
-        .then(fetchUserPlaylists)
-        .finally(() => setLoading(false))
-    }
+    if (!user) return
+    fetchSavedPlaylists()
+      .then(fetchUserPlaylists)
+      .finally(() => setLoading(false))
   }, [user])
 
   const fetchSavedPlaylists = async () => {
     const res = await fetchPlaylists()
-    if (user) setSavedPlaylists(res.items.filter((playlist) => playlist.owner.id != user.id))
+    if (!user) return
+    setSavedPlaylists(res.items.filter((playlist) => playlist.owner.id != user.id))
   }
 
   const fetchUserPlaylists = async () => {
     const res = await fetchPlaylists()
-    if (user) setUserPlaylists(res.items.filter((playlist) => playlist.owner.id == user.id))
+    if (!user) return
+    setUserPlaylists(res.items.filter((playlist) => playlist.owner.id == user.id))
   }
 
   async function fetchPlaylists() {

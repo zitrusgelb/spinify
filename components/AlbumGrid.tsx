@@ -1,14 +1,15 @@
 import { SimplifiedAlbum } from "@spotify/web-api-ts-sdk"
+import { Grid } from "components/Grid"
 
 export default function AlbumGrid({ albums }: { albums: SimplifiedAlbum[] }) {
   return (
-    <div className="flex max-w-full overflow-x-scroll scrollbar-styled">
+    <Grid>
       {albums.map((album) => (
         <a href={`/album/${album.id}`} key={album.id}>
           <AlbumElement thumbnail={album.images[0].url} title={album.name} />
         </a>
       ))}
-    </div>
+    </Grid>
   )
 }
 
