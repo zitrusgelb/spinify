@@ -10,7 +10,6 @@ type Track = {
   name: string
   image: string
   album: string
-  artists: string[]
 }
 type Artist = {
   id: string
@@ -85,10 +84,6 @@ export default function Page() {
     const mappedTracks: Track[] = response.items.map((item: any) => ({
       id: item.id,
       name: item.name,
-      artists: item.artists.map((a: any) => ({
-        id: a.id,
-        name: a.name,
-      })),
       album: item.album.name,
       image: item.album.images[0].url,
     }))
@@ -125,7 +120,7 @@ export default function Page() {
   }
 
   const handleRangeChange = (title: string, range: TimeRange) => {
-    setSelectedRanges((prev: any) => ({
+    setSelectedRanges((prev: Record<string, TimeRange>) => ({
       ...prev,
       [title]: range,
     }))
