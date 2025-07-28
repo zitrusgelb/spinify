@@ -71,7 +71,7 @@ export default function Page() {
   }
 
   async function fetchFollowedArtists() {
-    return await api.currentUser.followedArtists(0, 50)
+    return await api.currentUser.followedArtists("0", 50)
   }
 
   const handleRangeChange = (title: string, range: TimeRange) => {
