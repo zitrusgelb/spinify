@@ -7,7 +7,7 @@ import { Artist, Track } from "@spotify/web-api-ts-sdk"
 import ArtistGrid from "components/ArtistGrid"
 import MainElement from "components/MainElement"
 
-export type TimeRange = "Last 30 Days" | "Last 6 Months" | "Last Year"
+type TimeRange = "Last 30 Days" | "Last 6 Months" | "Last Year"
 type TimeRangeApi = "short_term" | "medium_term" | "long_term"
 
 export default function Page() {
