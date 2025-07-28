@@ -25,7 +25,7 @@ export default function SearchBar() {
     return () => {
       clearTimeout(timeout)
     }
-  }, [searchQuery, navigate])
+  }, [searchQuery])
 
   return (
     <div className="mb-2">
