@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react"
+import { useCallback, useContext, useEffect, useState } from "react"
 import ApiContext from "components/ApiContext"
 import MainElementWithButtons from "components/MainElementWithButtons"
 import Spinner from "components/LoadingSpinner"
@@ -10,17 +10,18 @@ import MainElement from "components/MainElement"
 export type TimeRange = "Last 30 Days" | "Last 6 Months" | "Last Year"
 type TimeRangeApi = "short_term" | "medium_term" | "long_term"
 
+const rangeMap: Record<TimeRange, TimeRangeApi> = {
+  "Last 30 Days": "short_term",
+  "Last 6 Months": "medium_term",
+  "Last Year": "long_term",
+}
+
 export default function Page() {
   const [selectedRanges, setSelectedRanges] = useState<Record<string, TimeRange>>({
     "Top Tracks": "Last 30 Days",
     "Top Artists": "Last 30 Days",
     "Followed Artists": "Last 30 Days",
   })
-  const rangeMap: Record<TimeRange, TimeRangeApi> = {
-    "Last 30 Days": "short_term",
-    "Last 6 Months": "medium_term",
-    "Last Year": "long_term",
-  }
   const { api, user } = useContext(ApiContext)
   const [topTracks, setTopTracks] = useState<Track[]>([])
   const [topArtists, setTopArtists] = useState<Artist[]>([])
@@ -45,22 +46,22 @@ export default function Page() {
     getFollowedArtists().finally(() => setLoading((l) => ({ ...l, followed: false })))
   }, [user, selectedRanges["Followed Artists"]])
 
-  const getTopTracks = async () => {
+  const getTopTracks = useCallback(async () => {
     const apiRange = rangeMap[selectedRanges["Top Tracks"]]
     const response = await api.currentUser.topItems("tracks", apiRange, 50, 0)
     setTopTracks(response.items)
-  }
+  }, [api, selectedRanges])
 
-  const getTopArtists = async () => {
+  const getTopArtists = useCallback(async () => {
     const apiRange = rangeMap[selectedRanges["Top Artists"]]
     const response = await api.currentUser.topItems("artists", apiRange, 50, 0)
     setTopArtists(response.items)
-  }
+  }, [api, selectedRanges])
 
-  const getFollowedArtists = async () => {
+  const getFollowedArtists = useCallback(async () => {
     const response = await api.currentUser.followedArtists("0", 50)
     setFollowedArtists(response.artists.items)
-  }
+  }, [api])
 
   const handleRangeChange = (title: string, range: TimeRange) => {
     setSelectedRanges((prev: Record<string, TimeRange>) => ({
