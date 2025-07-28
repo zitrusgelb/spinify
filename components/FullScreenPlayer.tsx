@@ -222,7 +222,6 @@ const FullScreenPlayer: React.FC<FullScreenPlayerProps> = ({ isOpen, onClose }) 
                   className="w-full h-full object-cover absolute inset-0 z-0"
                 />
               )}
-              <div className="w-2 h-2 bg-black rounded-full absolute z-10" />
               <div className="absolute bottom-4 left-4 text-white">
                 <Volume2 size={24} />
               </div>
@@ -239,9 +238,16 @@ const FullScreenPlayer: React.FC<FullScreenPlayerProps> = ({ isOpen, onClose }) 
           <div className="flex flex-col justify-between flex-1 h-full">
             <div>
               {currentTrack && (
-                <h2 className="text-4xl font-bold text-[var(--color-secondary)]">
-                  {currentTrack.name} – {currentTrack.artists.map((a) => a.name).join(", ")}
-                </h2>
+                <>
+                  <h2 className="text-4xl font-bold text-[var(--color-secondary)]">
+                    {currentTrack.name} – {currentTrack.artists.map((a) => a.name).join(", ")}
+                  </h2>
+                  {currentTrack.album && (
+                    <p className="text-lg text-white mt-2">
+                      Album: {currentTrack.album.name} ({new Date(currentTrack.album.release_date).getFullYear()})
+                    </p>
+                  )}
+                </>
               )}
 
               <div className="mt-8 space-y-4 text-base">
