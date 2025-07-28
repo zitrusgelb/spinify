@@ -1,4 +1,4 @@
-import { TimeRange } from "./+Page"
+import { TimeRange } from "../pages/userInsights/+Page"
 
 interface ButtonsProps {
   selected: TimeRange
