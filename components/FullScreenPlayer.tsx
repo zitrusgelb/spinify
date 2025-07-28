@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState, useCallback } from "react"
+import React, { useContext, useEffect, useState, useCallback, useRef } from "react"
 import { Heart, MoreHorizontal, Play, Plus, Repeat, Shuffle, SkipBack, SkipForward, Volume2, X } from "lucide-react"
 import ApiContext from "./ApiContext"
 import useSpotifyPlayer from "./player"
@@ -11,9 +11,10 @@ interface FullScreenPlayerProps {
 const FullScreenPlayer: React.FC<FullScreenPlayerProps> = ({ isOpen, onClose }) => {
   const { token: accessToken } = useContext(ApiContext)
   const { player, playbackState } = useSpotifyPlayer(accessToken)
-
   const [currentTrack, setCurrentTrack] = useState<Spotify.Track | null>(null)
   const [queue, setQueue] = useState<Spotify.Track[]>([])
+
+  const dialogRef = useRef<HTMLDialogElement>(null)
 
   useEffect(() => {
     if (playbackState) {
@@ -30,6 +31,16 @@ const FullScreenPlayer: React.FC<FullScreenPlayerProps> = ({ isOpen, onClose }) 
   )
 
   useEffect(() => {
+    if (isOpen && dialogRef.current && !dialogRef.current.open) {
+      try {
+        dialogRef.current.showModal()
+      } catch (e) {
+        console.error("Failed to show dialog:", e)
+      }
+    }
+  }, [isOpen])
+
+  useEffect(() => {
     if (!isOpen) return
     window.addEventListener("keydown", handleKeyDown)
     return () => {
@@ -37,18 +48,13 @@ const FullScreenPlayer: React.FC<FullScreenPlayerProps> = ({ isOpen, onClose }) 
     }
   }, [isOpen, handleKeyDown])
 
-  if (!isOpen || !accessToken) return null
+  if (!accessToken) return null
 
   const handleOverlayClick = () => onClose()
   const stopPropagation = (e: React.MouseEvent) => e.stopPropagation()
 
-  const skipToNext = () => {
-    player?.nextTrack()
-  }
-
-  const skipToPrevious = () => {
-    player?.previousTrack()
-  }
+  const skipToNext = () => player?.nextTrack()
+  const skipToPrevious = () => player?.previousTrack()
 
   const toggleShuffle = async () => {
     await fetch("https://api.spotify.com/v1/me/player/shuffle?state=true", {
@@ -84,11 +90,7 @@ const FullScreenPlayer: React.FC<FullScreenPlayerProps> = ({ isOpen, onClose }) 
 
   const togglePlay = () => {
     if (!playbackState) return
-    if (playbackState.paused) {
-      player?.resume()
-    } else {
-      player?.pause()
-    }
+    playbackState.paused ? player?.resume() : player?.pause()
   }
 
   const handleControl = (action: string) => {
@@ -127,13 +129,14 @@ const FullScreenPlayer: React.FC<FullScreenPlayerProps> = ({ isOpen, onClose }) 
   ]
 
   return (
-    <div
+    <dialog
+      ref={dialogRef}
       onClick={handleOverlayClick}
       className="fixed inset-0 z-50 flex items-center justify-center backdrop-blur-md bg-black/20"
     >
       <div
         onClick={stopPropagation}
-        role="div"
+        role="dialog"
         aria-modal="true"
         aria-label="Full Screen Music Player"
         className="rounded-xl shadow-xl w-[95vw] h-[90vh] bg-gradient p-10 relative flex flex-col max-w-screen-xl"
@@ -142,7 +145,6 @@ const FullScreenPlayer: React.FC<FullScreenPlayerProps> = ({ isOpen, onClose }) 
           onClick={onClose}
           className="absolute top-15 right-15 text-white hover:text-red-400 transition-colors"
           aria-label="Close player"
-          title="Close"
         >
           <X size={28} />
         </button>
@@ -158,7 +160,6 @@ const FullScreenPlayer: React.FC<FullScreenPlayerProps> = ({ isOpen, onClose }) 
                 onClick={togglePlay}
                 className="absolute bottom-4 right-4 p-2 bg-red-600 rounded-md text-white hover:bg-red-700 transition"
                 aria-label="Play"
-                title="Play"
               >
                 <Play size={20} />
               </button>
@@ -172,11 +173,9 @@ const FullScreenPlayer: React.FC<FullScreenPlayerProps> = ({ isOpen, onClose }) 
                   <h2 className="text-4xl font-bold text-[var(--color-secondary)]">
                     {currentTrack.name} – {currentTrack.artists.map((a) => a.name).join(", ")}
                   </h2>
-                  <p className="text-lg text-gray-100 mt-1">
-                    {currentTrack.album.name} – {new Date(currentTrack.album.release_date).getFullYear()}
-                  </p>
                 </>
               )}
+
               <div className="mt-8 space-y-4 text-base">
                 {queue.map((track, i) => (
                   <div className="flex items-center space-x-3" key={i}>
@@ -184,9 +183,6 @@ const FullScreenPlayer: React.FC<FullScreenPlayerProps> = ({ isOpen, onClose }) 
                     <div>
                       <div>
                         {track.name} – {track.artists.map((a) => a.name).join(", ")}
-                      </div>
-                      <div className="text-xs text-gray-300">
-                        {track.album.name} – {new Date(track.album.release_date).getFullYear()}
                       </div>
                     </div>
                   </div>
@@ -209,7 +205,7 @@ const FullScreenPlayer: React.FC<FullScreenPlayerProps> = ({ isOpen, onClose }) 
           </div>
         </div>
       </div>
-    </div>
+    </dialog>
   )
 }
 
