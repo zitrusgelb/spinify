@@ -4,80 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5d0a05f4-8d99-4543-8a26-fc0a1b5e36f9" name="Changes" comment="feat: added some buttons">
-      <change afterPath="$PROJECT_DIR$/components/FullScreenPlayer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_15_06_25,_16_20_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_15_06_25__16_20__Changes_.xml" beforeDir="false" />
+    <list default="true" id="de68e6ea-2f74-4e49-afed-3ebe742414b1" name="Changes" comment="fix: added arm">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/index/+Page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index/+Page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/FullScreenPlayer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/FullScreenPlayer.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="JavaScript File" />
-        <option value="TypeScript File" />
-        <option value="TypeScript JSX File" />
-      </list>
-    </option>
-  </component>
-  <component name="FormatOnSaveOptions">
-    <option name="myRunOnSave" value="true" />
-  </component>
   <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="basic-layout" />
-      </map>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
     &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;timknt&quot;
+    &quot;assignee&quot;: &quot;Jakob-H-DEV&quot;
   }
 }</component>
-  <component name="GitToolBoxStore">
-    <option name="largeFiles">
-      <LargeFiles>
-        <option name="unlockedFilePaths">
-          <set>
-            <option value="$PROJECT_DIR$/package-lock.json" />
-          </set>
-        </option>
-      </LargeFiles>
-    </option>
-    <option name="recentBranches">
-      <RecentBranches>
-        <option name="branchesForRepo">
-          <list>
-            <RecentBranchesForRepo>
-              <option name="branches">
-                <list>
-                  <RecentBranch>
-                    <option name="branchName" value="basic-layout" />
-                    <option name="lastUsedInstant" value="1749737763" />
-                  </RecentBranch>
-                  <RecentBranch>
-                    <option name="branchName" value="main" />
-                    <option name="lastUsedInstant" value="1749737755" />
-                  </RecentBranch>
-                </list>
-              </option>
-              <option name="repositoryRootUrl" value="file://$PROJECT_DIR$" />
-            </RecentBranchesForRepo>
-          </list>
-        </option>
-      </RecentBranches>
-    </option>
-  </component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/zitrusgelb/spinify.git&quot;,
@@ -94,17 +38,10 @@
     &quot;repository&quot;: &quot;spinify&quot;
   }
 }</component>
-  <component name="OptimizeOnSaveOptions">
-    <option name="myRunOnSave" value="true" />
-  </component>
-  <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
-  </component>
   <component name="ProjectColorInfo">{
-  &quot;customColor&quot;: &quot;&quot;,
-  &quot;associatedIndex&quot;: 4
+  &quot;associatedIndex&quot;: 2
 }</component>
-  <component name="ProjectId" id="2yLwViQlqUkqzfh5Pfw9fLuoDAI" />
+  <component name="ProjectId" id="30SiRmkfmofHP03Svc24pljQr6G" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
@@ -114,33 +51,23 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Node.js.+config.ts.executor&quot;: &quot;Run&quot;,
+    &quot;Node.js.player.ts.executor&quot;: &quot;Run&quot;,
+    &quot;Node.js.vite.config.ts.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;player&quot;,
-    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;22.16.0&quot;,
-    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;22.15.32&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/timknuttel/Informatik_Studium/4.Semester/Frontend_Systems/Spinify/assets&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;#25 on player&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_interpreter_path&quot;: &quot;C:/Users/jakob/AppData/Roaming/JetBrains/WebStorm2025.1/node/versions/22.16.0/node&quot;,
+    &quot;nodejs_interpreter_path&quot;: &quot;C:/Users/jakob/AppData/Roaming/JetBrains/WebStorm2025.1/node/versions/22.17.1/node&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;npm.dev.executor&quot;: &quot;Run&quot;,
-    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Users\\jakob\\WebstormProjects\\spinify\\node_modules\\prettier&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.nodejs&quot;,
     &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\jakob\\WebstormProjects\\spinify\\node_modules\\typescript\\lib&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/assets" />
-      <recent name="$PROJECT_DIR$/pages/playlists" />
-      <recent name="$PROJECT_DIR$/pages/options" />
-    </key>
-  </component>
   <component name="RunManager">
     <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
@@ -155,8 +82,6 @@
     <recent_temporary>
       <list>
         <item itemvalue="npm.dev" />
-        <item itemvalue="npm.dev" />
-        <item itemvalue="npm.dev" />
       </list>
     </recent_temporary>
   </component>
@@ -169,416 +94,81 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="5d0a05f4-8d99-4543-8a26-fc0a1b5e36f9" name="Changes" comment="" />
-      <created>1749627186192</created>
+      <changelist id="de68e6ea-2f74-4e49-afed-3ebe742414b1" name="Changes" comment="" />
+      <created>1753627369878</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1749627186192</updated>
-      <workItem from="1749627187255" duration="10661000" />
-      <workItem from="1749737917704" duration="1967000" />
-      <workItem from="1749753771990" duration="24000" />
-      <workItem from="1749753805003" duration="42000" />
-      <workItem from="1749753862680" duration="9495000" />
-      <workItem from="1749997650542" duration="6874000" />
-      <workItem from="1750061529098" duration="6328000" />
-      <workItem from="1750678008064" duration="3521000" />
-      <workItem from="1751373626570" duration="2193000" />
-      <workItem from="1752507282777" duration="660000" />
-      <workItem from="1753364995227" duration="1021000" />
+      <updated>1753627369878</updated>
+      <workItem from="1753627371503" duration="1244000" />
+      <workItem from="1753635505874" duration="2538000" />
+      <workItem from="1753710423586" duration="2423000" />
+      <workItem from="1753712889070" duration="4099000" />
     </task>
-    <task id="LOCAL-00008" summary="refactor: remove Starwars-page">
+    <task id="LOCAL-00001" summary="fix: used player methods and handlekeydown out of useeffect">
       <option name="closed" value="true" />
-      <created>1749645609336</created>
+      <created>1753710975622</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1753710975622</updated>
+    </task>
+    <task id="LOCAL-00002" summary="fix: nope">
+      <option name="closed" value="true" />
+      <created>1753712007435</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1753712007435</updated>
+    </task>
+    <task id="LOCAL-00003" summary="fix: changed div to dialog">
+      <option name="closed" value="true" />
+      <created>1753712132373</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1753712132373</updated>
+    </task>
+    <task id="LOCAL-00004" summary="fix: changed methods">
+      <option name="closed" value="true" />
+      <created>1753714108551</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1753714108551</updated>
+    </task>
+    <task id="LOCAL-00005" summary="fix: import">
+      <option name="closed" value="true" />
+      <created>1753715127696</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1753715127696</updated>
+    </task>
+    <task id="LOCAL-00006" summary="fix: current state">
+      <option name="closed" value="true" />
+      <created>1753715881853</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1753715881853</updated>
+    </task>
+    <task id="LOCAL-00007" summary="fix: current state">
+      <option name="closed" value="true" />
+      <created>1753725667094</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1753725667094</updated>
+    </task>
+    <task id="LOCAL-00008" summary="fix: added arm">
+      <option name="closed" value="true" />
+      <created>1753725897687</created>
       <option name="number" value="00008" />
       <option name="presentableId" value="LOCAL-00008" />
       <option name="project" value="LOCAL" />
-      <updated>1749645609336</updated>
+      <updated>1753725897687</updated>
     </task>
-    <task id="LOCAL-00009" summary="style: remove semicolons">
-      <option name="closed" value="true" />
-      <created>1749645635079</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1749645635079</updated>
-    </task>
-    <task id="LOCAL-00010" summary="feat: add the correct background color and fix the width of the background">
-      <option name="closed" value="true" />
-      <created>1749668538574</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1749668538574</updated>
-    </task>
-    <task id="LOCAL-00011" summary="feat: add the correct background color and fix the width of the background">
-      <option name="closed" value="true" />
-      <created>1749668575260</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1749668575260</updated>
-    </task>
-    <task id="LOCAL-00012" summary="feat: add the correct background color and fix the width of the background">
-      <option name="closed" value="true" />
-      <created>1749728709635</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1749728709635</updated>
-    </task>
-    <task id="LOCAL-00013" summary="refactor: add .idea to gitignore">
-      <option name="closed" value="true" />
-      <created>1749728829276</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1749728829276</updated>
-    </task>
-    <task id="LOCAL-00014" summary="feat: add different colors">
-      <option name="closed" value="true" />
-      <created>1749729207999</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1749729207999</updated>
-    </task>
-    <task id="LOCAL-00015" summary="feat: add different colors">
-      <option name="closed" value="true" />
-      <created>1749729251769</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1749729251769</updated>
-    </task>
-    <task id="LOCAL-00016" summary="refactor: remove .idea from gitignore">
-      <option name="closed" value="true" />
-      <created>1749729283484</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1749729283484</updated>
-    </task>
-    <task id="LOCAL-00017" summary="feat: add rounded corners for sidebar">
-      <option name="closed" value="true" />
-      <created>1749732297466</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1749732297466</updated>
-    </task>
-    <task id="LOCAL-00018" summary="fix: remove warning from TypeScript for wrong import of logos/icons">
-      <option name="closed" value="true" />
-      <created>1749799135642</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1749799135642</updated>
-    </task>
-    <task id="LOCAL-00019" summary="refactor: import icons as ReactComponents instead of a png">
-      <option name="closed" value="true" />
-      <created>1749799172264</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1749799172264</updated>
-    </task>
-    <task id="LOCAL-00020" summary="refactor: rename optionIcon to optionsIcon">
-      <option name="closed" value="true" />
-      <created>1749799207392</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1749799207392</updated>
-    </task>
-    <task id="LOCAL-00021" summary="build: add svgr plugin to vite.config.ts">
-      <option name="closed" value="true" />
-      <created>1749799261755</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1749799261755</updated>
-    </task>
-    <task id="LOCAL-00022" summary="feat: add new functions with the icons as svg">
-      <option name="closed" value="true" />
-      <created>1749997206633</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1749997206633</updated>
-    </task>
-    <task id="LOCAL-00023" summary="feat: add new functions with the icons as svg">
-      <option name="closed" value="true" />
-      <created>1749997211625</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1749997211625</updated>
-    </task>
-    <task id="LOCAL-00024" summary="feat: add new functions with the icons as svg">
-      <option name="closed" value="true" />
-      <created>1749997222418</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1749997222418</updated>
-    </task>
-    <task id="LOCAL-00025" summary="feat: add new functions with the icons as svg">
-      <option name="closed" value="true" />
-      <created>1749997230373</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1749997230373</updated>
-    </task>
-    <task id="LOCAL-00026" summary="docs: remove unnecessary ignore annotation">
-      <option name="closed" value="true" />
-      <created>1749997751206</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1749997751206</updated>
-    </task>
-    <task id="LOCAL-00027" summary="refactor: remove style.css">
-      <option name="closed" value="true" />
-      <created>1749997792300</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1749997792300</updated>
-    </task>
-    <task id="LOCAL-00028" summary="feat: add tailwind.config.js to remove a warning">
-      <option name="closed" value="true" />
-      <created>1749997837738</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1749997837738</updated>
-    </task>
-    <task id="LOCAL-00029" summary="refactor: remove unused import form vite.config.ts">
-      <option name="closed" value="true" />
-      <created>1749997862596</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1749997862596</updated>
-    </task>
-    <task id="LOCAL-00030" summary="build: update of .idea files">
-      <option name="closed" value="true" />
-      <created>1749997889475</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1749997889475</updated>
-    </task>
-    <task id="LOCAL-00031" summary="docs: remove unnecessary comment">
-      <option name="closed" value="true" />
-      <created>1749998710829</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1749998710829</updated>
-    </task>
-    <task id="LOCAL-00032" summary="feat: add circle in secondary color with accent to link icons">
-      <option name="closed" value="true" />
-      <created>1749998767177</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1749998767177</updated>
-    </task>
-    <task id="LOCAL-00033" summary="refactor: change svg attributes to react standard">
-      <option name="closed" value="true" />
-      <created>1750000267322</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1750000267322</updated>
-    </task>
-    <task id="LOCAL-00034" summary="feat: add logo and sidebar to parent component">
-      <option name="closed" value="true" />
-      <created>1750000359179</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1750000359179</updated>
-    </task>
-    <task id="LOCAL-00035" summary="refactor: make the size of the circle generic">
-      <option name="closed" value="true" />
-      <created>1750000378413</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1750000378413</updated>
-    </task>
-    <task id="LOCAL-00036" summary="build: changes of .idea files">
-      <option name="closed" value="true" />
-      <created>1750000393859</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1750000393859</updated>
-    </task>
-    <task id="LOCAL-00037" summary="feat: add gradient background">
-      <option name="closed" value="true" />
-      <created>1750000960479</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1750000960479</updated>
-    </task>
-    <task id="LOCAL-00038" summary="refactor: make contend to the appropriate size">
-      <option name="closed" value="true" />
-      <created>1750001395101</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1750001395101</updated>
-    </task>
-    <task id="LOCAL-00039" summary="refactor: remove redundant assets">
-      <option name="closed" value="true" />
-      <created>1750002367052</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1750002367052</updated>
-    </task>
-    <task id="LOCAL-00040" summary="refactor: remove shadow from icons">
-      <option name="closed" value="true" />
-      <created>1750002586163</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1750002586163</updated>
-    </task>
-    <task id="LOCAL-00041" summary="refactor: add padding to icons in the secondary circle">
-      <option name="closed" value="true" />
-      <created>1750002612215</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1750002612215</updated>
-    </task>
-    <task id="LOCAL-00042" summary="build: changes in .idea files">
-      <option name="closed" value="true" />
-      <created>1750002627149</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1750002627149</updated>
-    </task>
-    <task id="LOCAL-00043" summary="refactor: remove unused database">
-      <option name="closed" value="true" />
-      <created>1750002749031</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1750002749031</updated>
-    </task>
-    <task id="LOCAL-00044" summary="refactor: make color variables similarly">
-      <option name="closed" value="true" />
-      <created>1750003385582</created>
-      <option name="number" value="00044" />
-      <option name="presentableId" value="LOCAL-00044" />
-      <option name="project" value="LOCAL" />
-      <updated>1750003385582</updated>
-    </task>
-    <task id="LOCAL-00045" summary="refactor: make all size attributes generic">
-      <option name="closed" value="true" />
-      <created>1750003518384</created>
-      <option name="number" value="00045" />
-      <option name="presentableId" value="LOCAL-00045" />
-      <option name="project" value="LOCAL" />
-      <updated>1750003518384</updated>
-    </task>
-    <task id="LOCAL-00046" summary="fix: add @ts-nocheck annotation to +Page.tsx to suppress errors (as I would get insane otherwise)">
-      <option name="closed" value="true" />
-      <created>1750003969964</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1750003969964</updated>
-    </task>
-    <task id="LOCAL-00047" summary="build: changes of .idea files">
-      <option name="closed" value="true" />
-      <created>1750003993722</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1750003993722</updated>
-    </task>
-    <task id="LOCAL-00048" summary="refactor: change LayoutDefault to be easier to understand">
-      <option name="closed" value="true" />
-      <created>1750062049681</created>
-      <option name="number" value="00048" />
-      <option name="presentableId" value="LOCAL-00048" />
-      <option name="project" value="LOCAL" />
-      <updated>1750062049681</updated>
-    </task>
-    <task id="LOCAL-00049" summary="refactor: remove unneeded declariton.d.ts">
-      <option name="closed" value="true" />
-      <created>1750062122391</created>
-      <option name="number" value="00049" />
-      <option name="presentableId" value="LOCAL-00049" />
-      <option name="project" value="LOCAL" />
-      <updated>1750062122391</updated>
-    </task>
-    <task id="LOCAL-00050" summary="fix: folders in the project not found by ide">
-      <option name="closed" value="true" />
-      <created>1750063024721</created>
-      <option name="number" value="00050" />
-      <option name="presentableId" value="LOCAL-00050" />
-      <option name="project" value="LOCAL" />
-      <updated>1750063024721</updated>
-    </task>
-    <task id="LOCAL-00051" summary="refactor: remove unused imports">
-      <option name="closed" value="true" />
-      <created>1750063041245</created>
-      <option name="number" value="00051" />
-      <option name="presentableId" value="LOCAL-00051" />
-      <option name="project" value="LOCAL" />
-      <updated>1750063041245</updated>
-    </task>
-    <task id="LOCAL-00052" summary="refactor: remove unneeded tailwind.config.js">
-      <option name="closed" value="true" />
-      <created>1750064142251</created>
-      <option name="number" value="00052" />
-      <option name="presentableId" value="LOCAL-00052" />
-      <option name="project" value="LOCAL" />
-      <updated>1750064142251</updated>
-    </task>
-    <task id="LOCAL-00053" summary="refactor: remove the join annotation in Link.tsx">
-      <option name="closed" value="true" />
-      <created>1750064191590</created>
-      <option name="number" value="00053" />
-      <option name="presentableId" value="LOCAL-00053" />
-      <option name="project" value="LOCAL" />
-      <updated>1750064191590</updated>
-    </task>
-    <task id="LOCAL-00054" summary="feat: added playerpage">
-      <option name="closed" value="true" />
-      <created>1750080904382</created>
-      <option name="number" value="00054" />
-      <option name="presentableId" value="LOCAL-00054" />
-      <option name="project" value="LOCAL" />
-      <updated>1750080904382</updated>
-    </task>
-    <task id="LOCAL-00055" summary="feat: added some buttons">
-      <option name="closed" value="true" />
-      <created>1750081696977</created>
-      <option name="number" value="00055" />
-      <option name="presentableId" value="LOCAL-00055" />
-      <option name="project" value="LOCAL" />
-      <updated>1750081696977</updated>
-    </task>
-    <task id="LOCAL-00056" summary="feat: added some buttons">
-      <option name="closed" value="true" />
-      <created>1750082405769</created>
-      <option name="number" value="00056" />
-      <option name="presentableId" value="LOCAL-00056" />
-      <option name="project" value="LOCAL" />
-      <updated>1750082405769</updated>
-    </task>
-    <option name="localTasksCounter" value="57" />
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -589,50 +179,28 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="FILTERS">
-                <map>
-                  <entry key="branch">
-                    <value>
-                      <list>
-                        <option value="basic-layout" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="docs: remove unnecessary comment" />
-    <MESSAGE value="feat: add circle in secondary color with accent to link icons" />
-    <MESSAGE value="refactor: change svg attributes to react standard" />
-    <MESSAGE value="feat: add logo and sidebar to parent component" />
-    <MESSAGE value="refactor: make the size of the circle generic" />
-    <MESSAGE value="feat: add gradient background" />
-    <MESSAGE value="refactor: make contend to the appropriate size" />
-    <MESSAGE value="refactor: remove redundant assets" />
-    <MESSAGE value="refactor: remove shadow from icons" />
-    <MESSAGE value="refactor: add padding to icons in the secondary circle" />
-    <MESSAGE value="build: changes in .idea files" />
-    <MESSAGE value="refactor: remove unused database" />
-    <MESSAGE value="refactor: make color variables similarly" />
-    <MESSAGE value="refactor: make all size attributes generic" />
-    <MESSAGE value="fix: add @ts-nocheck annotation to +Page.tsx to suppress errors (as I would get insane otherwise)" />
-    <MESSAGE value="build: changes of .idea files" />
-    <MESSAGE value="refactor: change LayoutDefault to be easier to understand" />
-    <MESSAGE value="refactor: remove unneeded declariton.d.ts" />
-    <MESSAGE value="refactor:" />
-    <MESSAGE value="fix: folders in the project not found by ide" />
-    <MESSAGE value="refactor: remove unused imports" />
-    <MESSAGE value="refactor: remove unneeded tailwind.config.js" />
-    <MESSAGE value="refactor: remove the join annotation in Link.tsx" />
-    <MESSAGE value="feat: added playerpage" />
-    <MESSAGE value="feat: added some buttons" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: added some buttons" />
+    <MESSAGE value="fix: used player methods and handlekeydown out of useeffect" />
+    <MESSAGE value="fix: nope" />
+    <MESSAGE value="fix: changed div to dialog" />
+    <MESSAGE value="fix: changed methods" />
+    <MESSAGE value="fix: import" />
+    <MESSAGE value="fix: current state" />
+    <MESSAGE value="fix: added arm" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: added arm" />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="js.build_tools.npm">
+        <watch expression="isModalOpen" language="JavaScript" />
+        <watch expression="isModalOpen" language="JavaScript" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

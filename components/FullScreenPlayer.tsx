@@ -231,7 +231,7 @@ const FullScreenPlayer: React.FC<FullScreenPlayerProps> = ({ isOpen, onClose }) 
               </div>
               <button
                 onClick={togglePlay}
-                className="absolute bottom-4 right-4 p-2 bg-red-600 rounded-md text-white hover:bg-red-700 transition"
+                className="absolute bottom-4 right-4 p-2 bg-accent text-primary hover:bg-accent transition"
                 aria-label="Play"
               >
                 <Play size={20} />
