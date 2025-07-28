@@ -1,53 +1,33 @@
 import { useContext, useEffect, useState } from "react"
 import ApiContext from "components/ApiContext"
-import MainElement from "../playlist/@id/MainElement"
-import PlaylistGrid from "./PlaylistGrid"
-import { Playlist } from "../playlist/@id/types"
+import MainElement from "components/MainElement"
+import PlaylistGrid from "components/PlaylistGrid"
+import Spinner from "components/LoadingSpinner"
+import { SimplifiedPlaylist } from "@spotify/web-api-ts-sdk"
 
 export default function Page() {
-  const [userPlaylists, setUserPlaylists] = useState<Playlist[]>([])
-  const [savedPlaylists, setSavedPlaylists] = useState<Playlist[]>([])
-  const { api, login, user } = useContext(ApiContext)
+  const [userPlaylists, setUserPlaylists] = useState<SimplifiedPlaylist[]>([])
+  const [savedPlaylists, setSavedPlaylists] = useState<SimplifiedPlaylist[]>([])
+  const { api, user } = useContext(ApiContext)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    login().then(() => console.log("Login successful"))
-  }, [])
-
-  useEffect(() => {
-    if (user) {
-      fetchSavedPlaylists()
-        .then(fetchUserPlaylists)
-        .finally(() => setLoading(false))
-    }
+    if (!user) return
+    fetchSavedPlaylists()
+      .then(fetchUserPlaylists)
+      .finally(() => setLoading(false))
   }, [user])
 
   const fetchSavedPlaylists = async () => {
     const res = await fetchPlaylists()
-    const results = await Promise.all(
-      res.items
-        .filter((playlist) => playlist.owner.id != user?.id)
-        .map(async (playlist) => ({
-          id: playlist.id,
-          title: playlist.name,
-          thumbnail: playlist.images[0].url,
-        })),
-    )
-    setSavedPlaylists(results)
+    if (!user) return
+    setSavedPlaylists(res.items.filter((playlist) => playlist.owner.id != user.id))
   }
 
   const fetchUserPlaylists = async () => {
     const res = await fetchPlaylists()
-    const results = await Promise.all(
-      res.items
-        .filter((playlist) => playlist.owner.id == user?.id)
-        .map(async (playlist) => ({
-          id: playlist.id,
-          title: playlist.name,
-          thumbnail: playlist.images[0].url,
-        })),
-    )
-    setUserPlaylists(results)
+    if (!user) return
+    setUserPlaylists(res.items.filter((playlist) => playlist.owner.id == user.id))
   }
 
   async function fetchPlaylists() {
@@ -57,21 +37,9 @@ export default function Page() {
   return (
     <div className="flex flex-col">
       <MainElement title="Saved Playlists" />
-      {loading ? (
-        <div className="flex justify-center items-center h-64">
-          <span className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></span>
-        </div>
-      ) : (
-        <PlaylistGrid playlists={savedPlaylists} />
-      )}
+      {loading ? <Spinner /> : <PlaylistGrid playlists={savedPlaylists} />}
       <MainElement title="Your Playlists" />
-      {loading ? (
-        <div className="flex justify-center items-center h-64">
-          <span className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></span>
-        </div>
-      ) : (
-        <PlaylistGrid playlists={userPlaylists} />
-      )}
+      {loading ? <Spinner /> : <PlaylistGrid playlists={userPlaylists} />}
     </div>
   )
 }

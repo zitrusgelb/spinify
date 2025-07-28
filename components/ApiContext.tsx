@@ -1,7 +1,15 @@
-import React, { createContext, useState } from "react"
+import React, { createContext, useEffect, useState } from "react"
 import { SpotifyApi, User } from "@spotify/web-api-ts-sdk"
 
-const scopes = ["playlist-read-private", "playlist-read-collaborative", "streaming"]
+const scopes = [
+  "playlist-read-private",
+  "playlist-read-collaborative",
+  "user-library-read",
+  "user-follow-read",
+  "user-top-read",
+  "user-read-recently-played",
+  "streaming",
+]
 const redirectUri = "http://127.0.0.1:3000"
 const clientId = "d850768196144dfbab2ee42325a6e287"
 
@@ -37,6 +45,10 @@ export function ApiContextProvider({ children }: { children: React.ReactNode }) 
     const data = await api.currentUser.profile()
     setUser(data)
   }
+
+  useEffect(() => {
+    login().then(() => console.log("Login successful"))
+  }, [])
 
   return <ApiContext value={{ api, login, token, user }}>{children}</ApiContext>
 }
