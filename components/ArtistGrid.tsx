@@ -6,7 +6,7 @@ export default function ArtistGrid({ artists }: { artists: Artist[] }) {
     <Grid>
       {artists.map((artist) => (
         <a href={`/artist/${artist.id}`} key={artist.id}>
-          <ArtistElement thumbnail={artist.images[0].url} title={artist.name} />
+          <ArtistElement thumbnail={artist.images[0]?.url} title={artist.name} />
         </a>
       ))}
     </Grid>

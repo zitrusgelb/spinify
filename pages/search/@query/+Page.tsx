@@ -1,14 +1,19 @@
 import { usePageContext } from "vike-react/usePageContext"
-import { PartialSearchResult, SpotifyApi } from "@spotify/web-api-ts-sdk"
-import { useCallback, useEffect, useState } from "react"
+import { PartialSearchResult, SimplifiedPlaylist } from "@spotify/web-api-ts-sdk"
+import { useCallback, useContext, useEffect, useState } from "react"
+import TrackGrid from "components/TrackGrid"
+import ArtistGrid from "components/ArtistGrid"
+import MainElement from "components/MainElement"
+import AlbumGrid from "components/AlbumGrid"
+import PlaylistGrid from "components/PlaylistGrid"
+import ApiContext from "components/ApiContext"
+import Spinner from "components/LoadingSpinner"
 
 export default function Search() {
   const pageContext = usePageContext()
   const query = pageContext.routeParams.query
 
-  const api = SpotifyApi.withUserAuthorization("d850768196144dfbab2ee42325a6e287", "http://127.0.0.1:3000", [
-    "streaming",
-  ])
+  const { api } = useContext(ApiContext)
 
   const [result, setResult] = useState<Required<
     Pick<PartialSearchResult, "artists" | "albums" | "playlists" | "tracks">
@@ -27,23 +32,26 @@ export default function Search() {
   }, [getResult])
 
   return (
-    <div className="flex flex-col gap-2">
-      <span>Ergebnisse für: {query}</span>
-      <div className="flex flex-row gap-3">
-        {result?.tracks.items.map((track) => (
-          <div key={track.id} className="relative h-32 w-32 group">
-            <img src={track.album.images[0].url} className="h-full w-full" />
-            <div className="absolute bottom-0 break-words bg-gradient-to-b backdrop-blur-md h-full hidden group-hover:flex items-center flex-col w-full p-2">
-              {track.artists.map((a) => (
-                <a key={a.id} href={`/artists/${a.id}`}>
-                  {a.name}
-                </a>
-              ))}
-              <a href={`/track/${track.id}`}>{track.name}</a>
-            </div>
-          </div>
-        ))}
-      </div>
+    <div className="flex flex-row gap-3">
+      {result && (
+        <div className="flex flex-col gap-2 w-full">
+          <MainElement title="Tracks" />
+          <TrackGrid tracks={result?.tracks.items} />
+          <MainElement title="Artists" />
+          <ArtistGrid artists={result?.artists.items} />
+
+          <MainElement title="Albums" />
+          <AlbumGrid albums={result?.albums.items} />
+
+          <MainElement title="Playlists" />
+          <PlaylistGrid playlists={result?.playlists.items.filter((i) => i?.id) as SimplifiedPlaylist[]} />
+        </div>
+      )}
+      {!result && (
+        <div className="flex flex-col items-center justify-center w-full h-full">
+          <Spinner />
+        </div>
+      )}
     </div>
   )
 }
