@@ -33,7 +33,7 @@ const links = [
 export function LayoutDefault({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex w-full h-screen bg-background text-black overflow-hidden overflow-ellipsis whitespace-nowrap">
-      <div className="flex flex-col items-center gap-5 mt-2 mx-2 w-20">
+      <div className="flex flex-col items-center gap-5 mt-2 mx-2 w-20 h-full overflow-y-auto">
         <Logo />
         <Sidebar>
           {links.map((link) => (
