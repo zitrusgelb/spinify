@@ -58,7 +58,7 @@ function Sidebar({ children }: { children: React.ReactNode }) {
 
 function Content({ children }: { children: React.ReactNode }) {
   return (
-    <div id="page-container" className="flex-1 mt-3 mr-3 mb-3 overflow-auto fade-top fade-bottom">
+    <div id="page-container" className="flex-1 mt-3 mr-3 mb-3 overflow-auto">
       <ApiContextProvider>
         <div
           id="page-content"
