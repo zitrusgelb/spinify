@@ -62,12 +62,12 @@ export default function Page() {
         <div className="text-center text-lg font-light italic">{artist?.genres.join(", ").toUpperCase()}</div>
       </div>
       <div className="flex flex-col w-full items-center">
-        <div className="flex flex-col xl:flex-row items-center w-full md:w-3/4  gap-8">
-          <div className="flex-1 w-full">
+        <div className="flex flex-col xl:flex-row items-center xl:justify-center w-full md:w-3/4  gap-8">
+          <div className="xl:basis-4/10 max-xl:w-full xl:grow-1 xl:shrink-0 xl:w-1">
             <div className="text-2xl font-bold text-center w-full pt-5">Top Tracks</div>
             {loading ? <Spinner /> : <TopTrackList tracks={tracks} />}
           </div>
-          <div className="flex-1 w-full">
+          <div className="xl:basis-4/10 max-xl:w-full xl:grow-1 xl:shrink-0 xl:w-1">
             <div className="text-2xl font-bold text-center w-full pt-5">Albums</div>
             {loading ? <Spinner /> : <AlbumList albums={albums} />}
           </div>
