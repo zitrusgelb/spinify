@@ -153,7 +153,7 @@ const FullScreenPlayer: React.FC<FullScreenPlayerProps> = ({ isOpen, onClose }) 
   ]
 
   return (
-    <div
+    <dialog
       onClick={handleOverlayClick}
       className="fixed inset-0 z-50 flex items-center justify-center backdrop-blur-md bg-black/20"
     >
@@ -235,7 +235,7 @@ const FullScreenPlayer: React.FC<FullScreenPlayerProps> = ({ isOpen, onClose }) 
           </div>
         </div>
       </div>
-    </div>
+    </dialog>
   )
 }
 
