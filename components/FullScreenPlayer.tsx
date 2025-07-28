@@ -31,16 +31,6 @@ const FullScreenPlayer: React.FC<FullScreenPlayerProps> = ({ isOpen, onClose }) 
   )
 
   useEffect(() => {
-    if (isOpen && dialogRef.current && !dialogRef.current.open) {
-      try {
-        dialogRef.current.showModal()
-      } catch (e) {
-        console.error("Failed to show dialog:", e)
-      }
-    }
-  }, [isOpen])
-
-  useEffect(() => {
     if (!isOpen) return
     window.addEventListener("keydown", handleKeyDown)
     return () => {
@@ -48,7 +38,7 @@ const FullScreenPlayer: React.FC<FullScreenPlayerProps> = ({ isOpen, onClose }) 
     }
   }, [isOpen, handleKeyDown])
 
-  if (!accessToken) return null
+  if (!accessToken || !isOpen) return null
 
   const handleOverlayClick = () => onClose()
   const stopPropagation = (e: React.MouseEvent) => e.stopPropagation()
@@ -129,7 +119,7 @@ const FullScreenPlayer: React.FC<FullScreenPlayerProps> = ({ isOpen, onClose }) 
   ]
 
   return (
-    <dialog
+    <div
       ref={dialogRef}
       onClick={handleOverlayClick}
       className="fixed inset-0 z-50 flex items-center justify-center backdrop-blur-md bg-black/20"
@@ -225,6 +215,13 @@ const FullScreenPlayer: React.FC<FullScreenPlayerProps> = ({ isOpen, onClose }) 
                 <rect x="201" y="100" width="19" height="29" fill="var(--color-accent)" />
                 <rect x="144" y="91" width="19" height="33" fill="var(--color-accent)" />
               </svg>
+              {currentTrack?.album.images?.[0]?.url && (
+                <img
+                  src={currentTrack.album.images[0].url}
+                  alt={currentTrack.name}
+                  className="w-full h-full object-cover absolute inset-0 z-0"
+                />
+              )}
               <div className="w-2 h-2 bg-black rounded-full absolute z-10" />
               <div className="absolute bottom-4 left-4 text-white">
                 <Volume2 size={24} />
@@ -242,11 +239,9 @@ const FullScreenPlayer: React.FC<FullScreenPlayerProps> = ({ isOpen, onClose }) 
           <div className="flex flex-col justify-between flex-1 h-full">
             <div>
               {currentTrack && (
-                <>
-                  <h2 className="text-4xl font-bold text-[var(--color-secondary)]">
-                    {currentTrack.name} – {currentTrack.artists.map((a) => a.name).join(", ")}
-                  </h2>
-                </>
+                <h2 className="text-4xl font-bold text-[var(--color-secondary)]">
+                  {currentTrack.name} – {currentTrack.artists.map((a) => a.name).join(", ")}
+                </h2>
               )}
 
               <div className="mt-8 space-y-4 text-base">
@@ -254,9 +249,7 @@ const FullScreenPlayer: React.FC<FullScreenPlayerProps> = ({ isOpen, onClose }) 
                   <div className="flex items-center space-x-3" key={i}>
                     <img src={track.album.images[0]?.url} className="w-8 h-8 rounded" alt="Track thumbnail" />
                     <div>
-                      <div>
-                        {track.name} – {track.artists.map((a) => a.name).join(", ")}
-                      </div>
+                      {track.name} – {track.artists.map((a) => a.name).join(", ")}
                     </div>
                   </div>
                 ))}
@@ -278,7 +271,7 @@ const FullScreenPlayer: React.FC<FullScreenPlayerProps> = ({ isOpen, onClose }) 
           </div>
         </div>
       </div>
-    </dialog>
+    </div>
   )
 }
 
