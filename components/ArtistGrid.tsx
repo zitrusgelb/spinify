@@ -1,10 +1,10 @@
-import { Artist } from "@spotify/web-api-ts-sdk"
-import { Grid } from "components/Grid"
+import { Artist } from '@spotify/web-api-ts-sdk'
+import { Grid } from 'components/Grid'
 
 export default function ArtistGrid({ artists }: { artists: Artist[] }) {
   return (
     <Grid>
-      {artists.map((artist) => (
+      {artists.map(artist => (
         <a href={`/artist/${artist.id}`} key={artist.id}>
           <ArtistElement thumbnail={artist.images[0].url} title={artist.name} />
         </a>
@@ -20,7 +20,7 @@ function ArtistElement({ thumbnail, title }: { thumbnail: string | null; title: 
         {title}
       </div>
       <img
-        src={thumbnail ?? ""}
+        src={thumbnail ?? ''}
         alt={title}
         className="max-w-64 max-h-64 min-h-32 min-w-32 rounded-full object-cover"
       />

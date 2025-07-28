@@ -1,4 +1,4 @@
-import { SimplifiedAlbum } from "@spotify/web-api-ts-sdk"
+import { SimplifiedAlbum } from '@spotify/web-api-ts-sdk'
 
 export default function AlbumList({ albums }: { albums: SimplifiedAlbum[] }) {
   return (
@@ -21,10 +21,12 @@ function AlbumElement({ album }: { album: SimplifiedAlbum }) {
           {album.name}
         </div>
         <div className="text-sm text-left overflow-hidden overflow-ellipsis whitespace-nowrap">
-          {album.artists.map((a) => a.name).join(", ")}
+          {album.artists.map(a => a.name).join(', ')}
         </div>
       </div>
-      <div className="content-center text-sm pr-5 font-light text-right">{album.release_date.substring(0, 4)}</div>
+      <div className="content-center text-sm pr-5 font-light text-right">
+        {album.release_date.substring(0, 4)}
+      </div>
       <hr />
     </div>
   )

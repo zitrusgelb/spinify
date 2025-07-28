@@ -1,7 +1,18 @@
-import React, { useContext, useEffect, useState, useCallback, useRef } from "react"
-import { Heart, MoreHorizontal, Play, Plus, Repeat, Shuffle, SkipBack, SkipForward, Volume2, X } from "lucide-react"
-import ApiContext from "./ApiContext"
-import useSpotifyPlayer from "./player"
+import React, { useContext, useEffect, useState, useCallback, useRef } from 'react'
+import {
+  Heart,
+  MoreHorizontal,
+  Play,
+  Plus,
+  Repeat,
+  Shuffle,
+  SkipBack,
+  SkipForward,
+  Volume2,
+  X,
+} from 'lucide-react'
+import ApiContext from './ApiContext'
+import useSpotifyPlayer from './player'
 
 interface FullScreenPlayerProps {
   isOpen: boolean
@@ -9,32 +20,30 @@ interface FullScreenPlayerProps {
 }
 
 const FullScreenPlayer: React.FC<FullScreenPlayerProps> = ({ isOpen, onClose }) => {
-  const { token: accessToken } = useContext(ApiContext)
+  const { token: accessToken, api } = useContext(ApiContext)
   const { player, playbackState } = useSpotifyPlayer(accessToken)
-  const [currentTrack, setCurrentTrack] = useState<Spotify.Track | null>(null)
   const [queue, setQueue] = useState<Spotify.Track[]>([])
 
   const dialogRef = useRef<HTMLDialogElement>(null)
 
   useEffect(() => {
     if (playbackState) {
-      setCurrentTrack(playbackState.track_window.current_track)
       setQueue(playbackState.track_window.next_tracks.slice(0, 2))
     }
   }, [playbackState])
 
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose()
+      if (e.key === 'Escape') onClose()
     },
-    [onClose],
+    [onClose]
   )
 
   useEffect(() => {
     if (!isOpen) return
-    window.addEventListener("keydown", handleKeyDown)
+    window.addEventListener('keydown', handleKeyDown)
     return () => {
-      window.removeEventListener("keydown", handleKeyDown)
+      window.removeEventListener('keydown', handleKeyDown)
     }
   }, [isOpen, handleKeyDown])
 
@@ -43,64 +52,54 @@ const FullScreenPlayer: React.FC<FullScreenPlayerProps> = ({ isOpen, onClose }) 
   const handleOverlayClick = () => onClose()
   const stopPropagation = (e: React.MouseEvent) => e.stopPropagation()
 
-  const skipToNext = () => player?.nextTrack()
+  const skipToNext = () => {
+    console.log('skipToNext')
+    player?.nextTrack()
+  }
   const skipToPrevious = () => player?.previousTrack()
 
   const toggleShuffle = async () => {
-    await fetch("https://api.spotify.com/v1/me/player/shuffle?state=true", {
-      method: "PUT",
-      headers: { Authorization: `Bearer ${accessToken}` },
-    })
+    await api.player.togglePlaybackShuffle(!playbackState?.shuffle)
   }
 
   const toggleRepeat = async () => {
-    await fetch("https://api.spotify.com/v1/me/player/repeat?state=context", {
-      method: "PUT",
-      headers: { Authorization: `Bearer ${accessToken}` },
-    })
+    await api.player.setRepeatMode(playbackState?.repeat_mode === 1 ? 'off' : 'track')
   }
 
   const addToLibrary = async () => {
-    const trackId = currentTrack?.id
+    const trackId = playbackState?.track_window.current_track?.id
     if (!trackId) return
-    await fetch(`https://api.spotify.com/v1/me/tracks?ids=${trackId}`, {
-      method: "PUT",
-      headers: { Authorization: `Bearer ${accessToken}` },
-    })
+    await api.currentUser.tracks.saveTracks([trackId])
   }
 
   const addToQueue = async () => {
-    const trackUri = currentTrack?.uri
+    const trackUri = playbackState?.track_window.current_track?.uri
     if (!trackUri) return
-    await fetch(`https://api.spotify.com/v1/me/player/queue?uri=${trackUri}`, {
-      method: "POST",
-      headers: { Authorization: `Bearer ${accessToken}` },
-    })
+    await api.player.addItemToPlaybackQueue(trackUri)
   }
 
   const togglePlay = () => {
-    if (!playbackState) return
-    playbackState.paused ? player?.resume() : player?.pause()
+    player?.togglePlay()
   }
 
   const handleControl = (action: string) => {
     switch (action) {
-      case "forward":
+      case 'forward':
         skipToNext()
         break
-      case "backward":
+      case 'backward':
         skipToPrevious()
         break
-      case "shuffle":
+      case 'shuffle':
         toggleShuffle()
         break
-      case "loop":
+      case 'loop':
         toggleRepeat()
         break
-      case "like":
+      case 'like':
         addToLibrary()
         break
-      case "add":
+      case 'add':
         addToQueue()
         break
       default:
@@ -109,20 +108,21 @@ const FullScreenPlayer: React.FC<FullScreenPlayerProps> = ({ isOpen, onClose }) 
   }
 
   const controls = [
-    { icon: <SkipBack size={20} />, action: "backward" },
-    { icon: <SkipForward size={20} />, action: "forward" },
-    { icon: <Plus size={20} />, action: "add" },
-    { icon: <Shuffle size={20} />, action: "shuffle" },
-    { icon: <Repeat size={20} />, action: "loop" },
-    { icon: <Heart size={20} />, action: "like" },
-    { icon: <MoreHorizontal size={20} />, action: "more" },
+    { icon: <SkipBack size={20} />, action: 'backward' },
+    { icon: <SkipForward size={20} />, action: 'forward' },
+    { icon: <Plus size={20} />, action: 'add' },
+    { icon: <Shuffle size={20} />, action: 'shuffle' },
+    { icon: <Repeat size={20} />, action: 'loop' },
+    { icon: <Heart size={20} />, action: 'like' },
+    { icon: <MoreHorizontal size={20} />, action: 'more' },
   ]
 
   return (
     <div
       ref={dialogRef}
+      open={isOpen}
       onClick={handleOverlayClick}
-      className="fixed inset-0 z-50 flex items-center justify-center backdrop-blur-md bg-black/20"
+      className="fixed inset-0 flex items-center justify-center backdrop-blur-md bg-black/20"
     >
       <div
         onClick={stopPropagation}
@@ -133,22 +133,45 @@ const FullScreenPlayer: React.FC<FullScreenPlayerProps> = ({ isOpen, onClose }) 
       >
         <button
           onClick={onClose}
-          className="absolute top-15 right-15 text-white hover:text-red-400 transition-colors"
+          className="absolute top-4  right-4 text-white hover:text-red-400 transition-colors"
           aria-label="Close player"
         >
           <X size={28} />
         </button>
 
+        {playbackState?.track_window.current_track && (
+          <>
+            <h2 className="text-3xl font-bold text-primary text-wrap">
+              {playbackState?.track_window.current_track.name}
+            </h2>
+            <h3 className="text-xl font-bold text-primary text-wrap">
+              {playbackState?.track_window.current_track.artists.map(a => a.name).join(', ')}
+            </h3>
+            {playbackState?.track_window.current_track.album && (
+              <p className="text-lg text-black mt-2">
+                Album: {playbackState?.track_window.current_track.album.name}
+              </p>
+            )}
+          </>
+        )}
+
         <div className="text-white flex flex-1 gap-8 items-center justify-between">
-          <div className="flex-1 basis-1/3 flex justify-start h-full">
-            <div className="m-auto aspect-square w-full max-w-[600px] max-h-[80vh] bg-[var(--color-primary)] rounded-[2rem] shadow-inner flex items-center justify-center relative overflow-hidden">
+          <div className="w-1/3 flex justify-start h-full">
+            <div className="m-auto aspect-square w-full max-h-[80vh] bg-primary rounded-4xl shadow-inner flex items-center justify-center relative overflow-hidden">
+              {playbackState?.track_window.current_track?.album.images?.[0]?.url && (
+                <img
+                  src={playbackState?.track_window.current_track?.album.images[0].url}
+                  alt={playbackState?.track_window.current_track?.name}
+                  className="w-95/100 h-95/100 left-5/200 top-5/200 object-cover absolute inset-0 rounded-full animate-vinyl"
+                />
+              )}
               <svg
                 width="237"
                 height="427"
                 viewBox="0 0 237 427"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                className="absolute top-0 right-0 w-[30%] h-auto opacity-100 pointer-events-none"
+                className="absolute top-0 w-1/3 right-0 h-auto opacity-100 pointer-events-none"
               >
                 <path
                   fillRule="evenodd"
@@ -215,13 +238,6 @@ const FullScreenPlayer: React.FC<FullScreenPlayerProps> = ({ isOpen, onClose }) 
                 <rect x="201" y="100" width="19" height="29" fill="var(--color-accent)" />
                 <rect x="144" y="91" width="19" height="33" fill="var(--color-accent)" />
               </svg>
-              {currentTrack?.album.images?.[0]?.url && (
-                <img
-                  src={currentTrack.album.images[0].url}
-                  alt={currentTrack.name}
-                  className="w-full h-full object-cover absolute inset-0 z-0"
-                />
-              )}
               <div className="absolute bottom-4 left-4 text-white">
                 <Volume2 size={24} />
               </div>
@@ -235,27 +251,18 @@ const FullScreenPlayer: React.FC<FullScreenPlayerProps> = ({ isOpen, onClose }) 
             </div>
           </div>
 
-          <div className="flex flex-col justify-between flex-1 h-full">
+          <div className="flex flex-col justify-between w-2/3 h-full">
             <div>
-              {currentTrack && (
-                <>
-                  <h2 className="text-4xl font-bold text-[var(--color-secondary)]">
-                    {currentTrack.name} – {currentTrack.artists.map((a) => a.name).join(", ")}
-                  </h2>
-                  {currentTrack.album && (
-                    <p className="text-lg text-white mt-2">
-                      Album: {currentTrack.album.name} ({new Date(currentTrack.album.release_date).getFullYear()})
-                    </p>
-                  )}
-                </>
-              )}
-
               <div className="mt-8 space-y-4 text-base">
                 {queue.map((track, i) => (
                   <div className="flex items-center space-x-3" key={i}>
-                    <img src={track.album.images[0]?.url} className="w-8 h-8 rounded" alt="Track thumbnail" />
+                    <img
+                      src={track.album.images[0]?.url}
+                      className="w-8 h-8 rounded"
+                      alt="Track thumbnail"
+                    />
                     <div>
-                      {track.name} – {track.artists.map((a) => a.name).join(", ")}
+                      {track.name} – {track.artists.map(a => a.name).join(', ')}
                     </div>
                   </div>
                 ))}

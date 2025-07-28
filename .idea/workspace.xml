@@ -4,14 +4,56 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="de68e6ea-2f74-4e49-afed-3ebe742414b1" name="Changes" comment="fix: added arm">
+    <list default="true" id="de68e6ea-2f74-4e49-afed-3ebe742414b1" name="Changes" comment="feat(searchbar): use global styling">
+      <change afterPath="$PROJECT_DIR$/components/PlayerContext.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.prettierrc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/AlbumGrid.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/AlbumGrid.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ApiContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ApiContext.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ArtistGrid.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ArtistGrid.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/FullScreenPlayer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/FullScreenPlayer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Grid.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Grid.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ItemMixer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ItemMixer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Link.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Link.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/LoadingSpinner.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/LoadingSpinner.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/MainElement.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/MainElement.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/PlaylistGrid.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/PlaylistGrid.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/TrackGrid.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/TrackGrid.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/TrackList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/TrackList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/TracklistView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/TracklistView.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/player.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/eslint.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/eslint.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/layouts/LayoutDefault.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/layouts/LayoutDefault.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/layouts/tailwind.css" beforeDir="false" afterPath="$PROJECT_DIR$/layouts/tailwind.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/+Head.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/+Head.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/+config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/pages/+config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/+onPageTransitionEnd.ts" beforeDir="false" afterPath="$PROJECT_DIR$/pages/+onPageTransitionEnd.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/+onPageTransitionStart.ts" beforeDir="false" afterPath="$PROJECT_DIR$/pages/+onPageTransitionStart.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/_error/+Page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/_error/+Page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/album/@id/+Page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/album/@id/+Page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/artist/@id/+Page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/artist/@id/+Page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/artist/@id/AlbumList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/artist/@id/AlbumList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/artist/@id/TopTrackList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/artist/@id/TopTrackList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/index/+Page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index/+Page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/playlist/@id/+Page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/playlist/@id/+Page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/playlists/+Page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/playlists/+Page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prettier.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/prettier.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/time.ts" beforeDir="false" afterPath="$PROJECT_DIR$/utils/time.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vite.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/vite.config.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript JSX File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -49,25 +91,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Node.js.+config.ts.executor&quot;: &quot;Run&quot;,
-    &quot;Node.js.player.ts.executor&quot;: &quot;Run&quot;,
-    &quot;Node.js.vite.config.ts.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;#25 on player&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_interpreter_path&quot;: &quot;C:/Users/jakob/AppData/Roaming/JetBrains/WebStorm2025.1/node/versions/22.17.1/node&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;settings.nodejs&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\jakob\\WebstormProjects\\spinify\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Node.js.+config.ts.executor": "Run",
+    "Node.js.player.ts.executor": "Run",
+    "Node.js.vite.config.ts.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "player",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_interpreter_path": "C:/Users/jakob/AppData/Roaming/JetBrains/WebStorm2025.1/node/versions/22.17.1/node",
+    "nodejs_package_manager_path": "npm",
+    "npm.dev.executor": "Run",
+    "settings.editor.selected.configurable": "settings.javascript.prettier",
+    "ts.external.directory.path": "/Users/adrianstelter/Developer/spinify/node_modules/typescript/lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />

@@ -9,7 +9,10 @@ export default function shuffle(toBeShuffled: any): any {
     currentIndex--
 
     // And swap it with the current element.
-    ;[toBeShuffled[currentIndex], toBeShuffled[randomIndex]] = [toBeShuffled[randomIndex], toBeShuffled[currentIndex]]
+    ;[toBeShuffled[currentIndex], toBeShuffled[randomIndex]] = [
+      toBeShuffled[randomIndex],
+      toBeShuffled[currentIndex],
+    ]
   }
   return toBeShuffled
 }
