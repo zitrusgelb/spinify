@@ -1,24 +1,21 @@
 import { useContext, useEffect, useState } from "react"
 import ApiContext from "components/ApiContext"
 import { Artist } from "@spotify/web-api-ts-sdk"
+import ImageRowElement from "./ImageRowElement"
 import { Buttons } from "./Buttons"
-import LoadingIcon from "./LoadingIcon"
 import Track = Spotify.Track
 
-export type TimeRange = "Last 30 Days" | "Last 6 Months" | "Last Year"
+type TimeRange = "Last 30 Days" | "Last 6 Months" | "Last Year"
 type TopItem = "artists" | "tracks"
 type TimeRangeApi = "short_term" | "medium_term" | "long_term"
 
-interface MainElementProps {
+interface SectionElementProps {
   title: string
   selectedRange: TimeRange
   onRangeChange: (range: TimeRange) => void
-  buttons?: boolean
-  topTracks: Track[]
-  topArtists: Artist[]
-  followedArtists: Artist[]
-  loading: boolean
+  buttons: boolean
 }
+
 interface FetchTopItemsProps {
   type: TopItem
   timeRange: TimeRangeApi
@@ -79,6 +76,7 @@ export default function Page() {
   const getTopArtists = async () => {
     const apiRange = rangeMap[selectedRanges["Top Artists"]]
     const response = await fetchTopItems({ type: "artists", timeRange: apiRange })
+
     const mappedArtists: Artist[] = response.items.map((item: any) => ({
       id: item.id,
       name: item.name,
@@ -93,6 +91,7 @@ export default function Page() {
 
   const getFollowedArtists = async () => {
     const response = await fetchFollowedArtists()
+
     const mappedFollowedArtists: Artist[] = response.artists.items.map((item: any) => ({
       id: item.id,
       name: item.name,
@@ -115,63 +114,31 @@ export default function Page() {
   return (
     <div className="flex flex-col gap-5 p-5 w-full">
       {Object.keys(selectedRanges).map((section) => (
-        <MainElement
-          key={section}
-          title={section}
-          selectedRange={selectedRanges[section]}
-          onRangeChange={(range) => handleRangeChange(section, range)}
-          buttons={section !== "Followed Artists"}
-          topTracks={topTracks}
-          topArtists={topArtists}
-          followedArtists={followedArtists}
-          loading={
-            section === "Top Tracks" ? loading.tracks : section === "Top Artists" ? loading.artists : loading.followed
-          }
-        />
+        <div key={section} className="flex flex-col">
+          <SectionElement
+            key={section}
+            title={section}
+            selectedRange={selectedRanges[section]}
+            onRangeChange={(range) => handleRangeChange(section, range)}
+            buttons={section !== "Followed Artists"}
+          />
+          <ImageRowElement
+            items={section === "Top Tracks" ? topTracks : section === "Top Artists" ? topArtists : followedArtists}
+            loading={
+              section === "Top Tracks" ? loading.tracks : section === "Top Artists" ? loading.artists : loading.followed
+            }
+          />
+        </div>
       ))}
     </div>
   )
 }
 
-function MainElement({
-  title,
-  selectedRange,
-  onRangeChange,
-  buttons = true,
-  topTracks,
-  topArtists,
-  followedArtists,
-  loading,
-}: MainElementProps) {
-  const items = title === "Top Tracks" ? topTracks : title === "Top Artists" ? topArtists : followedArtists
-
+function SectionElement({ title, selectedRange, onRangeChange, buttons }: SectionElementProps) {
   return (
-    <div className="flex flex-col">
-      <div className=" flex flex-row p-5 gap-5">
-        <div className=" font-bold text-3xl text-secondary bg-primary rounded-3xl w-fit h-fit p-5">{title}</div>
-        <div>{buttons && <Buttons selected={selectedRange} onSelect={onRangeChange} />}</div>
-      </div>
-      {loading ? (
-        <LoadingIcon />
-      ) : (
-        items.length > 0 && (
-          <div className="flex flex-row gap-4 overflow-x-auto whitespace-nowrap p-5 items-center">
-            {items.map((item) => {
-              return (
-                <div key={item.id} className="inline-flex flex-col items-center">
-                  <img
-                    key={item.id}
-                    src={item.image}
-                    alt={item.name}
-                    className="max-w-45 max-h-45 rounded-3xl object-cover"
-                  />
-                  <p className="mt-2 text-center text-sm truncate w-45"> {item.name}</p>
-                </div>
-              )
-            })}
-          </div>
-        )
-      )}
+    <div className=" flex flex-row p-5 gap-5">
+      <div className=" font-bold text-3xl text-secondary bg-primary rounded-3xl w-fit h-fit p-5">{title}</div>
+      <div>{buttons && <Buttons selected={selectedRange} onSelect={onRangeChange} />}</div>
     </div>
   )
 }
