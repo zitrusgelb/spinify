@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react"
+import { useCallback, useContext, useEffect, useState } from "react"
 import ApiContext from "components/ApiContext"
 import { Artist, Track, SimplifiedAlbum } from "@spotify/web-api-ts-sdk"
 import { usePageContext } from "vike-react/usePageContext"
@@ -22,26 +22,26 @@ export default function Page() {
       .finally(() => setLoading(false))
   }, [])
 
-  const fetchAlbums = async () => {
+  const fetchAlbums = useCallback(async () => {
     setLoading(true)
     const albums = await api.artists.albums(id)
     if (!albums) return
     setAlbums(albums.items.slice(0, 5))
-  }
+  }, [id])
 
-  const fetchTopTracks = async () => {
+  const fetchTopTracks = useCallback(async () => {
     setLoading(true)
     const topTracks = await api.artists.topTracks(id, "DE")
     if (!topTracks) return
     setTracks(topTracks.tracks.slice(0, 5))
-  }
+  }, [id])
 
-  const fetchArtist = async () => {
+  const fetchArtist = useCallback(async () => {
     setLoading(true)
     const artist = await api.artists.get(id)
     if (!artist) return
     setArtist(artist)
-  }
+  }, [id])
 
   return (
     <div className="flex flex-col items-center">
