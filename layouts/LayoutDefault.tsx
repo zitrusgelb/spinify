@@ -1,7 +1,7 @@
 import "./tailwind.css"
 
 import logoUrl from "assets/logo.png"
-import { ChartLine, Disc3, ListMusic, Settings } from "lucide-react"
+import { ChartLine, Disc3, ListMusic } from "lucide-react"
 
 import { Link } from "components/Link.js"
 import React from "react"
@@ -22,11 +22,6 @@ const links = [
     title: "Playlists",
     href: "/playlists",
     Icon: ListMusic,
-  },
-  {
-    title: "Options",
-    href: "/options",
-    Icon: Settings,
   },
 ]
 
