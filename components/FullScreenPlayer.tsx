@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState, useCallback } from "react"
 import { Heart, MoreHorizontal, Play, Plus, Repeat, Shuffle, SkipBack, SkipForward, Volume2, X } from "lucide-react"
 import ApiContext from "./ApiContext"
-import Player = Spotify.Player
+import useSpotifyPlayer from "./player"
 
 interface FullScreenPlayerProps {
   isOpen: boolean
@@ -10,6 +10,7 @@ interface FullScreenPlayerProps {
 
 const FullScreenPlayer: React.FC<FullScreenPlayerProps> = ({ isOpen, onClose }) => {
   const { token: accessToken } = useContext(ApiContext)
+  const { player, playbackState } = useSpotifyPlayer(accessToken)
 
   const [currentTrack, setCurrentTrack] = useState<Spotify.Track | null>(null)
   const [queue, setQueue] = useState<Spotify.Track[]>([])
@@ -57,7 +58,7 @@ const FullScreenPlayer: React.FC<FullScreenPlayerProps> = ({ isOpen, onClose }) 
   }
 
   const toggleRepeat = async () => {
-    await fetch(`https://api.spotify.com/v1/me/player/repeat?state=context`, {
+    await fetch("https://api.spotify.com/v1/me/player/repeat?state=context", {
       method: "PUT",
       headers: { Authorization: `Bearer ${accessToken}` },
     })
