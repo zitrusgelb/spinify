@@ -23,7 +23,7 @@ export default function Search() {
     const data = await api.search(query, ["album", "artist", "playlist", "track"])
 
     setResult(data)
-  }, [query])
+  }, [api, query])
 
 
   useEffect(() => {
