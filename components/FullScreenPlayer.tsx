@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react"
+import React, { useContext, useEffect, useState, useCallback } from "react"
 import { Heart, MoreHorizontal, Play, Plus, Repeat, Shuffle, SkipBack, SkipForward, Volume2, X } from "lucide-react"
 import ApiContext from "./ApiContext"
 
@@ -10,18 +10,21 @@ interface FullScreenPlayerProps {
 const FullScreenPlayer: React.FC<FullScreenPlayerProps> = ({ isOpen, onClose }) => {
   const { token: accessToken } = useContext(ApiContext)
   const [currentTrack, setCurrentTrack] = useState<any>(null)
-  const [queue, setQueue] = useState<any[]>([])
+  const [queue, setQueue] = useState<[]>([])
+
+  const handleKeyDown = useCallback(
+    (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose()
+    },
+    [onClose],
+  )
 
   useEffect(() => {
     if (!isOpen || !accessToken) return
 
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose()
-    }
+    const headers = { Authorization: `Bearer ${accessToken}` }
 
     const fetchTrackData = async () => {
-      const headers = { Authorization: `Bearer ${accessToken}` }
-
       try {
         const nowPlayingRes = await fetch("https://api.spotify.com/v1/me/player/currently-playing", { headers })
         if (nowPlayingRes.ok) {
@@ -40,11 +43,20 @@ const FullScreenPlayer: React.FC<FullScreenPlayerProps> = ({ isOpen, onClose }) 
     }
 
     fetchTrackData()
-    window.addEventListener("keydown", handleKeyDown)
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown)
+  }, [isOpen, accessToken])
+
+  useEffect(() => {
+    const listener = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && isOpen) {
+        onClose()
+      }
     }
-  }, [isOpen, onClose, accessToken])
+
+    window.addEventListener("keydown", listener)
+    return () => {
+      window.removeEventListener("keydown", listener)
+    }
+  }, [isOpen, onClose])
 
   if (!isOpen || !accessToken) return null
 
@@ -52,40 +64,23 @@ const FullScreenPlayer: React.FC<FullScreenPlayerProps> = ({ isOpen, onClose }) 
   const stopPropagation = (e: React.MouseEvent) => e.stopPropagation()
 
   const skipToNext = async () => {
-    await fetch("https://api.spotify.com/v1/me/player/next", {
-      method: "POST",
-      headers: { Authorization: `Bearer ${accessToken}` },
-    })
+    player?.nextTrack()
   }
 
   const skipToPrevious = async () => {
-    await fetch("https://api.spotify.com/v1/me/player/previous", {
-      method: "POST",
-      headers: { Authorization: `Bearer ${accessToken}` },
-    })
+    player?.previousTrack()
   }
 
   const toggleShuffle = async () => {
-    await fetch(`https://api.spotify.com/v1/me/player/shuffle?state=true`, {
-      method: "PUT",
-      headers: { Authorization: `Bearer ${accessToken}` },
-    })
+    player?.toggle_shuffle()
   }
 
   const toggleRepeat = async () => {
-    await fetch(`https://api.spotify.com/v1/me/player/repeat?state=context`, {
-      method: "PUT",
-      headers: { Authorization: `Bearer ${accessToken}` },
-    })
+    player?.toggle_repeat()
   }
 
   const addToLibrary = async () => {
-    const trackId = currentTrack?.id
-    if (!trackId) return
-    await fetch(`https://api.spotify.com/v1/me/tracks?ids=${trackId}`, {
-      method: "PUT",
-      headers: { Authorization: `Bearer ${accessToken}` },
-    })
+    player?.add_library()
   }
 
   const addToQueue = async () => {
@@ -98,16 +93,7 @@ const FullScreenPlayer: React.FC<FullScreenPlayerProps> = ({ isOpen, onClose }) 
   }
 
   const togglePlay = async () => {
-    const res = await fetch("https://api.spotify.com/v1/me/player", {
-      headers: { Authorization: `Bearer ${accessToken}` },
-    })
-    const data = await res.json()
-    const isPlaying = data?.is_playing
-
-    await fetch(`https://api.spotify.com/v1/me/player/${isPlaying ? "pause" : "play"}`, {
-      method: "PUT",
-      headers: { Authorization: `Bearer ${accessToken}` },
-    })
+    player?.toggle_play()
   }
 
   const handleControl = (action: string) => {
