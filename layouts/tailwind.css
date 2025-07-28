@@ -30,3 +30,15 @@
         border-radius: 8px;
     }
 }
+
+@utility scrollbar-transparent {
+    &::-webkit-scrollbar {
+        background-color: transparent;
+        border-radius: 8px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: transparent;
+        border-radius: 8px;
+    }
+}
