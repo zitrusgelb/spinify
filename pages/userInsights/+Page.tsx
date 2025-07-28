@@ -18,9 +18,9 @@ const rangeMap: Record<TimeRange, TimeRangeApi> = {
 
 export default function Page() {
   const [selectedRanges, setSelectedRanges] = useState<Record<string, TimeRange>>({
-    "Top Tracks": "Last 30 Days",
-    "Top Artists": "Last 30 Days",
-    "Followed Artists": "Last 30 Days",
+    TopTracks: "Last 30 Days",
+    TopArtists: "Last 30 Days",
+    FollowedArtists: "Last 30 Days",
   })
   const { api, user } = useContext(ApiContext)
   const [topTracks, setTopTracks] = useState<Track[]>([])
@@ -32,28 +32,28 @@ export default function Page() {
     if (!user) return
     setLoading((l) => ({ ...l, tracks: true }))
     getTopTracks().finally(() => setLoading((l) => ({ ...l, tracks: false })))
-  }, [user, selectedRanges["Top Tracks"]])
+  }, [user, selectedRanges["TopTracks"]])
 
   useEffect(() => {
     if (!user) return
     setLoading((l) => ({ ...l, artists: true }))
     getTopArtists().finally(() => setLoading((l) => ({ ...l, artists: false })))
-  }, [user, selectedRanges["Top Artists"]])
+  }, [user, selectedRanges["TopArtists"]])
 
   useEffect(() => {
     if (!user) return
     setLoading((l) => ({ ...l, followed: true }))
     getFollowedArtists().finally(() => setLoading((l) => ({ ...l, followed: false })))
-  }, [user, selectedRanges["Followed Artists"]])
+  }, [user, selectedRanges["FollowedArtists"]])
 
   const getTopTracks = useCallback(async () => {
-    const apiRange = rangeMap[selectedRanges["Top Tracks"]]
+    const apiRange = rangeMap[selectedRanges["TopTracks"]]
     const response = await api.currentUser.topItems("tracks", apiRange, 50, 0)
     setTopTracks(response.items)
   }, [api, selectedRanges])
 
   const getTopArtists = useCallback(async () => {
-    const apiRange = rangeMap[selectedRanges["Top Artists"]]
+    const apiRange = rangeMap[selectedRanges["TopArtists"]]
     const response = await api.currentUser.topItems("artists", apiRange, 50, 0)
     setTopArtists(response.items)
   }, [api, selectedRanges])
@@ -74,14 +74,14 @@ export default function Page() {
     <div className="flex flex-col p-5 w-full">
       <MainElementWithButtons
         title="Top Tracks"
-        selectedRange={selectedRanges["Top Tracks"]}
-        onRangeChange={(range) => handleRangeChange("Top Tracks", range)}
+        selectedRange={selectedRanges["TopTracks"]}
+        onRangeChange={(range) => handleRangeChange("TopTracks", range)}
       />
       {loading.tracks ? <Spinner /> : <TrackGrid tracks={topTracks} />}
       <MainElementWithButtons
         title="Top Artists"
-        selectedRange={selectedRanges["Top Artists"]}
-        onRangeChange={(range) => handleRangeChange("Top Artists", range)}
+        selectedRange={selectedRanges["TopArtists"]}
+        onRangeChange={(range) => handleRangeChange("TopArtists", range)}
       />
       {loading.artists ? <Spinner /> : <ArtistGrid artists={topArtists} />}
       <MainElement title="Followed Artists" />
