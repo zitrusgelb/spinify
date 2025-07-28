@@ -127,13 +127,13 @@ const FullScreenPlayer: React.FC<FullScreenPlayerProps> = ({ isOpen, onClose }) 
   ]
 
   return (
-    <dialog
+    <div
       onClick={handleOverlayClick}
       className="fixed inset-0 z-50 flex items-center justify-center backdrop-blur-md bg-black/20"
     >
       <div
         onClick={stopPropagation}
-        role="dialog"
+        role="div"
         aria-modal="true"
         aria-label="Full Screen Music Player"
         className="rounded-xl shadow-xl w-[95vw] h-[90vh] bg-gradient p-10 relative flex flex-col max-w-screen-xl"
@@ -209,7 +209,7 @@ const FullScreenPlayer: React.FC<FullScreenPlayerProps> = ({ isOpen, onClose }) 
           </div>
         </div>
       </div>
-    </dialog>
+    </div>
   )
 }
 
