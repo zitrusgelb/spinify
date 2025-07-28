@@ -47,31 +47,19 @@ export default function Page() {
 
   const getTopTracks = async () => {
     const apiRange = rangeMap[selectedRanges["Top Tracks"]]
-    const response = await fetchTopTracks(apiRange)
+    const response = await api.currentUser.topItems("tracks", apiRange, 50, 0)
     setTopTracks(response.items)
   }
 
   const getTopArtists = async () => {
     const apiRange = rangeMap[selectedRanges["Top Artists"]]
-    const response = await fetchTopArtists(apiRange)
+    const response = await api.currentUser.topItems("artists", apiRange, 50, 0)
     setTopArtists(response.items)
   }
 
   const getFollowedArtists = async () => {
-    const response = await fetchFollowedArtists()
+    const response = await api.currentUser.followedArtists("0", 50)
     setFollowedArtists(response.artists.items)
-  }
-
-  async function fetchTopTracks(timeRange: TimeRangeApi) {
-    return await api.currentUser.topItems("tracks", timeRange, 50, 0)
-  }
-
-  async function fetchTopArtists(timeRange: TimeRangeApi) {
-    return await api.currentUser.topItems("artists", timeRange, 50, 0)
-  }
-
-  async function fetchFollowedArtists() {
-    return await api.currentUser.followedArtists("0", 50)
   }
 
   const handleRangeChange = (title: string, range: TimeRange) => {
