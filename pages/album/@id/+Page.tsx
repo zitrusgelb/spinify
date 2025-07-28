@@ -1,10 +1,8 @@
 import { useContext, useEffect, useState } from "react"
 import ApiContext from "components/ApiContext"
 import { usePageContext } from "vike-react/usePageContext"
-import MainElement from "components/MainElement"
-import Spinner from "components/LoadingSpinner"
 import { Track } from "@spotify/web-api-ts-sdk"
-import TrackList from "components/TrackList"
+import TracklistView from "components/TracklistView"
 
 export default function Page() {
   const { api } = useContext(ApiContext)
@@ -26,17 +24,5 @@ export default function Page() {
     setTracks(await Promise.all(album.tracks.items.map(async (track) => api.tracks.get(track.id))))
   }
 
-  return (
-    <div className="flex flex-col p-5 w-full">
-      <div className="flex flex-row items-center">
-        <img
-          src={thumbnail}
-          alt={albumName}
-          className="max-w-48 max-h-48 min-h-16 min-w-16 m-5 rounded-3xl object-cover"
-        />
-        <MainElement title={loading ? "Loading..." : albumName} />
-      </div>
-      {loading ? <Spinner /> : <TrackList tracks={tracks} />}
-    </div>
-  )
+  return <TracklistView tracks={tracks} imgUrl={thumbnail} imgAlt={albumName} loading={loading} />
 }
