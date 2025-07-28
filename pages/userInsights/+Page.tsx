@@ -94,9 +94,9 @@ export default function Page() {
         selectedRange={selectedRanges["Top Artists"]}
         onRangeChange={(range) => handleRangeChange("Top Artists", range)}
       />
-      {loading.followed ? <Spinner /> : <ArtistGrid artists={topArtists} />}
+      {loading.artists ? <Spinner /> : <ArtistGrid artists={topArtists} />}
       <MainElement title="Followed Artists" />
-      {loading.artists ? <Spinner /> : <ArtistGrid artists={followedArtists} />}
+      {loading.followed ? <Spinner /> : <ArtistGrid artists={followedArtists} />}
     </div>
   )
 }
