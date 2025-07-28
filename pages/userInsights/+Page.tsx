@@ -1,25 +1,14 @@
 import { useContext, useEffect, useState } from "react"
 import ApiContext from "components/ApiContext"
-import { Artist } from "@spotify/web-api-ts-sdk"
-import ImageRowElement from "./ImageRowElement"
-import { Buttons } from "./Buttons"
-import Track = Spotify.Track
+import MainElementWithButtons from "components/MainElementWithButtons"
+import Spinner from "components/LoadingSpinner"
+import TrackGrid from "components/TrackGrid"
+import { Artist, Track } from "@spotify/web-api-ts-sdk"
+import ArtistGrid from "components/ArtistGrid"
+import MainElement from "components/MainElement"
 
-type TimeRange = "Last 30 Days" | "Last 6 Months" | "Last Year"
-type TopItem = "artists" | "tracks"
+export type TimeRange = "Last 30 Days" | "Last 6 Months" | "Last Year"
 type TimeRangeApi = "short_term" | "medium_term" | "long_term"
-
-interface SectionElementProps {
-  title: string
-  selectedRange: TimeRange
-  onRangeChange: (range: TimeRange) => void
-  buttons: boolean
-}
-
-interface FetchTopItemsProps {
-  type: TopItem
-  timeRange: TimeRangeApi
-}
 
 export default function Page() {
   const [selectedRanges, setSelectedRanges] = useState<Record<string, TimeRange>>({
@@ -32,15 +21,11 @@ export default function Page() {
     "Last 6 Months": "medium_term",
     "Last Year": "long_term",
   }
-  const { api, login, user } = useContext(ApiContext)
+  const { api, user } = useContext(ApiContext)
   const [topTracks, setTopTracks] = useState<Track[]>([])
   const [topArtists, setTopArtists] = useState<Artist[]>([])
   const [followedArtists, setFollowedArtists] = useState<Artist[]>([])
   const [loading, setLoading] = useState({ tracks: true, artists: true, followed: true })
-
-  useEffect(() => {
-    login().then(() => console.log("Login successful"))
-  }, [login])
 
   useEffect(() => {
     if (!user) return
@@ -62,42 +47,27 @@ export default function Page() {
 
   const getTopTracks = async () => {
     const apiRange = rangeMap[selectedRanges["Top Tracks"]]
-    const response = await fetchTopItems({ type: "tracks", timeRange: apiRange })
-
-    const mappedTracks: Track[] = response.items.map((item: any) => ({
-      id: item.id,
-      name: item.name,
-      album: item.album,
-      image: item.album.images[0].url,
-    }))
-    setTopTracks(mappedTracks)
+    const response = await fetchTopTracks(apiRange)
+    setTopTracks(response.items)
   }
 
   const getTopArtists = async () => {
     const apiRange = rangeMap[selectedRanges["Top Artists"]]
-    const response = await fetchTopItems({ type: "artists", timeRange: apiRange })
-
-    const mappedArtists: Artist[] = response.items.map((item: any) => ({
-      id: item.id,
-      name: item.name,
-      image: item.images[0].url,
-    }))
-    setTopArtists(mappedArtists)
-  }
-
-  async function fetchTopItems({ type, timeRange }: FetchTopItemsProps) {
-    return await api.currentUser.topItems(type, timeRange, 50, 0)
+    const response = await fetchTopArtists(apiRange)
+    setTopArtists(response.items)
   }
 
   const getFollowedArtists = async () => {
     const response = await fetchFollowedArtists()
+    setFollowedArtists(response.artists.items)
+  }
 
-    const mappedFollowedArtists: Artist[] = response.artists.items.map((item: any) => ({
-      id: item.id,
-      name: item.name,
-      image: item.images[0].url,
-    }))
-    setFollowedArtists(mappedFollowedArtists)
+  async function fetchTopTracks(timeRange: TimeRangeApi) {
+    return await api.currentUser.topItems("tracks", timeRange, 50, 0)
+  }
+
+  async function fetchTopArtists(timeRange: TimeRangeApi) {
+    return await api.currentUser.topItems("artists", timeRange, 50, 0)
   }
 
   async function fetchFollowedArtists() {
@@ -113,32 +83,20 @@ export default function Page() {
 
   return (
     <div className="flex flex-col gap-5 p-5 w-full">
-      {Object.keys(selectedRanges).map((section) => (
-        <div key={section} className="flex flex-col">
-          <SectionElement
-            key={section}
-            title={section}
-            selectedRange={selectedRanges[section]}
-            onRangeChange={(range) => handleRangeChange(section, range)}
-            buttons={section !== "Followed Artists"}
-          />
-          <ImageRowElement
-            items={section === "Top Tracks" ? topTracks : section === "Top Artists" ? topArtists : followedArtists}
-            loading={
-              section === "Top Tracks" ? loading.tracks : section === "Top Artists" ? loading.artists : loading.followed
-            }
-          />
-        </div>
-      ))}
-    </div>
-  )
-}
-
-function SectionElement({ title, selectedRange, onRangeChange, buttons }: SectionElementProps) {
-  return (
-    <div className=" flex flex-row p-5 gap-5">
-      <div className=" font-bold text-3xl text-secondary bg-primary rounded-3xl w-fit h-fit p-5">{title}</div>
-      <div>{buttons && <Buttons selected={selectedRange} onSelect={onRangeChange} />}</div>
+      <MainElementWithButtons
+        title="Top Tracks"
+        selectedRange={selectedRanges["Top Tracks"]}
+        onRangeChange={(range) => handleRangeChange("Top Tracks", range)}
+      />
+      {loading.tracks ? <Spinner /> : <TrackGrid tracks={topTracks} />}
+      <MainElementWithButtons
+        title="Top Artists"
+        selectedRange={selectedRanges["Top Artists"]}
+        onRangeChange={(range) => handleRangeChange("Top Artists", range)}
+      />
+      {loading.followed ? <Spinner /> : <ArtistGrid artists={topArtists} />}
+      <MainElement title="Followed Artists" />
+      {loading.artists ? <Spinner /> : <ArtistGrid artists={followedArtists} />}
     </div>
   )
 }
