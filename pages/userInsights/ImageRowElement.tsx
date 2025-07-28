@@ -33,3 +33,4 @@ export default function ImageRowElement({ items, loading }: ImageRowElementProps
       )}
     </div>
   )
+}
