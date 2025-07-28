@@ -1,5 +1,4 @@
 import { SimplifiedAlbum } from "@spotify/web-api-ts-sdk"
-import { millisToTime } from "utils/time"
 
 export default function AlbumList({ albums }: { albums: SimplifiedAlbum[] }) {
   return (

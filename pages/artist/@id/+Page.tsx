@@ -5,7 +5,7 @@ import { usePageContext } from "vike-react/usePageContext"
 import TopTrackList from "./TopTrackList"
 import AlbumList from "./AlbumList"
 import Spinner from "components/LoadingSpinner"
-import { Users, UsersIcon } from "lucide-react"
+import { UsersIcon } from "lucide-react"
 
 export default function Page() {
   const { api } = useContext(ApiContext)
