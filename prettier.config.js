@@ -3,7 +3,18 @@
  * @type {import("prettier").Config}
  */
 const config = {
-  printWidth: 120,
-};
+  arrowParens: 'avoid',
+  bracketSpacing: true,
+  jsxBracketSameLine: false,
+  jsxSingleQuote: false,
+  printWidth: 100,
+  proseWrap: 'always',
+  quoteProps: 'as-needed',
+  semi: false,
+  singleQuote: true,
+  tabWidth: 2,
+  trailingComma: 'es5',
+  useTabs: false,
+}
 
-export default config;
+export default config
