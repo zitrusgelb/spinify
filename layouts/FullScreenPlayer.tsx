@@ -117,9 +117,12 @@ const FullScreenPlayer: React.FC<FullScreenPlayerProps> = ({ isOpen, onClose }) 
   const repeatButton = {
     icon:
       playbackState?.repeat_mode === 2 ? (
-        <Repeat1 size={20} className="text-accent" />
+        <Repeat1 size={20} className="text-accent hover:text-black" />
       ) : (
-        <Repeat size={20} className={playbackState?.repeat_mode !== 0 ? 'text-accent' : ''} />
+        <Repeat
+          size={20}
+          className={playbackState?.repeat_mode !== 0 ? 'text-accent hover:text-black' : ''}
+        />
       ),
     action: 'loop',
   }
@@ -188,7 +191,7 @@ const FullScreenPlayer: React.FC<FullScreenPlayerProps> = ({ isOpen, onClose }) 
                 />
                 <button
                   onClick={togglePlay}
-                  className="absolute bottom-4 right-4 p-2 rounded-3xl bg-accent text-primary hover:bg-accent hover:scale-105 hover:shadow-lg transition active:scale-95 active:shadow-md active:bg-accent/80"
+                  className="absolute bottom-4 right-4 p-2 rounded-3xl duration-200 bg-accent text-primary hover:bg-accent hover:scale-105 hover:shadow-lg transition active:scale-95 active:shadow-md active:bg-accent/80"
                   aria-label={playbackState?.paused ? 'Play' : 'Pause'}
                 >
                   {playbackState?.paused ? <Play size={20} /> : <Pause size={20} />}
@@ -225,7 +228,7 @@ const FullScreenPlayer: React.FC<FullScreenPlayerProps> = ({ isOpen, onClose }) 
                     key={i}
                     title={btn.action}
                     onClick={() => handleControl(btn.action)}
-                    className="w-12 h-12 flex items-center justify-center rounded-3xl bg-primary text-secondary hover:bg-accent border-2 border-black transition-transform hover:scale-105 active:shadow-md active:bg-accent/80"
+                    className="w-12 h-12 flex items-center justify-center rounded-3xl bg-primary text-secondary duration-200 hover:bg-accent border-2 border-black transition-transform hover:scale-105 active:scale-95 active:shadow-md active:bg-accent/80"
                   >
                     {btn.icon}
                   </button>
