@@ -174,7 +174,9 @@ const FullScreenPlayer: React.FC<FullScreenPlayerProps> = ({ isOpen, onClose }) 
                   <img
                     src={playbackState?.track_window.current_track?.album.images[0].url}
                     alt={playbackState?.track_window.current_track?.name}
-                    className="w-95/100 h-95/100 left-5/200 top-5/200 object-cover absolute inset-0 rounded-full animate-vinyl"
+                    className={`w-95/100 h-95/100 left-5/200 top-5/200 object-cover absolute inset-0 rounded-full animate-vinyl ${
+                      playbackState?.paused ? 'animation-paused' : ''
+                    }`}
                   />
                 )}
                 <img
