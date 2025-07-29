@@ -48,9 +48,9 @@ const MiniPlayer: React.FC<MiniPlayerProps> = ({ onOpenFullScreen }) => {
         <button
           onClick={togglePlay}
           className="p-2 bg-white text-black rounded-full hover:bg-gray-300 transition"
-          aria-label={playbackState?.is_playing ? 'Pause' : 'Play'}
+          aria-label={playbackState?.paused ? 'Play' : 'Pause'}
         >
-          {playbackState?.is_playing ? <Pause size={16} /> : <Play size={16} />}
+          {playbackState?.paused ? <Play size={16} /> : <Pause size={16} />}
         </button>
         <button
           onClick={addToLibrary}
