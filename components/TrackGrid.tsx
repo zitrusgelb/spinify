@@ -15,7 +15,7 @@ export default function TrackGrid({ tracks }: { tracks: Track[] }) {
 
 function TrackElement({ thumbnail, title }: { thumbnail: string; title: string }) {
   return (
-    <div className="flex flex-col justify-center items-center gap-5 p-5 h-full">
+    <div className="flex flex-col justify-center items-center gap-5 p-5 h-full hover:scale-105 transition duration-200">
       <img
         src={thumbnail ?? ""}
         alt={title}
