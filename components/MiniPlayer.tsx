@@ -33,7 +33,7 @@ const MiniPlayer: React.FC<MiniPlayerProps> = ({ onOpenFullScreen }) => {
 
   return (
     <div
-      className="fixed bottom-0 left-0 right-0 bg-black text-white px-4 py-3 flex items-center justify-between shadow-md z-50 cursor-pointer"
+      className="fixed bottom-0 left-0 right-0 bg-primary text-white px-4 py-3 flex items-center justify-between shadow-md z-50 cursor-pointer"
       onClick={onOpenFullScreen}
     >
       <div className="flex flex-col truncate max-w-[60%]">
