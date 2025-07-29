@@ -211,7 +211,7 @@ const FullScreenPlayer: React.FC<FullScreenPlayerProps> = ({ isOpen, onClose }) 
                     key={i}
                     title={btn.action}
                     onClick={() => handleControl(btn.action)}
-                    className="w-12 h-12 flex items-center justify-center bg-[var(--color-primary)] text-[var(--color-secondary)] hover:bg-[var(--color-accent)] border-2 border-black rounded-sm transition-transform hover:scale-105"
+                    className="w-12 h-12 flex items-center justify-center bg-primary text-secondary hover:bg-accent border-2 border-black rounded-sm transition-transform hover:scale-105"
                   >
                     {btn.icon}
                   </button>
