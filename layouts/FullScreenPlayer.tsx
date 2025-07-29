@@ -1,7 +1,8 @@
-import React, { useContext, useEffect, useState, useCallback, useRef, useMemo } from 'react'
+import React, { useCallback, useContext, useEffect, useRef, useState } from 'react'
 import {
   Heart,
   MoreHorizontal,
+  Pause,
   Play,
   Plus,
   Repeat,
@@ -174,9 +175,9 @@ const FullScreenPlayer: React.FC<FullScreenPlayerProps> = ({ isOpen, onClose }) 
                 <button
                   onClick={togglePlay}
                   className="absolute bottom-4 right-4 p-2 bg-accent text-primary hover:bg-accent transition"
-                  aria-label="Play"
+                  aria-label={playbackState?.paused ? 'Play' : 'Pause'}
                 >
-                  <Play size={20} />
+                  {playbackState?.paused ? <Play size={20} /> : <Pause size={20} />}
                 </button>
               </div>
             </div>

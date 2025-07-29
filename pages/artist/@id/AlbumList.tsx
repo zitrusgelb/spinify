@@ -14,7 +14,7 @@ export default function AlbumList({ albums }: { albums: SimplifiedAlbum[] }) {
 
 function AlbumElement({ album }: { album: SimplifiedAlbum }) {
   return (
-    <div className="flex gap-5 pb-2 pt-2 w-full h-32">
+    <div className="flex gap-5 pb-2 pt-2 w-full h-32 cursor-pointer hover:scale-105 transition duration-200">
       <img src={album.images[0].url ?? null} alt={album.name} className="rounded-lg object-cover" />
       <div className="content-center w-10/12 overflow-hidden overflow-ellipsis whitespace-nowrap">
         <div className="text-lg font-bold text-left overflow-hidden overflow-ellipsis whitespace-nowrap">

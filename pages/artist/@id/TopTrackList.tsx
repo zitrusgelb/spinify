@@ -1,5 +1,8 @@
 import { millisToTime } from 'utils/time'
 import { Track } from '@spotify/web-api-ts-sdk'
+import { useContext } from 'react'
+import ApiContext from 'components/ApiContext'
+import PlayerContext from 'components/PlayerContext'
 
 export default function TopTrackList({ tracks }: { tracks: Track[] }) {
   return (
@@ -12,8 +15,13 @@ export default function TopTrackList({ tracks }: { tracks: Track[] }) {
 }
 
 function TrackElement({ track }: { track: Track }) {
+  const {api} = useContext(ApiContext)
+  const {deviceId} = useContext(PlayerContext)
   return (
-    <div className="flex gap-5 pb-2 pt-2 w-full h-32">
+    <div
+      className="flex gap-5 pb-2 pt-2 w-full h-32 cursor-pointer hover:scale-105 transition duration-200"
+      onClick={() => api.player.startResumePlayback(deviceId ?? '', undefined, [track.uri])}
+    >
       <img
         src={track.album.images[0].url ?? null}
         alt={track.name}
