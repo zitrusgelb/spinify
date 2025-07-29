@@ -45,8 +45,12 @@ const FullScreenPlayer: React.FC<FullScreenPlayerProps> = ({ isOpen, onClose }) 
   }, [isOpen, handleKeyDown])
 
   useEffect(() => {
-    api.player.getUsersQueue().then(data => setQueue(data.queue))
-  }, [playbackState?.track_window?.next_tracks])
+    api.player.getUsersQueue().then(data => {
+      const currentTrackId = playbackState?.track_window.current_track?.id
+      const filteredQueue = data.queue.filter(track => track.id !== currentTrackId)
+      setQueue(filteredQueue)
+    })
+  }, [playbackState?.track_window?.next_tracks, playbackState?.track_window.current_track?.id])
 
   if (!accessToken || !isOpen) return null
 
