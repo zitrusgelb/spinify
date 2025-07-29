@@ -1,8 +1,12 @@
-import './tailwind.css'
+import "./tailwind.css"
 
-import logoUrl from 'assets/logo.png'
-import { ChartLine, Disc3, ListMusic, Settings } from 'lucide-react'
+import logoUrl from "assets/logo.png"
+import { ChartLine, Disc3, ListMusic } from "lucide-react"
 
+import { Link } from "components/Link.js"
+import React from "react"
+import SearchBar from "components/SearchBar"
+import { ApiContextProvider } from "components/ApiContext"
 import { Link } from 'components/Link.js'
 import React, { useState, useCallback } from 'react'
 import { ApiContextProvider } from 'components/ApiContext'
@@ -12,34 +16,32 @@ import FullScreenPlayer from './FullScreenPlayer'
 
 const links = [
   {
-    title: 'Home',
-    href: '/',
+    title: "Home",
+    href: "/",
     Icon: Disc3,
   },
   {
-    title: 'User Insights',
-    href: '/userInsights',
+    title: "User Insights",
+    href: "/userInsights",
     Icon: ChartLine,
   },
   {
-    title: 'Playlists',
-    href: '/playlists',
+    title: "Playlists",
+    href: "/playlists",
     Icon: ListMusic,
-  },
-  {
-    title: 'Options',
-    href: '/options',
-    Icon: Settings,
   },
 ]
 
 export function LayoutDefault({ children }: { children: React.ReactNode }) {
   return (
-    <div className="flex w-full h-screen bg-background text-black overflow-hidden overflow-ellipsis whitespace-nowrap">
+    <div
+      className="flex w-full bg-background text-black min-h-screen overflow-hidden overflow-ellipsis whitespace-nowrap"
+      lang="de"
+    >
       <div className="flex flex-col items-center gap-5 mt-2 mx-2 w-20">
         <Logo />
         <Sidebar>
-          {links.map(link => (
+          {links.map((link) => (
             <Link key={link.href} href={link.href}>
               <link.Icon className="w-7 h-7 text-primary stroke-[2.25]" />
             </Link>
@@ -66,6 +68,13 @@ function Content({ children }: { children: React.ReactNode }) {
   return (
     <div id="page-container" className="flex-1 mt-3 mr-3 mb-3 overflow-auto">
       <ApiContextProvider>
+        <SearchBar />
+        <div
+          id="page-content"
+          className="p-5 pb-12 min-h-full bg-gradient rounded-3xl max-w-screen h-full overflow-y-scroll overflow-hidden scrollbar-transparent"
+        >
+          {children}
+        </div>
         <PlayerContextProvider>
           <div
             id="page-content"
@@ -83,7 +92,7 @@ function Content({ children }: { children: React.ReactNode }) {
 
 function Logo() {
   return (
-    <div>
+    <div className="hover:scale-105 hover:shadow-lg active:scale-95 active:shadow-md">
       <a href="/">
         <img src={logoUrl} height={82} width={90} alt="logo" />
       </a>

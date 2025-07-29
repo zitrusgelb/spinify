@@ -33,7 +33,7 @@ const MiniPlayer: React.FC<MiniPlayerProps> = ({ onOpenFullScreen }) => {
 
   return (
     <div
-      className="fixed bottom-0 left-0 right-0 bg-black text-white px-4 py-3 flex items-center justify-between shadow-md z-50 cursor-pointer"
+      className="fixed bottom-0 left-0 right-0 bg-primary text-white px-4 py-3 flex items-center justify-between shadow-md z-50 cursor-pointer"
       onClick={onOpenFullScreen}
     >
       <div className="flex flex-col truncate max-w-[60%]">
@@ -49,9 +49,9 @@ const MiniPlayer: React.FC<MiniPlayerProps> = ({ onOpenFullScreen }) => {
         <button
           onClick={togglePlay}
           className="p-2 bg-white text-black rounded-full hover:bg-gray-300 transition"
-          aria-label={playbackState?.is_playing ? 'Pause' : 'Play'}
+          aria-label={playbackState?.paused ? 'Play' : 'Pause'}
         >
-          {playbackState?.is_playing ? <Pause size={16} /> : <Play size={16} />}
+          {playbackState?.paused ? <Play size={16} /> : <Pause size={16} />}
         </button>
         <button
           onClick={addToLibrary}
