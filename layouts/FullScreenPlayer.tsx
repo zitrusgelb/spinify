@@ -6,6 +6,7 @@ import {
   Play,
   Plus,
   Repeat,
+  Repeat1,
   Shuffle,
   SkipBack,
   SkipForward,
@@ -64,7 +65,10 @@ const FullScreenPlayer: React.FC<FullScreenPlayerProps> = ({ isOpen, onClose }) 
   }
 
   const toggleRepeat = async () => {
-    await api.player.setRepeatMode(playbackState?.repeat_mode === 1 ? 'off' : 'track')
+    const currentMode = playbackState?.repeat_mode ?? 0
+    const nextMode = (currentMode + 1) % 3
+    const modeString = ['off', 'context', 'track'][nextMode]
+    await api.player.setRepeatMode(modeString as 'off' | 'context' | 'track')
   }
 
   const addToLibrary = async () => {
@@ -108,12 +112,22 @@ const FullScreenPlayer: React.FC<FullScreenPlayerProps> = ({ isOpen, onClose }) 
     }
   }
 
+  const repeatButton = {
+    icon:
+      playbackState?.repeat_mode === 2 ? (
+        <Repeat1 size={20} className="text-accent" />
+      ) : (
+        <Repeat size={20} className={playbackState?.repeat_mode !== 0 ? 'text-accent' : ''} />
+      ),
+    action: 'loop',
+  }
+
   const controls = [
     { icon: <SkipBack size={20} />, action: 'backward' },
     { icon: <SkipForward size={20} />, action: 'forward' },
     { icon: <Plus size={20} />, action: 'add' },
     { icon: <Shuffle size={20} />, action: 'shuffle' },
-    { icon: <Repeat size={20} />, action: 'loop' },
+    repeatButton,
     { icon: <Heart size={20} />, action: 'like' },
   ]
 
