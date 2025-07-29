@@ -17,8 +17,6 @@ const MiniPlayer: React.FC<MiniPlayerProps> = ({ onOpenFullScreen }) => {
   const [progress, setProgress] = useState(0)
   const [isSeeking, setIsSeeking] = useState(false)
   const progressRef = useRef<HTMLDivElement>(null)
-
-  // Update progress continuously
   useEffect(() => {
     if (!player || !playbackState || playbackState.paused) return
     const interval = setInterval(async () => {
@@ -87,8 +85,6 @@ const MiniPlayer: React.FC<MiniPlayerProps> = ({ onOpenFullScreen }) => {
           style={{ width: `${(progress / duration) * 100}%` }}
         />
       </div>
-
-      {/* MiniPlayer UI */}
       <div className="px-4 py-3 flex items-center justify-between">
         <div className="flex flex-col truncate max-w-[60%]">
           <span className="text-sm font-semibold truncate">
