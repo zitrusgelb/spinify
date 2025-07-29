@@ -1,7 +1,6 @@
 import React, { useCallback, useContext, useEffect, useRef, useState } from 'react'
 import {
   Heart,
-  MoreHorizontal,
   Pause,
   Play,
   Plus,
@@ -145,7 +144,7 @@ const FullScreenPlayer: React.FC<FullScreenPlayerProps> = ({ isOpen, onClose }) 
         >
           <button
             onClick={onClose}
-            className="absolute top-4  right-4 text-white hover:text-red-400 transition-colors"
+            className="absolute top-4  right-4 text-white hover:text-red-400 transition-colors active:shadow-md active:bg-accent/80"
             aria-label="Close player"
           >
             <X size={28} />
@@ -189,7 +188,7 @@ const FullScreenPlayer: React.FC<FullScreenPlayerProps> = ({ isOpen, onClose }) 
                 </div>
                 <button
                   onClick={togglePlay}
-                  className="absolute bottom-4 right-4 p-2 bg-accent text-primary hover:bg-accent transition"
+                  className="absolute bottom-4 right-4 p-2 bg-accent text-primary hover:bg-accent transition active:scale-95 active:shadow-md active:bg-accent/80"
                   aria-label={playbackState?.paused ? 'Play' : 'Pause'}
                 >
                   {playbackState?.paused ? <Play size={20} /> : <Pause size={20} />}
@@ -226,7 +225,7 @@ const FullScreenPlayer: React.FC<FullScreenPlayerProps> = ({ isOpen, onClose }) 
                     key={i}
                     title={btn.action}
                     onClick={() => handleControl(btn.action)}
-                    className="w-12 h-12 flex items-center justify-center bg-primary text-secondary hover:bg-accent border-2 border-black rounded-sm transition-transform hover:scale-105"
+                    className="w-12 h-12 flex items-center justify-center bg-primary text-secondary hover:bg-accent border-2 border-black rounded-sm transition-transform hover:scale-105 active:shadow-md active:bg-accent/80"
                   >
                     {btn.icon}
                   </button>
