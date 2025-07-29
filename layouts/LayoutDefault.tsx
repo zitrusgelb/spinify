@@ -65,7 +65,7 @@ function Content({children}: { children: React.ReactNode }) {
                     <div className="h-full overflow-auto rounded-3xl">
                         <div
                             id="page-content"
-                            className="p-5 pb-12 bg-gradient  max-w-screen overflow-y-scroll overflow-hidden scrollbar-transparent"
+                            className="p-5 pb-12 bg-gradient h-full max-w-screen overflow-y-scroll overflow-hidden scrollbar-transparent"
                         >
                             {children}
                         </div>
