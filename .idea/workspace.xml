@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="de68e6ea-2f74-4e49-afed-3ebe742414b1" name="Changes" comment="refactor: add prettier">
-      <change afterPath="$PROJECT_DIR$/assets/PlayArm.svg" afterDir="false" />
+    <list default="true" id="de68e6ea-2f74-4e49-afed-3ebe742414b1" name="Changes" comment="fix: moved files">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/FullScreenPlayer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/FullScreenPlayer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/PlayerContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/PlayerContext.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/TrackList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/TrackList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/FullScreenPlayer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/layouts/FullScreenPlayer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/MiniPlayer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/layouts/MiniPlayer.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/layouts/LayoutDefault.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/layouts/LayoutDefault.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/index/+Page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index/+Page.tsx" afterDir="false" />
     </list>
@@ -26,6 +24,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -68,7 +71,7 @@
     "Node.js.vite.config.ts.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "player",
+    "git-widget-placeholder": "#36 on mini-player",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -76,10 +79,15 @@
     "nodejs_package_manager_path": "npm",
     "npm.dev.executor": "Run",
     "settings.editor.selected.configurable": "settings.javascript.prettier",
-    "ts.external.directory.path": "/Users/adrianstelter/Developer/spinify/node_modules/typescript/lib",
+    "ts.external.directory.path": "C:\\Users\\jakob\\WebstormProjects\\spinify\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\jakob\WebstormProjects\spinify\layouts" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
@@ -188,7 +196,15 @@
       <option name="project" value="LOCAL" />
       <updated>1753742256068</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="fix: removed comments">
+      <option name="closed" value="true" />
+      <created>1753786585409</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1753786585409</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -234,7 +250,9 @@
     <MESSAGE value="fix: current state" />
     <MESSAGE value="fix: added arm" />
     <MESSAGE value="refactor: add prettier" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor: add prettier" />
+    <MESSAGE value="fix: removed comments" />
+    <MESSAGE value="fix: moved files" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: moved files" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

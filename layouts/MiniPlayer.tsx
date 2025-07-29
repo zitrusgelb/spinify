@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { Heart, Play, Pause } from 'lucide-react'
-import ApiContext from './ApiContext'
+import ApiContext from 'components/ApiContext'
 import PlayerContext from 'components/PlayerContext'
 
 interface MiniPlayerProps {
@@ -44,6 +44,7 @@ const MiniPlayer: React.FC<MiniPlayerProps> = ({ onOpenFullScreen }) => {
           {currentTrack.artists?.map(a => a.name).join(', ') || 'Unbekannter Künstler'}
         </span>
       </div>
+      /
       <div className="flex items-center gap-4">
         <button
           onClick={togglePlay}

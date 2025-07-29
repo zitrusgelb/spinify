@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState, useCallback, useRef, useMemo } from 'react'
+import React, { useContext, useEffect, useState, useCallback, useRef } from 'react'
 import {
   Heart,
   MoreHorizontal,
@@ -11,7 +11,7 @@ import {
   Volume2,
   X,
 } from 'lucide-react'
-import ApiContext from './ApiContext'
+import ApiContext from 'components/ApiContext'
 import PlayerContext from 'components/PlayerContext'
 import { TrackItem } from '@spotify/web-api-ts-sdk'
 import PlayArmSvg from 'assets/PlayArm.svg'

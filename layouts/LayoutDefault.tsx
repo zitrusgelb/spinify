@@ -4,9 +4,11 @@ import logoUrl from 'assets/logo.png'
 import { ChartLine, Disc3, ListMusic, Settings } from 'lucide-react'
 
 import { Link } from 'components/Link.js'
-import React from 'react'
+import React, { useState, useCallback } from 'react'
 import { ApiContextProvider } from 'components/ApiContext'
-import PlayerContext, { PlayerContextProvider } from 'components/PlayerContext'
+import { PlayerContextProvider } from 'components/PlayerContext'
+import MiniPlayer from './MiniPlayer'
+import FullScreenPlayer from './FullScreenPlayer'
 
 const links = [
   {
@@ -58,16 +60,21 @@ function Sidebar({ children }: { children: React.ReactNode }) {
 }
 
 function Content({ children }: { children: React.ReactNode }) {
+  const [isFullScreenOpen, setIsFullScreenOpen] = useState(false)
+  const openFullScreen = useCallback(() => setIsFullScreenOpen(true), [])
+  const closeFullScreen = useCallback(() => setIsFullScreenOpen(false), [])
   return (
     <div id="page-container" className="flex-1 mt-3 mr-3 mb-3 overflow-auto">
       <ApiContextProvider>
         <PlayerContextProvider>
           <div
             id="page-content"
-            className="p-5 pb-12 min-h-full bg-gradient rounded-3xl max-w-screen h-full overflow-y-scroll overflow-hidden scrollbar-transparent"
+            className="p-5 pb-40 min-h-full bg-gradient rounded-3xl max-w-screen h-full overflow-y-scroll overflow-hidden scrollbar-transparent"
           >
             {children}
           </div>
+          <MiniPlayer onOpenFullScreen={openFullScreen} />
+          <FullScreenPlayer isOpen={isFullScreenOpen} onClose={closeFullScreen} />
         </PlayerContextProvider>
       </ApiContextProvider>
     </div>
