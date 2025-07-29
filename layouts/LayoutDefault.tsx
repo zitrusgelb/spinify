@@ -6,6 +6,7 @@ import { ChartLine, Disc3, ListMusic, Settings } from 'lucide-react'
 import { Link } from 'components/Link.js'
 import React from 'react'
 import { ApiContextProvider } from 'components/ApiContext'
+import PlayerContext, { PlayerContextProvider } from 'components/PlayerContext'
 
 const links = [
   {
@@ -60,12 +61,14 @@ function Content({ children }: { children: React.ReactNode }) {
   return (
     <div id="page-container" className="flex-1 mt-3 mr-3 mb-3 overflow-auto">
       <ApiContextProvider>
-        <div
-          id="page-content"
-          className="p-5 pb-12 min-h-full bg-gradient rounded-3xl max-w-screen h-full overflow-y-scroll overflow-hidden scrollbar-transparent"
-        >
-          {children}
-        </div>
+        <PlayerContextProvider>
+          <div
+            id="page-content"
+            className="p-5 pb-12 min-h-full bg-gradient rounded-3xl max-w-screen h-full overflow-y-scroll overflow-hidden scrollbar-transparent"
+          >
+            {children}
+          </div>
+        </PlayerContextProvider>
       </ApiContextProvider>
     </div>
   )

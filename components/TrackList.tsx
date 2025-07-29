@@ -1,8 +1,8 @@
 import { millisToTime } from 'utils/time'
 import { Track } from '@spotify/web-api-ts-sdk'
-import useSpotifyPlayer from 'components/player'
 import { useContext } from 'react'
 import ApiContext from 'components/ApiContext'
+import PlayerContext from 'components/PlayerContext'
 
 export default function TrackList({ tracks }: { tracks: Track[] }) {
   const totalDurationMs = tracks.reduce((sum, t) => sum + t.duration_ms, 0)
@@ -29,10 +29,11 @@ export default function TrackList({ tracks }: { tracks: Track[] }) {
 
 function TrackElement({ track, index }: { track: Track; index: number }) {
   const { api } = useContext(ApiContext)
+  const { deviceId } = useContext(PlayerContext)
   return (
     <div
       className="flex gap-5 pb-2 pt-2 w-full h-32 hover:scale-110"
-      onClick={() => api.player.startResumePlayback('', undefined, [track.uri])}
+      onClick={() => api.player.startResumePlayback(deviceId ?? '', undefined, [track.uri])}
     >
       <div className="text-lg font-bold text-center p-2 content-center w-14">{index}</div>
       <img

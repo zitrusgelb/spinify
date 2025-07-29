@@ -15,7 +15,7 @@ const PlayerContext = createContext<IPlayerContext>({
 
 export default PlayerContext
 
-export function ApiContextProvider({ children }: { children: React.ReactNode }) {
+export function PlayerContextProvider({ children }: { children: React.ReactNode }) {
   const { token } = useContext(ApiContext)
 
   const [player, setPlayer] = useState<Spotify.Player | null>(null)
@@ -46,10 +46,12 @@ export function ApiContextProvider({ children }: { children: React.ReactNode }) 
 
       player.addListener('ready', ({ device_id }) => {
         console.warn('Ready with Device ID', device_id)
+        setDeviceId(device_id)
       })
 
       player.addListener('not_ready', ({ device_id }) => {
         console.warn('Device ID has gone offline', device_id)
+        setDeviceId(null)
       })
 
       player.addListener('player_state_changed', playback => {
