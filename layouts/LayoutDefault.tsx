@@ -1,33 +1,30 @@
-import "./tailwind.css"
+import './tailwind.css'
 
-import logoUrl from "assets/logo.png"
-import { ChartLine, Disc3, ListMusic } from "lucide-react"
+import logoUrl from 'assets/logo.png'
+import { ChartLine, Disc3, ListMusic, Settings } from 'lucide-react'
 
-import { Link } from "components/Link.js"
-import React from "react"
-import SearchBar from "components/SearchBar"
-import { ApiContextProvider } from "components/ApiContext"
 import { Link } from 'components/Link.js'
 import React, { useState, useCallback } from 'react'
 import { ApiContextProvider } from 'components/ApiContext'
 import { PlayerContextProvider } from 'components/PlayerContext'
 import MiniPlayer from './MiniPlayer'
 import FullScreenPlayer from './FullScreenPlayer'
+import SearchBar from 'components/SearchBar'
 
 const links = [
   {
-    title: "Home",
-    href: "/",
+    title: 'Home',
+    href: '/',
     Icon: Disc3,
   },
   {
-    title: "User Insights",
-    href: "/userInsights",
+    title: 'User Insights',
+    href: '/userInsights',
     Icon: ChartLine,
   },
   {
-    title: "Playlists",
-    href: "/playlists",
+    title: 'Playlists',
+    href: '/playlists',
     Icon: ListMusic,
   },
 ]
@@ -41,7 +38,7 @@ export function LayoutDefault({ children }: { children: React.ReactNode }) {
       <div className="flex flex-col items-center gap-5 mt-2 mx-2 w-20">
         <Logo />
         <Sidebar>
-          {links.map((link) => (
+          {links.map(link => (
             <Link key={link.href} href={link.href}>
               <link.Icon className="w-7 h-7 text-primary stroke-[2.25]" />
             </Link>
@@ -68,14 +65,8 @@ function Content({ children }: { children: React.ReactNode }) {
   return (
     <div id="page-container" className="flex-1 mt-3 mr-3 mb-3 overflow-auto">
       <ApiContextProvider>
-        <SearchBar />
-        <div
-          id="page-content"
-          className="p-5 pb-12 min-h-full bg-gradient rounded-3xl max-w-screen h-full overflow-y-scroll overflow-hidden scrollbar-transparent"
-        >
-          {children}
-        </div>
         <PlayerContextProvider>
+          <SearchBar />
           <div
             id="page-content"
             className="p-5 pb-40 min-h-full bg-gradient rounded-3xl max-w-screen h-full overflow-y-scroll overflow-hidden scrollbar-transparent"
