@@ -148,7 +148,7 @@ const FullScreenPlayer: React.FC<FullScreenPlayerProps> = ({ isOpen, onClose }) 
         >
           <button
             onClick={onClose}
-            className="absolute top-4  right-4 text-white hover:text-red-400 transition-colors active:shadow-md active:bg-accent/80"
+            className="absolute top-4  right-4 text-white hover:text-accent hover:scale-105 transition-colors active:shadow-md active:bg-accent/80"
             aria-label="Close player"
           >
             <X size={28} />
@@ -192,7 +192,7 @@ const FullScreenPlayer: React.FC<FullScreenPlayerProps> = ({ isOpen, onClose }) 
                 </div>
                 <button
                   onClick={togglePlay}
-                  className="absolute bottom-4 right-4 p-2 bg-accent text-primary hover:bg-accent transition active:scale-95 active:shadow-md active:bg-accent/80"
+                  className="absolute bottom-4 right-4 p-2 bg-accent text-primary hover:bg-accent hover:scale-105 hover:shadow-lg transition active:scale-95 active:shadow-md active:bg-accent/80"
                   aria-label={playbackState?.paused ? 'Play' : 'Pause'}
                 >
                   {playbackState?.paused ? <Play size={20} /> : <Pause size={20} />}
