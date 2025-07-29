@@ -1,4 +1,4 @@
-import { LibraryIcon, SearchIcon } from "lucide-react"
+import { SearchIcon } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
 import { usePageContext } from "vike-react/usePageContext"
 import { navigate } from "vike/client/router"
@@ -37,9 +37,6 @@ export default function SearchBar() {
           onChange={(e) => setSearchQuery(e.target.value)}
           className="w-full py-2 focus:outline-0 text-white"
         />
-        <a href="/search" className="border-neutral-500 border-l-1 pl-2 my-1 h-full">
-          <LibraryIcon className="text-secondary" />
-        </a>
       </label>
     </div>
   )
