@@ -15,7 +15,7 @@ export default function ArtistGrid({ artists }: { artists: Artist[] }) {
 
 function ArtistElement({ thumbnail, title }: { thumbnail: string | null; title: string }) {
   return (
-    <div className="flex flex-col justify-center items-center gap-5 p-5 h-full">
+    <div className="flex flex-col justify-center items-center gap-5 p-5 h-full hover:scale-105 transition duration-200">
       <img
         src={thumbnail ?? ""}
         alt={title}
