@@ -19,7 +19,7 @@ function AlbumElement({ thumbnail, title }: { thumbnail: string; title: string }
       <img
         src={thumbnail ?? ""}
         alt={title}
-        className="max-w-45 max-h-45 min-h-32 min-w-32 rounded-lg aspect-quare object-cover"
+        className="max-w-45 max-h-45 min-h-32 min-w-32 rounded-lg aspect-square object-cover"
       />
       <div className="font-bold text-center w-45 pl-4 pr-4 truncate whitespace-nowrap">
         {title ?? ''}
