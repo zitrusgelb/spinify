@@ -115,15 +115,12 @@ const FullScreenPlayer: React.FC<FullScreenPlayerProps> = ({ isOpen, onClose }) 
   }
 
   const repeatButton = {
-    icon:
-      playbackState?.repeat_mode === 2 ? (
-        <Repeat1 size={20} className="text-accent hover:text-black" />
-      ) : (
-        <Repeat
-          size={20}
-          className={playbackState?.repeat_mode !== 0 ? 'text-accent hover:text-black' : ''}
-        />
-      ),
+    icon: (
+      <Repeat
+        size={20}
+        className={playbackState?.repeat_mode !== 0 ? 'text-accent hover:text-black' : ''}
+      />
+    ),
     action: 'loop',
   }
 

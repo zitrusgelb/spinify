@@ -74,7 +74,6 @@ const MiniPlayer: React.FC<MiniPlayerProps> = ({ onOpenFullScreen }) => {
       className="fixed bottom-0 left-0 right-0 bg-primary text-secondary shadow-md z-50 cursor-pointer"
       onClick={onOpenFullScreen}
     >
-      {/* Progress Bar */}
       <div
         ref={progressRef}
         className="relative h-2 w-full bg-gray-600/40 hover:bg-gray-600/60 transition-all"
