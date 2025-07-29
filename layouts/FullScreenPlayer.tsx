@@ -115,7 +115,6 @@ const FullScreenPlayer: React.FC<FullScreenPlayerProps> = ({ isOpen, onClose }) 
     { icon: <Shuffle size={20} />, action: 'shuffle' },
     { icon: <Repeat size={20} />, action: 'loop' },
     { icon: <Heart size={20} />, action: 'like' },
-    { icon: <MoreHorizontal size={20} />, action: 'more' },
   ]
 
   console.log(playbackState?.track_window.current_track)
