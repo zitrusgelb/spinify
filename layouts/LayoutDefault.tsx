@@ -4,10 +4,16 @@ import logoUrl from "assets/logo.png"
 import {ChartLine, Disc3, ListMusic} from "lucide-react"
 
 import {Link} from "components/Link.js"
-import React from "react"
+import React, { useCallback, useState } from 'react'
 import SearchBar from "components/SearchBar"
 import {ApiContextProvider} from 'components/ApiContext'
 import {PlayerContextProvider} from 'components/PlayerContext'
+import MiniPlayer from './MiniPlayer'
+import FullScreenPlayer from './FullScreenPlayer'
+
+const [isFullScreenOpen, setIsFullScreenOpen] = useState(false)
+const openFullScreen = useCallback(() => setIsFullScreenOpen(true), [])
+const closeFullScreen = useCallback(() => setIsFullScreenOpen(false), [])
 
 const links = [
     {
@@ -70,6 +76,8 @@ function Content({children}: { children: React.ReactNode }) {
                             {children}
                         </div>
                     </div>
+                  <MiniPlayer onOpenFullScreen={openFullScreen} />
+                  <FullScreenPlayer isOpen={isFullScreenOpen} onClose={closeFullScreen} />
                 </PlayerContextProvider>
             </ApiContextProvider>
         </div>
