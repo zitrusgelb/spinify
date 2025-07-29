@@ -1,17 +1,20 @@
-import React, { createContext, useEffect, useState } from "react"
-import { SpotifyApi, User } from "@spotify/web-api-ts-sdk"
+import React, { createContext, useEffect, useState } from 'react'
+import { SpotifyApi, User } from '@spotify/web-api-ts-sdk'
 
 const scopes = [
-  "playlist-read-private",
-  "playlist-read-collaborative",
-  "user-library-read",
-  "user-follow-read",
-  "user-top-read",
-  "user-read-recently-played",
-  "streaming",
+  'playlist-read-private',
+  'playlist-read-collaborative',
+  'user-library-read',
+  'user-follow-read',
+  'user-top-read',
+  'user-read-recently-played',
+  'streaming',
+  'user-read-currently-playing',
+  'user-read-playback-state',
+  'user-modify-playback-state',
 ]
-const redirectUri = "http://127.0.0.1:3000"
-const clientId = "d850768196144dfbab2ee42325a6e287"
+const redirectUri = 'http://127.0.0.1:3000'
+const clientId = 'd850768196144dfbab2ee42325a6e287'
 
 interface IApiContext {
   api: SpotifyApi
@@ -47,7 +50,7 @@ export function ApiContextProvider({ children }: { children: React.ReactNode }) 
   }
 
   useEffect(() => {
-    login().then(() => console.log("Login successful"))
+    login().then(() => console.log('Login successful'))
   }, [])
 
   return <ApiContext value={{ api, login, token, user }}>{children}</ApiContext>

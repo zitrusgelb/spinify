@@ -1,11 +1,11 @@
-import { useCallback, useContext, useEffect, useState } from "react"
-import ApiContext from "components/ApiContext"
-import { Artist, Track, SimplifiedAlbum } from "@spotify/web-api-ts-sdk"
-import { usePageContext } from "vike-react/usePageContext"
-import TopTrackList from "./TopTrackList"
-import AlbumList from "./AlbumList"
-import Spinner from "components/LoadingSpinner"
-import { UsersIcon } from "lucide-react"
+import { useCallback, useContext, useEffect, useState } from 'react'
+import ApiContext from 'components/ApiContext'
+import { Artist, Track, SimplifiedAlbum } from '@spotify/web-api-ts-sdk'
+import { usePageContext } from 'vike-react/usePageContext'
+import TopTrackList from './TopTrackList'
+import AlbumList from './AlbumList'
+import Spinner from 'components/LoadingSpinner'
+import { UsersIcon } from 'lucide-react'
 
 export default function Page() {
   const { api } = useContext(ApiContext)
@@ -31,7 +31,7 @@ export default function Page() {
 
   const fetchTopTracks = useCallback(async () => {
     setLoading(true)
-    const topTracks = await api.artists.topTracks(id, "DE")
+    const topTracks = await api.artists.topTracks(id, 'DE')
     if (!topTracks) return
     setTracks(topTracks.tracks.slice(0, 5))
   }, [id])
@@ -57,9 +57,12 @@ export default function Page() {
       </div>
       <div className="flex flex-col w-full items-center">
         <div className="text-center text-lg font-bold flex">
-          <UsersIcon /> <span className="ml-2">{artist?.followers.total.toLocaleString()} Followers</span>
+          <UsersIcon />{' '}
+          <span className="ml-2">{artist?.followers.total.toLocaleString()} Followers</span>
         </div>
-        <div className="text-center text-lg font-light italic">{artist?.genres.join(", ").toUpperCase()}</div>
+        <div className="text-center text-lg font-light italic">
+          {artist?.genres.join(', ').toUpperCase()}
+        </div>
       </div>
       <div className="flex flex-col w-full items-center">
         <div className="flex flex-col xl:flex-row items-center xl:justify-center w-full md:w-3/4  gap-8">
