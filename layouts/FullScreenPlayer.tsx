@@ -148,7 +148,7 @@ const FullScreenPlayer: React.FC<FullScreenPlayerProps> = ({ isOpen, onClose }) 
         >
           <button
             onClick={onClose}
-            className="absolute top-4  right-4 text-white hover:text-red-400 transition-colors active:shadow-md active:bg-accent/80"
+            className="absolute top-4  right-4 hover:text-accent hover:scale-105 transition-colors active:shadow-md active:bg-accent/80"
             aria-label="Close player"
           >
             <X size={28} />
@@ -170,7 +170,7 @@ const FullScreenPlayer: React.FC<FullScreenPlayerProps> = ({ isOpen, onClose }) 
             </>
           )}
 
-          <div className="text-white flex flex-1 gap-8 items-center justify-between h-2/3">
+          <div className="text-black flex flex-1 gap-8 items-center justify-between h-2/3">
             <div className="w-1/3 flex justify-start h-full">
               <div className="m-auto aspect-square w-full max-h-[80vh] bg-primary rounded-4xl shadow-inner flex items-center justify-center relative overflow-hidden">
                 {playbackState?.track_window.current_track && (
@@ -192,7 +192,7 @@ const FullScreenPlayer: React.FC<FullScreenPlayerProps> = ({ isOpen, onClose }) 
                 </div>
                 <button
                   onClick={togglePlay}
-                  className="absolute bottom-4 right-4 p-2 bg-accent text-primary hover:bg-accent transition active:scale-95 active:shadow-md active:bg-accent/80"
+                  className="absolute bottom-4 right-4 p-2 rounded-3xl bg-accent text-primary hover:bg-accent hover:scale-105 hover:shadow-lg transition active:scale-95 active:shadow-md active:bg-accent/80"
                   aria-label={playbackState?.paused ? 'Play' : 'Pause'}
                 >
                   {playbackState?.paused ? <Play size={20} /> : <Pause size={20} />}
@@ -229,7 +229,7 @@ const FullScreenPlayer: React.FC<FullScreenPlayerProps> = ({ isOpen, onClose }) 
                     key={i}
                     title={btn.action}
                     onClick={() => handleControl(btn.action)}
-                    className="w-12 h-12 flex items-center justify-center bg-primary text-secondary hover:bg-accent border-2 border-black rounded-sm transition-transform hover:scale-105 active:shadow-md active:bg-accent/80"
+                    className="w-12 h-12 flex items-center justify-center rounded-3xl bg-primary text-secondary hover:bg-accent border-2 border-black transition-transform hover:scale-105 active:shadow-md active:bg-accent/80"
                   >
                     {btn.icon}
                   </button>

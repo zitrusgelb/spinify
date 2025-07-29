@@ -33,7 +33,7 @@ const MiniPlayer: React.FC<MiniPlayerProps> = ({ onOpenFullScreen }) => {
 
   return (
     <div
-      className="fixed bottom-0 left-0 right-0 bg-primary text-white px-4 py-3 flex items-center justify-between shadow-md z-50 cursor-pointer"
+      className="fixed bottom-0 left-0 right-0 bg-primary text-secondary px-4 py-3 flex items-center justify-between shadow-md z-50 cursor-pointer"
       onClick={onOpenFullScreen}
     >
       <div className="flex flex-col truncate max-w-[60%]">
@@ -47,14 +47,14 @@ const MiniPlayer: React.FC<MiniPlayerProps> = ({ onOpenFullScreen }) => {
       <div className="flex items-center gap-4">
         <button
           onClick={togglePlay}
-          className="p-2 bg-white text-black rounded-full hover:bg-gray-300 transition"
+          className="p-2 bg-secondary text-black rounded-full hover:bg-accent hover:scale-105 hover:shadow-lg transition active:scale-95 active:shadow-md active:bg-accent/80"
           aria-label={playbackState?.paused ? 'Play' : 'Pause'}
         >
           {playbackState?.paused ? <Play size={16} /> : <Pause size={16} />}
         </button>
         <button
           onClick={addToLibrary}
-          className="text-white hover:text-green-500 transition"
+          className="text-secondary hover:text-accent hover:scale-105 hover:shadow-lg transition active:scale-95 active:shadow-md active:text-accent/80"
           aria-label="Zur Bibliothek hinzufügen"
         >
           <Heart size={20} />
