@@ -29,7 +29,7 @@ const links = [
 export function LayoutDefault({ children }: { children: React.ReactNode }) {
   return (
     <div
-      className="flex w-full bg-background text-black min-h-screen overflow-hidden overflow-ellipsis whitespace-nowrap"
+      className="flex w-full bg-background text-black h-screen overflow-hidden overflow-ellipsis whitespace-nowrap"
       lang="de"
     >
       <div className="flex flex-col items-center gap-5 mt-2 mx-2 w-20">
@@ -57,14 +57,16 @@ function Sidebar({ children }: { children: React.ReactNode }) {
 
 function Content({ children }: { children: React.ReactNode }) {
   return (
-    <div id="page-container" className="flex-1 mt-3 mr-3 mb-3 overflow-auto">
+    <div id="page-container" className="flex-1 flex flex-col py-3 pr-3 overflow-hidden h-full">
       <ApiContextProvider>
         <SearchBar />
-        <div
-          id="page-content"
-          className="p-5 pb-12 min-h-full bg-gradient rounded-3xl max-w-screen h-full overflow-y-scroll overflow-hidden scrollbar-transparent"
-        >
-          {children}
+        <div className="h-full overflow-auto rounded-3xl">
+          <div
+            id="page-content"
+            className="p-5 pb-12 bg-gradient  max-w-screen overflow-y-scroll overflow-hidden scrollbar-transparent"
+          >
+            {children}
+          </div>
         </div>
       </ApiContextProvider>
     </div>
