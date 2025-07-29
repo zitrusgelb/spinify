@@ -1,9 +1,9 @@
-import { useContext, useEffect, useState } from "react"
-import ApiContext from "components/ApiContext"
-import MainElement from "components/MainElement"
-import PlaylistGrid from "components/PlaylistGrid"
-import Spinner from "components/LoadingSpinner"
-import { SimplifiedPlaylist } from "@spotify/web-api-ts-sdk"
+import { useContext, useEffect, useState } from 'react'
+import ApiContext from 'components/ApiContext'
+import MainElement from 'components/MainElement'
+import PlaylistGrid from 'components/PlaylistGrid'
+import Spinner from 'components/LoadingSpinner'
+import { SimplifiedPlaylist } from '@spotify/web-api-ts-sdk'
 
 export default function Page() {
   const [userPlaylists, setUserPlaylists] = useState<SimplifiedPlaylist[]>([])
@@ -21,13 +21,13 @@ export default function Page() {
   const fetchSavedPlaylists = async () => {
     const res = await fetchPlaylists()
     if (!user) return
-    setSavedPlaylists(res.items.filter((playlist) => playlist.owner.id != user.id))
+    setSavedPlaylists(res.items.filter(playlist => playlist.owner.id != user.id))
   }
 
   const fetchUserPlaylists = async () => {
     const res = await fetchPlaylists()
     if (!user) return
-    setUserPlaylists(res.items.filter((playlist) => playlist.owner.id == user.id))
+    setUserPlaylists(res.items.filter(playlist => playlist.owner.id == user.id))
   }
 
   async function fetchPlaylists() {

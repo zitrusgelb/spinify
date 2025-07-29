@@ -1,4 +1,4 @@
-import { LoaderCircleIcon } from "lucide-react"
+import { LoaderCircleIcon } from 'lucide-react'
 
 export default function Spinner() {
   return (
