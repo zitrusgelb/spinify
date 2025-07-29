@@ -22,7 +22,7 @@ export default function TrackList({ tracks }: { tracks: Track[] }) {
 
 function TrackElement({ track, index }: { track: Track; index: number }) {
   return (
-    <div className="flex gap-5 pb-2 pt-2 w-full h-32 cursor-pointer hover:scale-105 transition duration-200">
+    <div className="flex gap-5 pb-2 pt-2 w-full h-32 cursor-pointer hover:scale-100 transition duration-200">
       <div className="text-lg font-bold text-center p-2 content-center w-14">{index}</div>
       <img src={track.album.images[0].url ?? null} alt={track.name} className="rounded-lg object-cover " />
       <div className="content-center w-full">
