@@ -9,7 +9,6 @@ import {
   Shuffle,
   SkipBack,
   SkipForward,
-  Volume2,
   X,
 } from 'lucide-react'
 import ApiContext from 'components/ApiContext'
@@ -187,9 +186,6 @@ const FullScreenPlayer: React.FC<FullScreenPlayerProps> = ({ isOpen, onClose }) 
                   alt="Arm"
                   className="absolute w-1/3 top-0 z-10 right-0 h-auto opacity-100 pointer-events-none origin-[76.3%_14.6%]"
                 />
-                <div className="absolute bottom-4 left-4 text-white">
-                  <Volume2 size={24} />
-                </div>
                 <button
                   onClick={togglePlay}
                   className="absolute bottom-4 right-4 p-2 rounded-3xl bg-accent text-primary hover:bg-accent hover:scale-105 hover:shadow-lg transition active:scale-95 active:shadow-md active:bg-accent/80"
