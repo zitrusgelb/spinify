@@ -44,8 +44,6 @@ const MiniPlayer: React.FC<MiniPlayerProps> = ({ onOpenFullScreen }) => {
           {currentTrack.artists?.map(a => a.name).join(', ') || 'Unbekannter Künstler'}
         </span>
       </div>
-
-      {/* Controls */}
       <div className="flex items-center gap-4">
         <button
           onClick={togglePlay}

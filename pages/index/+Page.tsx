@@ -8,7 +8,7 @@ import AlbumGrid from 'components/AlbumGrid'
 import { Artist, SimplifiedAlbum, Track } from '@spotify/web-api-ts-sdk'
 import TrackGrid from 'components/TrackGrid'
 import FullScreenPlayer from 'components/FullScreenPlayer'
-import MiniPlayer from 'components/MiniPlayer' // <--- NEU
+import MiniPlayer from 'components/MiniPlayer'
 
 export default function Page() {
   const { api, user } = useContext(ApiContext)
