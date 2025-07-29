@@ -6,7 +6,7 @@ export default function ArtistGrid({ artists }: { artists: Artist[] }) {
     <Grid>
       {artists.map(artist => (
         <a href={`/artist/${artist.id}`} key={artist.id}>
-          <ArtistElement thumbnail={artist.images[0].url} title={artist.name} />
+          <ArtistElement thumbnail={artist.images[0]?.url} title={artist.name} />
         </a>
       ))}
     </Grid>
@@ -15,15 +15,13 @@ export default function ArtistGrid({ artists }: { artists: Artist[] }) {
 
 function ArtistElement({ thumbnail, title }: { thumbnail: string | null; title: string }) {
   return (
-    <div className="flex content-center flex-col gap-5 p-5">
-      <div className="text-xl font-bold text-center w-64 pl-4 pr-4 overflow-hidden overflow-ellipsis whitespace-nowrap">
-        {title}
-      </div>
+    <div className="flex flex-col justify-center items-center gap-5 p-5 h-full">
       <img
         src={thumbnail ?? ''}
         alt={title}
-        className="max-w-64 max-h-64 min-h-32 min-w-32 rounded-full object-cover"
+        className="max-w-45 max-h-45 min-h-32 min-w-32 aspect-square rounded-full object-cover"
       />
+      <div className="font-bold text-center w-45 pl-4 pr-4 truncate whitespace-nowrap">{title}</div>
     </div>
   )
 }

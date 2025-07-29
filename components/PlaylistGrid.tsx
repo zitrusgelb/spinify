@@ -1,16 +1,12 @@
-import { SimplifiedPlaylist } from '@spotify/web-api-ts-sdk'
-import { Grid } from 'components/Grid'
+import { SimplifiedPlaylist } from "@spotify/web-api-ts-sdk"
+import { Grid } from "components/Grid"
 
 export default function PlaylistGrid({ playlists }: { playlists: SimplifiedPlaylist[] }) {
   return (
     <Grid>
-      {playlists.map(playlist => (
+      {playlists.map((playlist) => (
         <a href={`/playlist/${playlist.id}`} key={playlist.id}>
-          <PlaylistElement
-            key={playlist.name}
-            thumbnail={playlist.images[0].url}
-            title={playlist.name}
-          />
+          <PlaylistElement key={playlist.name} thumbnail={playlist.images[0].url} title={playlist.name} />
         </a>
       ))}
     </Grid>
@@ -19,15 +15,13 @@ export default function PlaylistGrid({ playlists }: { playlists: SimplifiedPlayl
 
 function PlaylistElement({ thumbnail, title }: { thumbnail: string | null; title: string }) {
   return (
-    <div className="flex content-center flex-col gap-5 p-5">
-      <div className="text-xl font-bold text-center w-64 pl-4 pr-4 overflow-hidden overflow-ellipsis whitespace-nowrap">
-        {title}
-      </div>
+    <div className="flex flex-col justify-center items-center gap-5 p-5 h-full">
       <img
-        src={thumbnail ?? ''}
+        src={thumbnail ?? ""}
         alt={title}
-        className="max-w-64 max-h-64 min-h-32 min-w-32 rounded-lg object-cover"
+        className="max-w-45 max-h-45 min-h-32 min-w-32 rounded-lg aspect-square object-cover"
       />
+      <div className="font-bold text-center w-45 pl-4 pr-4 truncate whitespace-nowrap">{title}</div>
     </div>
   )
 }
