@@ -5,6 +5,7 @@ import { ChartLine, Disc3, ListMusic } from "lucide-react"
 
 import { Link } from "components/Link.js"
 import React from "react"
+import SearchBar from "components/SearchBar"
 import { ApiContextProvider } from "components/ApiContext"
 
 const links = [
@@ -27,8 +28,11 @@ const links = [
 
 export function LayoutDefault({ children }: { children: React.ReactNode }) {
   return (
-    <div className="flex w-full h-screen bg-background text-black overflow-hidden overflow-ellipsis whitespace-nowrap">
-      <div className="flex flex-col items-center gap-5 mt-2 mx-2 w-20 h-full overflow-y-auto">
+    <div
+      className="flex w-full bg-background text-black min-h-screen overflow-hidden overflow-ellipsis whitespace-nowrap"
+      lang="de"
+    >
+      <div className="flex flex-col items-center gap-5 mt-2 mx-2 w-20">
         <Logo />
         <Sidebar>
           {links.map((link) => (
@@ -55,6 +59,7 @@ function Content({ children }: { children: React.ReactNode }) {
   return (
     <div id="page-container" className="flex-1 mt-3 mr-3 mb-3 overflow-auto">
       <ApiContextProvider>
+        <SearchBar />
         <div
           id="page-content"
           className="p-5 pb-12 min-h-full bg-gradient rounded-3xl max-w-screen h-full overflow-y-scroll overflow-hidden scrollbar-transparent"
