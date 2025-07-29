@@ -25,7 +25,6 @@ export default function Search() {
     setResult(data)
   }, [api, query])
 
-
   useEffect(() => {
     getResult()
   }, [getResult])
