@@ -10,7 +10,7 @@ export function Link({ href, children }: { href: string; children: ReactNode }) 
     <a
       href={href}
       className={`
-        w-fit h-fit rounded-full bg-secondary flex items-center justify-center transition-colors p-2.5
+        w-fit h-fit rounded-full bg-secondary flex items-center justify-center transition-colors p-2.5 hover:scale-105 hover:shadow-lg active:scale-95 active:shadow-md active:bg-accent/80
         ${isActive ? "ring-3 ring-accent ring-offset-background" : "opacity-80 hover:opacity-100"}
       `}
     >

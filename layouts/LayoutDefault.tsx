@@ -1,7 +1,7 @@
 import "./tailwind.css"
 
 import logoUrl from "assets/logo.png"
-import { ChartLine, Disc3, ListMusic, Settings } from "lucide-react"
+import { ChartLine, Disc3, ListMusic } from "lucide-react"
 
 import { Link } from "components/Link.js"
 import React from "react"
@@ -23,11 +23,6 @@ const links = [
     title: "Playlists",
     href: "/playlists",
     Icon: ListMusic,
-  },
-  {
-    title: "Options",
-    href: "/options",
-    Icon: Settings,
   },
 ]
 
@@ -78,7 +73,7 @@ function Content({ children }: { children: React.ReactNode }) {
 
 function Logo() {
   return (
-    <div>
+    <div className="hover:scale-105 hover:shadow-lg active:scale-95 active:shadow-md">
       <a href="/">
         <img src={logoUrl} height={82} width={90} alt="logo" />
       </a>
