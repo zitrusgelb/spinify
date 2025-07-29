@@ -6,7 +6,6 @@ import { navigate } from 'vike/client/router'
 export default function SearchBar() {
   const pageContext = usePageContext()
   const [searchQuery, setSearchQuery] = useState(pageContext.routeParams.query ?? '')
-
   const searchRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {

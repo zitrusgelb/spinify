@@ -33,7 +33,7 @@ function TrackElement({ track, index }: { track: Track; index: number }) {
       onClick={() => api.player.startResumePlayback(deviceId ?? '', undefined, [track.uri])}
     >
       <div className="text-lg font-bold text-center p-2 content-center w-14">{index}</div>
-      <img src={track.album.images[0].url ?? null} alt={track.name} className="rounded-lg object-cover " />
+      <img src={track.album.images[0].url ?? null} alt={track.name} className="rounded-lg object-cover" />
       <div className="content-center w-full">
         <div className="text-lg font-bold text-left overflow-hidden overflow-ellipsis whitespace-nowrap">
           {track.name}

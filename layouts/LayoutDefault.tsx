@@ -1,4 +1,4 @@
-import './tailwind.css'
+import "./tailwind.css"
 
 import logoUrl from "assets/logo.png"
 import {ChartLine, Disc3, ListMusic} from "lucide-react"
