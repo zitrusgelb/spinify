@@ -41,7 +41,7 @@ const MiniPlayer: React.FC<MiniPlayerProps> = ({ onOpenFullScreen }) => {
     try {
       await api.currentUser.tracks.saveTracks([trackId])
     } catch (err) {
-      console.error('Fehler beim Hinzufügen zur Bibliothek:', err)
+      console.error('Error adding Track to Library:', err)
     }
   }
 
@@ -87,10 +87,10 @@ const MiniPlayer: React.FC<MiniPlayerProps> = ({ onOpenFullScreen }) => {
       <div className="px-4 py-3 flex items-center justify-between">
         <div className="flex flex-col truncate max-w-[60%]">
           <span className="text-sm font-semibold truncate">
-            {currentTrack.name || 'Unbekannter Titel'}
+            {currentTrack.name || 'Unknow Titel'}
           </span>
           <span className="text-xs text-gray-400 truncate">
-            {currentTrack.artists?.map(a => a.name).join(', ') || 'Unbekannter Künstler'}
+            {currentTrack.artists?.map(a => a.name).join(', ') || 'Unknown Artist'}
           </span>
         </div>
         <div className="flex items-center gap-4">
@@ -105,7 +105,7 @@ const MiniPlayer: React.FC<MiniPlayerProps> = ({ onOpenFullScreen }) => {
           <button
             onClick={addToLibrary}
             className="text-secondary hover:text-accent hover:scale-105 hover:shadow-lg transition active:scale-95 active:shadow-md active:text-accent/80"
-            aria-label="Zur Bibliothek hinzufügen"
+            aria-label="Add to Library"
           >
             <Heart size={20} />
           </button>
