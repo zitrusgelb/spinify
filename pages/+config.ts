@@ -1,6 +1,7 @@
 import vikeReact from 'vike-react/config'
 import type { Config } from 'vike/types'
 import { LayoutDefault as Layout } from '../layouts/LayoutDefault.js'
+import vikeServer from 'vike-server/config'
 
 // Default config (can be overridden by pages)
 // https://vike.dev/config
@@ -13,6 +14,6 @@ export default {
   title: 'Spinify',
   description: 'Demo showcasing Vike',
 
-  extends: vikeReact,
-  ssr: false,
+  extends: [vikeReact, vikeServer],
+  server: { entry: 'server.js' },
 } satisfies Config

@@ -1,17 +1,17 @@
-import React, { useContext, useEffect, useState, useCallback, useRef, useMemo } from 'react'
+import React, { useCallback, useContext, useEffect, useRef, useState } from 'react'
 import {
   Heart,
-  MoreHorizontal,
+  Pause,
   Play,
   Plus,
   Repeat,
+  Repeat1,
   Shuffle,
   SkipBack,
   SkipForward,
-  Volume2,
   X,
 } from 'lucide-react'
-import ApiContext from './ApiContext'
+import ApiContext from 'components/ApiContext'
 import PlayerContext from 'components/PlayerContext'
 import { TrackItem } from '@spotify/web-api-ts-sdk'
 import PlayArmSvg from 'assets/PlayArm.svg'
@@ -44,8 +44,12 @@ const FullScreenPlayer: React.FC<FullScreenPlayerProps> = ({ isOpen, onClose }) 
   }, [isOpen, handleKeyDown])
 
   useEffect(() => {
-    api.player.getUsersQueue().then(data => setQueue(data.queue))
-  }, [playbackState?.track_window?.next_tracks])
+    api.player.getUsersQueue().then(data => {
+      const currentTrackId = playbackState?.track_window.current_track?.id
+      const filteredQueue = data.queue.filter(track => track.id !== currentTrackId)
+      setQueue(filteredQueue)
+    })
+  }, [playbackState?.track_window?.next_tracks, playbackState?.track_window.current_track?.id])
 
   if (!accessToken || !isOpen) return null
 
@@ -63,7 +67,10 @@ const FullScreenPlayer: React.FC<FullScreenPlayerProps> = ({ isOpen, onClose }) 
   }
 
   const toggleRepeat = async () => {
-    await api.player.setRepeatMode(playbackState?.repeat_mode === 1 ? 'off' : 'track')
+    const currentMode = playbackState?.repeat_mode ?? 0
+    const nextMode = (currentMode + 1) % 3
+    const modeString = ['off', 'context', 'track'][nextMode]
+    await api.player.setRepeatMode(modeString as 'off' | 'context' | 'track')
   }
 
   const addToLibrary = async () => {
@@ -107,14 +114,23 @@ const FullScreenPlayer: React.FC<FullScreenPlayerProps> = ({ isOpen, onClose }) 
     }
   }
 
+  const repeatButton = {
+    icon: (
+      <Repeat
+        size={20}
+        className={playbackState?.repeat_mode !== 0 ? 'text-accent hover:text-black' : ''}
+      />
+    ),
+    action: 'loop',
+  }
+
   const controls = [
     { icon: <SkipBack size={20} />, action: 'backward' },
     { icon: <SkipForward size={20} />, action: 'forward' },
     { icon: <Plus size={20} />, action: 'add' },
     { icon: <Shuffle size={20} />, action: 'shuffle' },
-    { icon: <Repeat size={20} />, action: 'loop' },
+    repeatButton,
     { icon: <Heart size={20} />, action: 'like' },
-    { icon: <MoreHorizontal size={20} />, action: 'more' },
   ]
 
   console.log(playbackState?.track_window.current_track)
@@ -131,7 +147,7 @@ const FullScreenPlayer: React.FC<FullScreenPlayerProps> = ({ isOpen, onClose }) 
         >
           <button
             onClick={onClose}
-            className="absolute top-4  right-4 text-white hover:text-red-400 transition-colors"
+            className="absolute top-4  right-4 hover:text-accent hover:scale-105 transition-colors active:shadow-md active:bg-accent/80"
             aria-label="Close player"
           >
             <X size={28} />
@@ -153,14 +169,16 @@ const FullScreenPlayer: React.FC<FullScreenPlayerProps> = ({ isOpen, onClose }) 
             </>
           )}
 
-          <div className="text-white flex flex-1 gap-8 items-center justify-between h-2/3">
+          <div className="text-black flex flex-1 gap-8 items-center justify-between h-2/3">
             <div className="w-1/3 flex justify-start h-full">
               <div className="m-auto aspect-square w-full max-h-[80vh] bg-primary rounded-4xl shadow-inner flex items-center justify-center relative overflow-hidden">
                 {playbackState?.track_window.current_track && (
                   <img
                     src={playbackState?.track_window.current_track?.album.images[0].url}
                     alt={playbackState?.track_window.current_track?.name}
-                    className="w-95/100 h-95/100 left-5/200 top-5/200 object-cover absolute inset-0 rounded-full animate-vinyl"
+                    className={`w-95/100 h-95/100 left-5/200 top-5/200 object-cover absolute inset-0 rounded-full animate-vinyl ${
+                      playbackState?.paused ? 'animation-paused' : ''
+                    }`}
                   />
                 )}
                 <img
@@ -168,15 +186,12 @@ const FullScreenPlayer: React.FC<FullScreenPlayerProps> = ({ isOpen, onClose }) 
                   alt="Arm"
                   className="absolute w-1/3 top-0 z-10 right-0 h-auto opacity-100 pointer-events-none origin-[76.3%_14.6%]"
                 />
-                <div className="absolute bottom-4 left-4 text-white">
-                  <Volume2 size={24} />
-                </div>
                 <button
                   onClick={togglePlay}
-                  className="absolute bottom-4 right-4 p-2 bg-accent text-primary hover:bg-accent transition"
-                  aria-label="Play"
+                  className="absolute bottom-4 right-4 p-2 rounded-3xl duration-200 bg-accent text-primary hover:bg-accent hover:scale-105 hover:shadow-lg transition active:scale-95 active:shadow-md active:bg-accent/80"
+                  aria-label={playbackState?.paused ? 'Play' : 'Pause'}
                 >
-                  <Play size={20} />
+                  {playbackState?.paused ? <Play size={20} /> : <Pause size={20} />}
                 </button>
               </div>
             </div>
@@ -210,7 +225,7 @@ const FullScreenPlayer: React.FC<FullScreenPlayerProps> = ({ isOpen, onClose }) 
                     key={i}
                     title={btn.action}
                     onClick={() => handleControl(btn.action)}
-                    className="w-12 h-12 flex items-center justify-center bg-[var(--color-primary)] text-[var(--color-secondary)] hover:bg-[var(--color-accent)] border-2 border-black rounded-sm transition-transform hover:scale-105"
+                    className="w-12 h-12 flex items-center justify-center rounded-3xl bg-primary text-secondary duration-200 hover:bg-accent border-2 border-black transition-transform hover:scale-105 active:scale-95 active:shadow-md active:bg-accent/80"
                   >
                     {btn.icon}
                   </button>

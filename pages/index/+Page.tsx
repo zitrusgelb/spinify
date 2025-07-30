@@ -7,13 +7,10 @@ import Spinner from 'components/LoadingSpinner'
 import AlbumGrid from 'components/AlbumGrid'
 import { Artist, SimplifiedAlbum, Track } from '@spotify/web-api-ts-sdk'
 import TrackGrid from 'components/TrackGrid'
-import FullScreenPlayer from 'components/FullScreenPlayer'
 
 export default function Page() {
   const { api, user } = useContext(ApiContext)
-  const [isModalOpen, setIsModalOpen] = useState(false)
 
-  // const { player, playbackState } = useSpotifyPlayer(token)
   const [topSongs, setTopSongs] = useState<Track[]>([])
   const [newReleases, setNewReleases] = useState<SimplifiedAlbum[]>([])
   const [topArtists, setTopArtists] = useState<Artist[]>([])
@@ -44,19 +41,12 @@ export default function Page() {
 
   return (
     <div>
-      <button
-        onClick={() => setIsModalOpen(true)}
-        className="mt-4 bg-[var(--color-primary)] text-white px-4 py-2 rounded"
-      >
-        Open Fullscreen Player
-      </button>
       <MainElement title="Recently Played" />
       {loading ? <Spinner /> : <TrackGrid tracks={topSongs} />}
       <MainElement title="Your Artists" />
       {loading ? <Spinner /> : <ArtistGrid artists={topArtists} />}
       <MainElement title="New Releases" />
       {loading ? <Spinner /> : <AlbumGrid albums={newReleases} />}
-      <FullScreenPlayer isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </div>
   )
 }

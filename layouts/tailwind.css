@@ -1,5 +1,6 @@
 @import 'tailwindcss';
 
+/* This stays the same */
 @theme {
   --color-background: #1b0d1e;
   --color-primary: #421648;
@@ -8,24 +9,35 @@
 
   --color-gradient1: #fd9118;
   --color-gradient2: #f16022;
+}
 
-  --animate-vinyl: vinyl 15s linear infinite;
-  @keyframes vinyl {
-    100% {
-      transform: rotate(360deg);
-    }
+/* ✅ Move this OUTSIDE @theme */
+@keyframes vinyl {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }
-.bg-gradient {
-  background-image: linear-gradient(
-    to bottom,
-    var(--color-secondary),
-    var(--color-gradient1),
-    var(--color-gradient2),
-    var(--color-accent)
-  );
+
+.animate-vinyl {
+  animation: vinyl 15s linear infinite;
 }
 
+.animation-paused {
+  animation-play-state: paused !important;
+}
+
+.bg-gradient {
+  background-image: linear-gradient(
+          to bottom,
+          var(--color-secondary),
+          var(--color-gradient1),
+          var(--color-gradient2),
+          var(--color-accent)
+  );
+}
 @utility scrollbar-styled {
   &::-webkit-scrollbar {
     background-color: transparent;

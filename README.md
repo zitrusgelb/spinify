@@ -1,60 +1,26 @@
-Generated with [vike.dev/new](https://vike.dev/new)
-([version 442](https://www.npmjs.com/package/create-vike/v/0.0.442)) using this command:
+# Frontend Systems SS25: Project "Spinify"
 
-```sh
-npm create vike@latest --- --react --tailwindcss --eslint --prettier
+This project is the 5th portfolio task for the course "Frontend Systems" by Prof. Dr. Peter Braun at the THWS.
+
+# Participants:
+
+| GitHub Username                                | Matriculation Number |
+|------------------------------------------------|----------------------|
+| [@zitrusgelb](https://github.com/zitrusgelb)   | 5123031              |
+| [@timknt](https://github.com/timknt)           | 5123101              |
+| [@Jakob-H-DEV](https://github.com/Jakob-H-DEV) | 5123113              |
+| [@CyanideLion](https://github.com/CyanideLion) | 6824016              |
+
+# Starting the WebApp
+To start the program in a Docker container, the following command is available:
+
+```shell script
+  docker build -t spinify . && docker run -d -p 3000:3000 --name spinify spinify
 ```
 
-## Contents
+The container can then be reached through the browser via `http://localhost:3000/` or `http://127.0.0.1:3000/`.
 
-- [React](#react)
+# Authentication
+On start of the app, you must authenticate to the Spotify API. This happens automatically via a redirect. After signing in to Spotify, you will then be automatically redirected to the home page of our WebApp.
 
-  - [`/pages/+config.ts`](#pagesconfigts)
-  - [Routing](#routing)
-  - [`/pages/_error/+Page.jsx`](#pages_errorpagejsx)
-  - [`/pages/+onPageTransitionStart.ts` and `/pages/+onPageTransitionEnd.ts`](#pagesonpagetransitionstartts-and-pagesonpagetransitionendts)
-  - [SSR](#ssr)
-  - [HTML Streaming](#html-streaming)
-
-## React
-
-This app is ready to start. It's powered by [Vike](https://vike.dev) and
-[React](https://react.dev/learn).
-
-### `/pages/+config.ts`
-
-Such `+` files are [the interface](https://vike.dev/config) between Vike and your code. It defines:
-
-- A default [`<Layout>` component](https://vike.dev/Layout) (that wraps your
-  [`<Page>` components](https://vike.dev/Page)).
-- A default [`title`](https://vike.dev/title).
-- Global [`<head>` tags](https://vike.dev/head-tags).
-
-### Routing
-
-[Vike's built-in router](https://vike.dev/routing) lets you choose between:
-
-- [Filesystem Routing](https://vike.dev/filesystem-routing) (the URL of a page is determined based
-  on where its `+Page.jsx` file is located on the filesystem)
-- [Route Strings](https://vike.dev/route-string)
-- [Route Functions](https://vike.dev/route-function)
-
-### `/pages/_error/+Page.jsx`
-
-The [error page](https://vike.dev/error-page) which is rendered when errors occur.
-
-### `/pages/+onPageTransitionStart.ts` and `/pages/+onPageTransitionEnd.ts`
-
-The [`onPageTransitionStart()` hook](https://vike.dev/onPageTransitionStart), together with
-[`onPageTransitionEnd()`](https://vike.dev/onPageTransitionEnd), enables you to implement page
-transition animations.
-
-### SSR
-
-SSR is enabled by default. You can [disable it](https://vike.dev/ssr) for all your pages or only for
-some pages.
-
-### HTML Streaming
-
-You can enable/disable [HTML streaming](https://vike.dev/stream) for all your pages, or only for
-some pages while still using it for others.
+Please note that for the redirect to work, any browser extensions and functions that may influence cookies and path attributes may need to be disabled (e.g. _Brave Shields_, _Privacy Badger_, etc.). Keeping these enabled may lead to login loops, API-dependant elements not loading and/or other errors.
