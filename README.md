@@ -23,4 +23,6 @@ The container can then be reached through the browser via `http://localhost:3000
 # Authentication
 On start of the app, you must authenticate to the Spotify API. This happens automatically via a redirect. After signing in to Spotify, you will then be automatically redirected to the home page of our WebApp.
 
-Please note that for the redirect to work, any browser extensions and functions that may influence cookies and path attributes may need to be disabled (e.g. _Brave Shields_, _Privacy Badger_, etc.). Keeping these enabled may lead to login loops, API-dependant elements not loading and/or other errors.
+Please note that a Spotify Premium account is required to unlock every feature of the app. We also recommend using an account you access regularly so it contains sufficient listening data.
+
+To ensure the redirect works smoothly, any browser extensions and functions that may influence cookies and path attributes may need to be disabled (e.g. _Brave Shields_, _Privacy Badger_, etc.). Keeping these enabled may lead to login loops, API-dependant elements not loading and/or other errors.
